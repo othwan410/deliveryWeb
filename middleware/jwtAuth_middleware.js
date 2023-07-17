@@ -1,6 +1,6 @@
 const passport = require('passport');
 
-exports.jwtAuthController = (req, res, next) => {
+exports.jwtAuthMiddleware = (req, res, next) => {
   passport.authenticate('jwt', { session: false }, (err, user) => {
     if (err) {
       console.error(err);
