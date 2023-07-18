@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 
 require('dotenv').config();
 
-const User = require('../models/user');
+const { User } = require('../models');
 
 const localConfig = { usernameField: 'account', passwordField: 'password' };
 const JWTConfig = {

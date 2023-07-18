@@ -1,13 +1,16 @@
-const User = require('../models/user');
+const bcrypt = require('bcrypt');
+
+const { User } = require('../models');
 
 const signupController = async (req, res, next) => {
-  const { email, nickname, password, confirm } = req.body;
+  const { account, sns_id, nickname, phone, password, confirm, status } =
+    req.body;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   try {
-    if (!email) {
+    if (!account) {
       return res.status(400).json({ errorMessage: 'email을 입력해주세요' });
     }
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(account)) {
       return res
         .status(412)
         .json({ errorMessage: '이메일 형식이 올바르지 않습니다.' });
@@ -15,7 +18,7 @@ const signupController = async (req, res, next) => {
     if (!nickname) {
       return res.status(400).json({ errorMessage: 'nickname을 입력해 주세요' });
     }
-    const exUser = await UserActivation.findOne({ where: { email } });
+    const exUser = await User.findOne({ where: { account } });
     if (exUser) {
       return res.redirect('/join?error=exist');
     }
@@ -26,9 +29,13 @@ const signupController = async (req, res, next) => {
     }
     const hash = await bcrypt.hash(password, 12);
     await User.create({
-      eamil,
+      account,
+      sns_id,
       nickname,
+      phone,
+      point: 1000000,
       password: hash,
+      status,
     });
     return res.redirect('/');
   } catch (error) {
