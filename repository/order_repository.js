@@ -1,7 +1,6 @@
 const { Op } = require('sequelize');
 const { Order, Order_menus, sequelize } = require('../models');
 const { Transaction } = require('sequelize');
-const order_menu = require('../models/order_menu');
 
 class orderRepository {
   findAllUserOrder = async (user_id) => {
@@ -81,14 +80,27 @@ class orderRepository {
     return await Order.update({ status }, { where: { order_id } });
   };
 
-  createOrder = async (price, request) => {
+  createOrder = async (user_id, address_id, store_id, price, request) => {
     return await Order.create({
+      user_id,
+      address_id,
+      store_id,
       price,
       request,
     });
   };
 
-  createOrderMenu = async (order_id, menu_id, ea) => {};
+  createOrderMenu = async (order_id, menu_id, ea) => {
+    return await Order_menus.create({ order_id, menu_id, ea });
+  };
+
+  deleteOrder = async (order_id) => {
+    return await Order_menus.destroy({ order_id });
+  };
+
+  deleteOrderMenu = async (order_id) => {
+    return await Order_menus.destroy({ order_id });
+  };
 }
 
 module.exports = orderRepository;

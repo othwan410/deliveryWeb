@@ -51,6 +51,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      status: {
+        type: DataTypes.ENUM('0', '1', '2', '3', '4'), // 0 주문 취소, 1 주문 요청, 2 조리중, 3 배달중, 4 배달완료
+        allowNull: false,
+        defaultValue: '1',
+      },
     },
     {
       sequelize,
