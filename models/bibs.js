@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  Dids.init(
+  Dibs.init(
     {
       store_id: {
         type: DataTypes.INTEGER,
@@ -32,12 +32,14 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       timestamps: true,
+
       modelName: 'Bibs',
       tableName: 'bibs',
+
       paranoid: false,
       charset: 'utf8mb4',
       collate: 'utf8mb4_general_ci',
     }
   );
-  return Dids;
+  return bibs;
 };

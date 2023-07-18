@@ -148,8 +148,9 @@ table {
 header img {
   width: 320px;
   border-radius: 10px;
-  margin-top: 70px;
+  margin-top: 60px;
   margin-left: 22px;
+  cursor: pointer;
 }
 #search {
   width: 19em;
@@ -172,29 +173,43 @@ header img {
   width: 20px;
   margin-left: 0;
   line-height: 30px;
+  cursor: pointer;
 }
 #offline {
-  width: 17rem;
+  width: 20rem;
   height: 5rem;
-  margin-top: 80px;
+  margin-top: 85px;
+  margin-left: 18px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 #offline img {
+  width: 75px;
   border-radius: 10px;
+  margin-left: 5px;
+  cursor: pointer;
 }
 #food_category {
   width: 300px;
-  margin-top: 40px;
-  margin-left: 30px;
+  margin-top: 50px;
+  margin-left: 33px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+#food_category img {
+  cursor: pointer;
 }
 #nav {
   width: 320px;
-  margin-left: 30px;
+  margin-top: 85px;
+  margin-left: 48px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+#nav img {
+  width: 30px;
+  cursor: pointer;
+}
 /* } */
