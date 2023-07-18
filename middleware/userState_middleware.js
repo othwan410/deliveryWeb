@@ -1,5 +1,5 @@
 exports.isLoggedIn = (req, res, next) => {
-  if (req.isAuthenicated()) {
+  if (req.isAuthenticated()) {
     res.locals.isLoggedIn = true;
     next();
   } else {

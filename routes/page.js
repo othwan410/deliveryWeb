@@ -1,21 +1,8 @@
 const express = require('express');
-const { isLoggedIn } = require('../middleware/userState_middleware');
-const {
-  renderMain,
-  renderCategory,
-  renderDetail,
-  renderOrder,
-  renderOrderDetail,
-  renderPayment,
-} = require('../controllers/page_controller');
-const { jwtAuthMiddleware } = require('../middleware/jwtAuth_middleware');
+const { renderMain } = require('../controllers/page_controller');
 
-const router = express();
+const router = express.Router();
 
-router.get('/', isLoggedIn, renderMain);
-
-router.get('/category', renderCategory);
-
-router.get('/store', renderDetail);
+router.get('/', renderMain);
 
 module.exports = router;

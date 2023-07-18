@@ -7,10 +7,12 @@ const passportConfig = require('./passport');
 const dotenv = require('dotenv');
 const path = require('path');
 const nunjucks = require('nunjucks');
+
 const routes = require('./routes');
 const { sequelize } = require('./models');
 
 dotenv.config();
+
 passportConfig();
 
 const app = express();
@@ -21,9 +23,14 @@ nunjucks.configure('views', {
   express: app,
   watch: true,
 });
+<<<<<<< HEAD
+// sequelize
+//   .sync({ force: false })
+=======
 
 // sequelize
 //   .sync({ force: true }) //모델(테이블) 수정후 서버 켰다가 다시 켰을 때 자동 반영
+>>>>>>> 2ff5b30de3e8f560f99d4eab3f70b074d817fc3e
 //   .then(() => {
 //     console.log('데이터베이서 연결성공');
 //   })
@@ -51,7 +58,7 @@ try {
   fs.mkdirSync('uploads');
 }
 
-app.use('/api', routes);
+app.use('/', routes);
 
 app.listen(app.get('port'), () => {
   console.log(app.get('port'), '번 포트에서 대기 중');

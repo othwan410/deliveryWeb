@@ -9,8 +9,8 @@ exports.jwtAuthMiddleware = (req, res, next) => {
     if (!user) {
       return res.status(401).json({ error: '로그인이 필요한 기능입니다.' });
     }
+    res.locals.user = user;
     res.json({ result: true });
   })(req, res, next);
 };
-
-module.exports = jwtAuthController;
+//

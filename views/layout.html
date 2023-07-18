@@ -5,13 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{title}}</title>
     <link rel="stylesheet" href="/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
   </head>
   <body>
-    {% if isLoggedIn %}
-    <button id="logoutButton">{{buttonText}}</button>
-    {% else %}
-    <button id="loginButton">{{buttonText}}</button>
-
-    {% endif %} {% block content %} {% endblock %}
+    <div id="wrap">
+      {% block content %} {% endblock %}
+      <nav id="nav">
+        <img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" />
+        <img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" />
+        <img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" />
+        <img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" />
+      </nav>
+    </div>
   </body>
 </html>

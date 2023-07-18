@@ -32,8 +32,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       timestamps: true,
+
       modelName: 'Dibs',
       tableName: 'dibs',
+
       paranoid: false,
       charset: 'utf8mb4',
       collate: 'utf8mb4_general_ci',
