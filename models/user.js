@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: 'user_id',
         forignKey: 'user_id',
       });
-      this.hasMany(models.Dids, {
+      this.hasMany(models.Dibs, {
         sourceKey: 'user_id',
         forignKey: 'user_id',
       });
@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
         forignKey: 'user_id',
       });
       this.hasOne(models.Store, {
+        sourceKey: 'user_id',
+        forignKey: 'user_id',
+      });
+      this.hasMany(models.Review, {
         sourceKey: 'user_id',
         forignKey: 'user_id',
       });

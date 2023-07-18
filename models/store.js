@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
         targetKey: 'category_id',
         foreignKey: 'category_id',
       });
-      this.hasMany(models.Dids, {
+      this.hasMany(models.Dibs, {
         foreignKey: 'store_id',
         sourceKey: 'store_id',
       });
@@ -27,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.User, {
         targetKey: 'user_id',
         foreignKey: 'user_id',
+      });
+      this.hasMany(models.Review, {
+        sourceKey: 'store_id',
+        forignKey: 'store_id',
       });
     }
   }
