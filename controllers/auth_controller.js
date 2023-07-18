@@ -12,7 +12,7 @@ exports.loginController = async (req, res, next) => {
           return res.status(400).json({ errorMessage: loginError });
         }
         const token = jwt.sign(
-          { userId: user.userId },
+          { user_id: user.user_id },
           process.env.COOKIE_SECRET
         );
         res.json({ token });

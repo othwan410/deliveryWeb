@@ -40,7 +40,7 @@ const localVerify = async (account, password, done) => {
 
 const JWTVerify = async (jwtPayload, done) => {
   try {
-    const user = await User.findOne({ where: { account: jwtPayload.userId } });
+    const user = await User.findOne({ where: { account: jwtPayload.user_id } });
     if (user) {
       done(null, user);
       return;

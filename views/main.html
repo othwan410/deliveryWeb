@@ -1,55 +1,31 @@
-<!-- {% extends 'layout.html' %} {% block content %} -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
-    />
-    <link rel="stylesheet" href="../public/style.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div id="wrap">
-      <header>
-        <img src="../public/images/banner.png" alt="광고 배너" />
-      </header>
-      <div id="search">
-        <input class="search" type="text" />
-        <span class="material-symbols-sharp lens"> search </span>
-      </div>
-      <div id="offline">
-        <img src="../public/images/띵동마트.png" />
-        <img src="../public/images/편의점.png" />
-        <img src="../public/images/포장.png" />
-        <img src="../public/images/선물하기.png" />
-      </div>
-      <div id="food_category">
-        <img src="../public/images/total.png" />
-        <img src="../public/images/chi.png" />
-        <img src="../public//images/버거.png" />
-        <img src="../public/images/한식.png" />
-        <img src="../public/images/일식.png" />
-        <img src="../public/images/족발.png" />
-        <img src="../public/images/고기.png" />
-        <img src="../public/images/분식.png" />
-        <img src="../public/images/샐러드.png" />
-        <img src="../public/images/일식.png" />
-        <img src="../public//images/죽.png" />
-        <img src="../public/images/중국집.png" />
-      </div>
-      <nav id="nav">
-        <img src="../public/images/home_FILL0_wght400_GRAD0_opsz48.png" />
-        <img src="../public/images/favorite_FILL0_wght400_GRAD0_opsz48.png" />
-        <img
-          src="../public/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png"
-        />
-        <img src="../public/images/person_FILL0_wght400_GRAD0_opsz48.png" />
-      </nav>
-    </div>
-  </body>
-</html>
+{% extends 'layout.html' %} {% block content %}
 
-<!-- {% endblock %} -->
+<header>
+  <img src="/images/banner.png" alt="광고 배너" />
+</header>
+<div id="search">
+  <input class="search" type="text" />
+  <span class="material-symbols-sharp lens"> search </span>
+</div>
+<div id="offline">
+  <img src="/images/띵동마트.png" />
+  <img src="/images/편의점.png" />
+  <img src="/images/포장.png" />
+  <img src="/images/선물하기.png" />
+</div>
+<div id="food_category">
+  <img src="/images/total.png" />
+  <img src="/images/chi.png" />
+  <img src="/images/버거.png" />
+  <img src="/images/한식.png" />
+  <img src="/images/일식.png" />
+  <img src="/images/족발.png" />
+  <img src="/images/고기.png" />
+  <img src="/images/분식.png" />
+  <img src="/images/샐러드.png" />
+  <img src="/images/일식.png" />
+  <img src="/images/죽.png" />
+  <img src="/images/중국집.png" />
+</div>
+
+{% endblock %}
