@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       sns_id: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       provider: {
         type: DataTypes.ENUM('local', 'kakao'),
