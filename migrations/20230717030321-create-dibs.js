@@ -2,30 +2,30 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Dids', {
+    await queryInterface.createTable('Dibs', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       store_id: {
-        type: Sequelize.NUMBER
+        type: Sequelize.NUMBER,
       },
       user_id: {
-        type: Sequelize.NUMBER
+        type: Sequelize.NUMBER,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Dids');
-  }
+    await queryInterface.dropTable('Dibs');
+  },
 };
