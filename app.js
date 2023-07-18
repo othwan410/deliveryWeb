@@ -8,8 +8,7 @@ const dotenv = require('dotenv');
 const path = require('path');
 const nunjucks = require('nunjucks');
 const routes = require('./routes');
-const { sequelize } = require('./models/index.js');
-const { isLoggedIn } = require('./middleware/userState_middleware');
+const { sequelize } = require('./models');
 
 dotenv.config();
 passportConfig();
@@ -22,7 +21,6 @@ nunjucks.configure('views', {
   express: app,
   watch: true,
 });
-
 // sequelize
 //   .sync({ force: true }) //모델(테이블) 수정후 서버 켰다가 다시 켰을 때 자동 반영
 //   .then(() => {
@@ -51,11 +49,8 @@ try {
   console.error('uploads 폴더가 없어 uploads 폴더를 생성합니다.');
   fs.mkdirSync('uploads');
 }
-app.get('/', isLoggedIn, (req, res) => {
-  const buttonText = res.locals.isLoggedIn ? '로그아웃' : '로그인'; //테스트 후 page.js 로 옮긴 후 모듈화 작업 예정
-  res.render('main', { isLoggedIn, buttonText });
-});
-// app.use('/api', routes);
+
+app.use('/api', routes);
 
 app.listen(app.get('port'), () => {
   console.log(app.get('port'), '번 포트에서 대기 중');

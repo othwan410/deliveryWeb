@@ -78,5 +78,5 @@ const KakaoVerify = async (accessToken, refreshToken, profile, done) => {
 module.exports = () => {
   passport.use('local', new LocalStrategy(localConfig, localVerify));
   passport.use('jwt', new JWTStrategy(JWTConfig, JWTVerify));
-  passport.use('kako', new KakaoStrategy(KakaoConfig, KakaoVerify));
+  passport.use('kakao', new KakaoStrategy(KakaoConfig, KakaoVerify));
 };

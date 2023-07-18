@@ -26,7 +26,21 @@ exports.loginController = async (req, res, next) => {
 };
 
 exports.logoutController = (req, res) => {
-  //로그아웃 기능 구현
-  //session 사용 없이 jwt토큰으로 인증 구현했기 때문에  jwt 토큰 제거방식으로
-  //프론트단에 false 반환 예정
+  if (!res.locals.isLoggedIn) {
+    return res.status(400).json({ errorMessege: '로그인한 상태입니다.' });
+  }
+  res.crearCookie('authorization');
+  res.redirect('/');
+};
+
+exports.kakaoAuth = () => {
+  passport.authenticate('kakao');
+};
+
+exports.kakaoCallback = (req, res) => {
+  passport.authenticate('kakao', {
+    failureRedirect: '/?loginError=카카오로그인 실패',
+  });
+
+  res.redirect('/');
 };
