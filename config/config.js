@@ -2,12 +2,13 @@ require('dotenv').config();
 const env = process.env;
 
 const development = {
+  use_env_variable: false,
   username: env.MYSQL_USERNAME,
   password: env.MYSQL_PASSWORD,
   database: env.MYSQL_DATABASE,
   host: env.MYSQL_HOST,
   dialect: 'mysql',
-  // port: env.PORT,
+  //port: env.MYSQL_PORT
 };
 
 const production = {
@@ -16,7 +17,7 @@ const production = {
   database: env.MYSQL_DATABASE,
   host: env.MYSQL_HOST,
   dialect: 'mysql',
-  // port: env.PORT,
+  //port: env.MYSQL_PORT
 };
 
 const test = {
@@ -25,7 +26,7 @@ const test = {
   database: env.MYSQL_DATABASE_TEST,
   host: env.MYSQL_HOST,
   dialect: 'mysql',
-  // port: env.PORT,//
+  //port: env.MYSQL_PORT
 };
 
 module.exports = { development, production, test };

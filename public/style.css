@@ -1,0 +1,200 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* #wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px 200px;
+  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+} */
+
+/* ​ @media (max-width: 768px) { */
+#wrap {
+  width: 23em;
+  height: 38em;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 50px 100px 220px 50px;
+
+  background: url('../public/images/mobile.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+header img {
+  width: 320px;
+  border-radius: 10px;
+  margin-top: 70px;
+  margin-left: 22px;
+}
+#search {
+  width: 19em;
+  height: 2em;
+  border: 2px solid #424242;
+  border-radius: 10px;
+  margin-top: 80px;
+  margin-left: 28px;
+  display: grid;
+  grid-template-columns: 1fr 30px;
+}
+#search input {
+  width: 10rem;
+  border: none;
+  border-radius: 20px;
+  outline: none;
+  padding-left: 10px;
+}
+.lens {
+  width: 20px;
+  margin-left: 0;
+  line-height: 30px;
+}
+#offline {
+  width: 17rem;
+  height: 5rem;
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+#offline img {
+  border-radius: 10px;
+}
+#food_category {
+  width: 300px;
+  margin-top: 40px;
+  margin-left: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+#nav {
+  width: 320px;
+  margin-left: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+/* } */
