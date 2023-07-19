@@ -1,7 +1,7 @@
 const OrderService = require('../services/posts.service');
 
-class PostsController {
-  postsService = new OrderService();
+class OrderController {
+  OrderService = new OrderService();
 }
 
-module.exports = PostsController;
+module.exports = OrderController;

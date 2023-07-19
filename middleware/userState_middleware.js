@@ -14,10 +14,10 @@ exports.authorizated = async (req, res, next) => {
   }
 
   try {
-    const { userId } = jwt.verify(authToken, 'costomized-secret-key');
+    const { user_id } = jwt.verify(authToken, 'costomized-secret-key');
 
     const user = await Users.findOne({
-      where: userId,
+      where: user_id,
     });
     res.locals.user = user;
     next();
