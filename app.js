@@ -24,14 +24,14 @@ nunjucks.configure('views', {
   watch: true,
 });
 
-sequelize
-  .sync({ force: true }) //모델(테이블) 수정후 서버 켰다가 다시 켰을 때 자동 반영
-  .then(() => {
-    console.log('데이터베이서 연결성공');
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+// sequelize
+//   .sync({ force: true }) //모델(테이블) 수정후 서버 켰다가 다시 켰을 때 자동 반영
+//   .then(() => {
+//     console.log('데이터베이서 연결성공');
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
 
 app.use((req, res, next) => {
   if (process.env.NODE_ENV === 'production') {

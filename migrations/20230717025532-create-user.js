@@ -2,32 +2,39 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Reviews', {
-      id: {
+    await queryInterface.createTable('Users', {
+      user_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      store_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+      sns_id: {
+        type: Sequelize.STRING,
+        allowNull: true,
       },
-      user_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
+      provider: {
+        type: Sequelize.ENUM('local', 'kakao'),
+        defaultValue: 'local',
       },
-      review: {
+      account: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      rating: {
+      nickname: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      phone: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      point: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      umg_url: {
-        type: Sequelize.STRING,
-        allowNull: false,
+      status: {
+        type: Sequelize.ENUM('normal', 'admin'),
       },
       createdAt: {
         allowNull: false,
@@ -42,6 +49,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Reviews');
+    await queryInterface.dropTable('Users');
   },
 };
