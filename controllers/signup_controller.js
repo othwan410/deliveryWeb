@@ -28,7 +28,7 @@ const signupController = async (req, res, next) => {
         .json({ error: '비밀번호와 비밀번호 확인이 일치하지 않습니다.' });
     }
     const hash = await bcrypt.hash(password, 12);
-    await User.create({
+    const user = await User.create({
       account,
       sns_id,
       nickname,
@@ -37,7 +37,7 @@ const signupController = async (req, res, next) => {
       password: hash,
       status,
     });
-    return res.redirect('/');
+    return res.status(201).json({ user });
   } catch (error) {
     console.error(error);
     return next(error);
