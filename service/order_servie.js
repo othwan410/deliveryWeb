@@ -40,6 +40,10 @@ class OrderService {
   deleteOrderMenu = async (order_id) => {
     return await this.orderRepository.deleteOrderMenu(order_id);
   };
+  //
+  findOneAdminOrder = async (order_id) => {
+    return await this.orderRepository.findOneAdminOrder(order_id);
+  }
 }
 
 module.exports = OrderService;
