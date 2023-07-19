@@ -1,21 +1,21 @@
 const express = require('express');
-const Store = require('../models/store');
+const {Store} = require('../models/');
 const router = express.Router();
 
 const StoresController = require('../controllers/store_controller');
 const storesController = new StoresController();
 const { authorizated } = require('../middleware/userState_middleware');
 
-router.post('/store', authorizated, storesController.createStore);
-router.put('/:store_id', authorizated, storesController.updateStore);
-router.delete('/:store_id', authorizated, storesController.deleteStore);
+router.post('/stores', authorizated, storesController.createStore);
+router.put('/stores/:store_id', authorizated, storesController.updateStore);
+router.delete('/stores/:store_id', authorizated, storesController.deleteStore);
 
-router.get('/stores?category=categoryId', async (req, res) => {
+router.get('/stores', async (req, res) => {
   const category_id = req.query.category;
   try {
     const stores = await Store.findAll(                               
       {
-        attributes: ['name', 'img_url', 'rating'],
+        attributes: ['name', 'img_url', 'rating', 'store_id'],
         order: [['createdAt', 'DESC']],
       },
       {

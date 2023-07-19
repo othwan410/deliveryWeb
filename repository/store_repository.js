@@ -5,10 +5,9 @@ const { Transaction } = require('sequelize');
 class StoreRepository {
   
   //가게 등록
-  createStore = async (user_id, store_id, name, call, category_id, address, content, img_url) => {
+  createStore = async (user_id, name, call, category_id, address, content, img_url) => {
     const createStoreData = await Store.create({
-      user_id: user_id,
-      store_id,
+      user_id,
       name,
       call,
       category_id,
@@ -21,7 +20,7 @@ class StoreRepository {
   };
 
   //가게 수정
-  updateStore = async (user_id, store_id, name, call, category_id, address, content, img_url) => {
+  updateStore = async (store_id, name, call, category_id, address, content, img_url) => {
     const updateStoreData = await Store.update(
       { name,
         call,
@@ -31,7 +30,7 @@ class StoreRepository {
         img_url, },
       {
         where: {
-          [Op.and]: [{ store_id }, { user_id: user_id }],
+           store_id
         },
       }
     );
@@ -40,9 +39,9 @@ class StoreRepository {
   };
 
   //가게 삭제
-  deleteStore = async (user_id, store_id) => {
+  deleteStore = async (store_id) => {
     const deleteStoreData = await Store.destroy({
-      where: { [Op.and]: [{ store_id }, { user_id: user_id }] },
+      where: { store_id },
     });
 
     return deleteStoreData;

@@ -4,10 +4,9 @@ class StoreService {
   storeRepository = new StoreRepository();
 
   //가게 등록
-  createStore = async (user_id, store_id, name, call, category_id, address, content, img_url) => {
+  createStore = async (user_id, name, call, category_id, address, content, img_url) => {
     const createStoreData = await this.storeRepository.createStore(
         user_id,
-        store_id,
         name,
         call,
         category_id,
@@ -34,13 +33,12 @@ class StoreService {
   };
 
   //가게 삭제
-  deleteStore = async (user_id, store_id) => {
+  deleteStore = async (store_id) => {
     const deleteStoreData = await this.storeRepository.deleteStore(
-      user_id,
       store_id
     );
 
-    return deleteStoresData;
+    return deleteStoreData;
   };
 }
 
