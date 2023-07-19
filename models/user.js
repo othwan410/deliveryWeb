@@ -28,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: 'user_id',
         forignKey: 'user_id',
       });
+      // this.belongsToMany(models.Store, {
+      //   as: 'liked',
+      //   through: models.Dibs,
+      // });
     }
   }
   User.init(

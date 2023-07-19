@@ -3,6 +3,7 @@ const router = express.Router();
 const authRouter = require('./auth');
 const storeRouter = require('./store');
 const pageRouter = require('./page');
+const dibsRouter = require('./dibs');
 
 const defaultRoutes = [
   {
@@ -16,6 +17,10 @@ const defaultRoutes = [
   {
     path: '/',
     route: pageRouter,
+  },
+  {
+    path: '/',
+    route: dibsRouter,
   },
 ];
 
