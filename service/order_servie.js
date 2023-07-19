@@ -12,33 +12,37 @@ class OrderService {
   };
 
   findOneOrder = async (order_id) => {
-    return await this.orderRepository.findOneOrder(order_id);
-  };
-
-  findOneOrderMenu = async (order_id) => {
-    return await this.orderRepository.findOneOrderMenu(order_id);
+    const order = await this.orderRepository.findOneOrder(order_id);
+    const menu = await this.orderRepository.findOneOrderMenu(order_id);
+    return { order, menu };
   };
 
   updateOrderStatus = async (order_id, status) => {
     return await this.orderRepository.updateOrderStatus(order_id, status);
   };
-  createOrder = async (user_id, address_id, store_id, price, request) => {
+
+  createOrder = async (
+    user_id,
+    address_id,
+    store_id,
+    price,
+    request,
+    menu_id,
+    ea
+  ) => {
     return await this.orderRepository.createOrder(
       user_id,
       address_id,
       store_id,
       price,
-      request
+      request,
+      menu_id,
+      ea
     );
   };
-  createOrderMenu = async (order_id, menu_id, ea) => {
-    return await this.orderRepository.createOrderMenu(order_id, menu_id, ea);
-  };
+
   deleteOrder = async (order_id) => {
     return await this.orderRepository.deleteOrder(order_id);
-  };
-  deleteOrderMenu = async (order_id) => {
-    return await this.orderRepository.deleteOrderMenu(order_id);
   };
 }
 
