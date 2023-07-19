@@ -9,7 +9,7 @@ const defaultRoutes = [
   {
     path: '/auth',
     route: authRouter,
-  },
+  },               
   {
     path: '/',
     route: storeRouter,
