@@ -32,10 +32,6 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: 'store_id',
         forignKey: 'store_id',
       });
-      // this.belongsToMany(models.User, {
-      //   as: 'liker',
-      //   through: models.Dibs,
-      // });
     }
   }
   Store.init(
@@ -65,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
       rating: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: 0
+        defaultValue: 0,
       },
       content: {
         type: DataTypes.STRING,

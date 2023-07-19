@@ -28,10 +28,6 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: 'user_id',
         forignKey: 'user_id',
       });
-      // this.belongsToMany(models.Store, {
-      //   as: 'liked',
-      //   through: models.Dibs,
-      // });
     }
   }
   User.init(
@@ -74,6 +70,16 @@ module.exports = (sequelize, DataTypes) => {
       status: {
         type: DataTypes.ENUM('normal', 'admin'),
         allowNull: false,
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
     },
     {

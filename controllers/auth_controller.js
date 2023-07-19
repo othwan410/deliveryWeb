@@ -15,7 +15,6 @@ exports.loginController = async (req, res, next) => {
         if (loginError) {
           return res.status(400).json({ errorMessage: loginError });
         }
-        console.log(user.user_id);
         const token = jwt.sign(
           { user_id: user.user_id },
           process.env.COOKIE_SECRET
