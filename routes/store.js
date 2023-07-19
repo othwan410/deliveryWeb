@@ -1,5 +1,5 @@
 const express = require('express');
-const {Store} = require('../models/');
+const { Store, Menu } = require('../models');
 const router = express.Router();
 
 const StoresController = require('../controllers/store_controller');
@@ -67,5 +67,9 @@ router.get('/stores?storeId=storeId', async (req, res) => {
     res.status(400).json({ errorMessage: error });
   }
 });
+
+router.post('/stores/:store_id/menu', authorizated, storesController.createMenu);
+router.put('/stores/:store_id/menu/:menu_id', authorizated, storesController.updateMenu);
+router.delete('/stores/:store_id/menu/:menu_id', authorizated, storesController.deleteMenu);
 
 module.exports = router;

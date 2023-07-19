@@ -40,6 +40,38 @@ class StoreService {
 
     return deleteStoreData;
   };
+
+  //메뉴 등록
+  createMenu = async (store_id, name, price, img_url) => {
+    const createMenuData = await this.storeRepository.createMenu(
+        store_id,
+        name,
+        price,
+        img_url,
+    );
+
+    return createMenuData;
+  };
+
+  //메뉴 수정
+  updateMenu = async (name, price, img_url) => {
+    const updateMenuData = await this.storeRepository.updateMenu(
+        name,
+        price,
+        img_url,
+    );
+
+    return updateMenuData;
+  };
+
+  //메뉴 삭제
+  deleteMenu = async (menu_id) => {
+    const deleteMenuData = await this.storeRepository.deleteMenu(
+      menu_id
+    );
+
+    return deleteMenuData;
+  };
 }
 
 module.exports = StoreService;

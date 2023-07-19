@@ -70,6 +70,68 @@ class StoresController {
         .json({ errorMessage: '가게 삭제에 실패했습니다.' });
     }
   };
+
+  //메뉴 등록
+  createMenu = async (req, res, next) => {
+    try {
+      const { store_id } = req.params;
+      const { name, price, img_url } = req.body;
+      const createMenuData = await this.storeService.createMenu(
+        store_id,
+        name,
+        price,
+        img_url
+      );
+
+      return res.status(201).json({ data: createMenuData });
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(400)
+        .json({ errorMessage: '메뉴 등록에 실패했습니다.' });
+    }
+  };
+
+  //메뉴 수정
+  updateMenu = async (req, res, next) => {
+    try {
+      const { menu_id } = req.params;
+      const { name, price, img_url } = req.body;
+      const [updateMenuData] = await this.storeService.updateMenu(
+        menu_id,
+        name,
+        price,
+        img_url
+      );
+
+      if (!updateMenuData) {
+        return res.status(400).json({ data: '메뉴 수정에 실패했습니다.' });
+      }
+      return res.status(201).json({ data: '메뉴 수정에 성공했습니다.' });
+    } catch (error) {
+      return res
+        .status(400)
+        .json({ errorMessage: '메뉴 수정에 실패했습니다.' });
+    }
+  };
+
+  //메뉴 삭제
+  deleteMenu = async (req, res, next) => {
+    try {
+      const { menu_id } = req.params;
+      const deleteMenuData = await this.storeService.deleteMenu(menu_id);
+
+      if (!deleteMenuData) {
+        return res.status(400).json({ data: '메뉴 삭제에 실패했습니다.' });
+      }
+      return res.status(201).json({ data: '메뉴 삭제에 성공했습니다.' });
+    } catch (error) {
+      console.log(error);
+        return res
+        .status(400)
+        .json({ errorMessage: '메뉴 삭제에 실패했습니다.' });
+    }
+  };
 }
 
 module.exports = StoresController;

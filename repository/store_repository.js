@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { Store, sequelize } = require('../models');
+const { Store, Menu, sequelize } = require('../models');
 const { Transaction } = require('sequelize');
 
 class StoreRepository {
@@ -45,6 +45,43 @@ class StoreRepository {
     });
 
     return deleteStoreData;
+  };
+
+  //메뉴 등록
+  createMenu = async (store_id, name, price, img_url) => {
+    const createMenuData = await Menu.create({
+      store_id,
+      name,
+      price,
+      img_url,
+    });
+
+    return createMenuData;
+  };
+
+  //메뉴 수정
+  updateMenu = async (menu_id, name, price, img_url) => {
+    const updateMenuData = await Menu.update(
+      { name,
+        price,
+        img_url, },
+      {
+        where: {
+           menu_id
+        },
+      }
+    );
+
+    return updateMenuData;
+  };
+
+  //메뉴 삭제
+  deleteMenu = async (menu_id) => {
+    const deleteMenuData = await Menu.destroy({
+      where: { menu_id },
+    });
+
+    return deleteMenuData;
   };
 }
 
