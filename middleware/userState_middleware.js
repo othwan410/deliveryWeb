@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { Users } = require('../models');
+// const { User } = require('../models');
 
 exports.authorizated = async (req, res, next) => {
   const { authorization } = req.cookies;
@@ -14,12 +14,9 @@ exports.authorizated = async (req, res, next) => {
   }
 
   try {
-    const { userId } = jwt.verify(authToken, 'costomized-secret-key');
+    const { user_id } = jwt.verify(authToken, process.env.COOKIE_SECRET);
 
-    const user = await Users.findOne({
-      where: userId,
-    });
-    res.locals.user = user;
+    res.locals.user_id = user_id;
     next();
   } catch (error) {
     console.log(error);
