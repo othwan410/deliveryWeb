@@ -15,6 +15,7 @@ module.exports = {
       },
       provider: {
         type: Sequelize.ENUM('local', 'kakao'),
+        allowNull: false,
         defaultValue: 'local',
       },
       account: {
@@ -33,8 +34,13 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       status: {
         type: Sequelize.ENUM('normal', 'admin'),
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
