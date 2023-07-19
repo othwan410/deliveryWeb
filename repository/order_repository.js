@@ -101,27 +101,6 @@ class orderRepository {
   deleteOrderMenu = async (order_id) => {
     return await Order_menus.destroy({ order_id });
   };
-  //
-  findOneAdminOrder = async (order_id) => {
-    return await Order.findOne({
-      attributes: [
-        'order_id',
-        'price',
-        'request',
-        'address',
-        [
-          sequelize.literal(
-            '(SELECT menu_id AS menu_id FROM Store WHERE Menu.menu_id)'
-          ),
-          'menu_id',
-        ],
-        'ea',
-        'status',
-        'createdAt',
-      ],
-      where: { order_id },
-    });
-  };
 }
 
 module.exports = orderRepository;
