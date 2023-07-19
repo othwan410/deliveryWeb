@@ -99,11 +99,24 @@
 .desc {
   margin-top: 10px;
   font-size: 11px;
+  opacity: 0.8;
+}
+.review {
+  margin-top: 5px;
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.price {
+  margin-top: 7px;
+  font-size: 13px;
+  font-weight: bold;
 }
 .menu_box img {
-  width: 220px;
-  width: 100px;
+  width: 85px;
+  width: 85px;
   border-radius: 15px;
+  margin-top: 10px;
 }
 
 #nav3 {

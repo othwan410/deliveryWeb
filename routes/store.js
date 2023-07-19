@@ -2,24 +2,14 @@ const express = require('express');
 const Store = require('../models/store');
 const router = express.Router();
 
-router.get('/stores', async (req, res) => {
-  const category_id = req.query.category;
-  try {
-    const stores = await Store.findAll(
-      {
-        attributes: ['name', 'img_url', 'rating', 'store_id'],
-        order: [['createdAt', 'DESC']],
-      },
-      {
-        where: { category_id },
-      }
-    );
-    res.render('category_store', stores);
-  } catch (error) {
-    console.error(error);
-    return res.status(400).json({ errorMessage: error });
-  }
-});
+const StoresController = require('../controllers/store_controller');
+const storesController = new StoresController();
+const { authorizated } = require('../middleware/userState_middleware');
+
+router.post('/store', authorizated, storesController.createStore);
+router.put('/:store_id', authorizated, storesController.updateStore);
+router.delete('/:store_id', authorizated, storesController.deleteStore);
+router.get('/stores', storesController.readStore);
 
 router.get('/stores/detail', async (req, res) => {
   const store_id = req.query.store;
