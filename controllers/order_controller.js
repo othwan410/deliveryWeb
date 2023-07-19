@@ -1,4 +1,4 @@
-const OrderService = require('../services/posts.service');
+const OrderService = require('../service/order_service');
 
 class OrderController {
   orderService = new OrderService();
@@ -76,19 +76,19 @@ class OrderController {
       }
 
       const { order_id } = req.params;
-      const { status } = req.body;
+      const { status } = req.query;
 
-      if (!title) {
+      if (!order_id) {
         return res.status(412).json({
           success: false,
-          errorMessage: '게시글 제목의 형식이 올바르지 않습니다.',
+          errorMessage: '주문내역의 형식이 올바르지 않습니다.',
         });
       }
 
-      if (!content) {
+      if (!status) {
         return res.status(412).json({
           success: false,
-          errorMessage: '게시글 내용의 형식이 올바르지 않습니다.',
+          errorMessage: '주문상태의 형식이 올바르지 않습니다.',
         });
       }
 
@@ -108,7 +108,6 @@ class OrderController {
         .status(400)
         .json({ errorMessage: '주문상태 수정에 실패했습니다.' });
     }
-    return await this.orderService.updateOrderStatus(order_id, status);
   };
 
   createOrder = async (req, res, next) => {

@@ -1,4 +1,3 @@
-const { Op } = require('sequelize');
 const { Order, Order_menus, User, sequelize } = require('../models');
 const { Transaction } = require('sequelize');
 
@@ -12,7 +11,7 @@ class orderRepository {
         'createdAt',
         [
           sequelize.literal(
-            '(SELECT name AS name FROM Store WHERE Store.store_id = Order.store_id)'
+            '(SELECT name AS name FROM stores WHERE stores.store_id = store_id)'
           ),
           'name',
         ],
@@ -32,7 +31,7 @@ class orderRepository {
         'createdAt',
         [
           sequelize.literal(
-            '(SELECT name AS name FROM Store WHERE Store.store_id = Order.store_id)'
+            '(SELECT name AS name FROM stores WHERE stores.store_id = Order.store_id)'
           ),
           'name',
         ],
@@ -52,7 +51,7 @@ class orderRepository {
         'address',
         [
           sequelize.literal(
-            '(SELECT name AS name FROM Store WHERE Store.store_id = Order.store_id)'
+            '(SELECT name AS name FROM stores WHERE stores.store_id = Order.store_id)'
           ),
           'name',
         ],

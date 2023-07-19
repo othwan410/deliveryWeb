@@ -24,14 +24,14 @@ nunjucks.configure('views', {
   watch: true,
 });
 
-// sequelize
-//   .sync({ force: false })
-//   .then(() => {
-//     console.log('데이터베이서 연결성공');
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
+sequelize
+  .sync({ force: true })
+  .then(() => {
+    console.log('데이터베이서 연결성공');
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 app.use((req, res, next) => {
   if (process.env.NODE_ENV === 'production') {
@@ -40,6 +40,7 @@ app.use((req, res, next) => {
     morgan('dev')(req, res, next);
   }
 });
+
 app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

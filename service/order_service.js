@@ -1,4 +1,4 @@
-const OrderRepository = require('../repositories/order_repository');
+const OrderRepository = require('../repository/order_repository');
 
 class OrderService {
   orderRepository = new OrderRepository();
