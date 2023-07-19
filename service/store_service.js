@@ -4,10 +4,9 @@ class StoreService {
   storeRepository = new StoreRepository();
 
   //가게 등록
-  createStore = async (user_id, store_id, name, call, category_id, address, content, img_url) => {
+  createStore = async (user_id, name, call, category_id, address, content, img_url) => {
     const createStoreData = await this.storeRepository.createStore(
         user_id,
-        store_id,
         name,
         call,
         category_id,
@@ -34,13 +33,44 @@ class StoreService {
   };
 
   //가게 삭제
-  deleteStore = async (user_id, store_id) => {
+  deleteStore = async (store_id) => {
     const deleteStoreData = await this.storeRepository.deleteStore(
-      user_id,
       store_id
     );
 
-    return deleteStoresData;
+    return deleteStoreData;
+  };
+
+  //메뉴 등록
+  createMenu = async (store_id, name, price, img_url) => {
+    const createMenuData = await this.storeRepository.createMenu(
+        store_id,
+        name,
+        price,
+        img_url,
+    );
+
+    return createMenuData;
+  };
+
+  //메뉴 수정
+  updateMenu = async (name, price, img_url) => {
+    const updateMenuData = await this.storeRepository.updateMenu(
+        name,
+        price,
+        img_url,
+    );
+
+    return updateMenuData;
+  };
+
+  //메뉴 삭제
+  deleteMenu = async (menu_id) => {
+    const deleteMenuData = await this.storeRepository.deleteMenu(
+      menu_id
+    );
+
+    return deleteMenuData;
   };
 }
 
