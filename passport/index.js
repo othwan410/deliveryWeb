@@ -9,10 +9,7 @@ require('dotenv').config();
 const { User } = require('../models');
 
 const localConfig = { usernameField: 'account', passwordField: 'password' };
-const JWTConfig = {
-  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
-  secretOrKey: process.env.COOKIE_SECRET,
-};
+
 const KakaoConfig = {
   clientID: process.env.KAKAO_CLIENT_ID,
   callbackURL: 'auth/kakao/callback',
@@ -32,20 +29,6 @@ const localVerify = async (account, password, done) => {
       return;
     }
     done(null, false, { errorMessage: '올바르지 않은 비밀번호입니다.' });
-  } catch (error) {
-    console.error(error);
-    done(error);
-  }
-};
-
-const JWTVerify = async (jwtPayload, done) => {
-  try {
-    const user = await User.findOne({ where: { account: jwtPayload.user_id } });
-    if (user) {
-      done(null, user);
-      return;
-    }
-    done(null, false, { errorMessage: '올바르지 앟은 인증정보 입니다.' });
   } catch (error) {
     console.error(error);
     done(error);
@@ -77,6 +60,5 @@ const KakaoVerify = async (accessToken, refreshToken, profile, done) => {
 
 module.exports = () => {
   passport.use('local', new LocalStrategy(localConfig, localVerify));
-  passport.use('jwt', new JWTStrategy(JWTConfig, JWTVerify));
   passport.use('kakao', new KakaoStrategy(KakaoConfig, KakaoVerify));
 };
