@@ -32,8 +32,7 @@
 }
 
 #top_menu ul {
-  box-size: border-box;
-  padding-left: 15px;
+  padding-left: 5px;
   width: 300px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -51,14 +50,14 @@
 }
 hr {
   color: #cecece;
-  margin-right: 5px;
+  margin-right: 15px;
 }
 
 #nav2 {
   position: fixed;
   width: 325px;
-  margin-top: 300px;
-  margin-left: 15px;
+  margin-top: 297px;
+  margin-left: 7px;
   border-top: 1px solid rgba(0, 0, 0, 0.4);
   border-bottom: 20px solid black;
   border-radius: 7px;
@@ -81,4 +80,19 @@ hr {
 }
 #nav2 img:hover {
   opacity: 1;
+}
+
+.black-space {
+  width: 332px;
+  height: 30px;
+  position: fixed;
+  background: white;
+  border-top: 20px solid black;
+  border-radius: 10px 10px 0 0;
+  margin-left: 10px;
+  top: 5%;
+}
+.white-space {
+  width: 325px;
+  height: 100px;
 }

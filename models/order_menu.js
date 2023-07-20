@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       order_id: {
         allowNull: false,
         type: DataTypes.INTEGER,
+        primaryKey: true,
       },
       menu_id: {
         type: DataTypes.INTEGER,

@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const authRouter = require('./auth');
 const storeRouter = require('./store');
+const orderRouter = require('./order');
 const pageRouter = require('./page');
-const dibsRouter = require('./dibs');
 
 const defaultRoutes = [
   {
@@ -13,6 +13,10 @@ const defaultRoutes = [
   {
     path: '/',
     route: storeRouter,
+  },
+  {
+    path: '/',
+    route: orderRouter,
   },
   {
     path: '/',

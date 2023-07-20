@@ -1,9 +1,9 @@
 script{% extends 'layout.html' %} {% block content %}
 
 <header>
-  <img src="/images/banner.png" alt="광고 배너" />
-  <img src="/images/banner.png" alt="광고 배너" />
-  <img src="/images/banner.png" alt="광고 배너" />
+  <img class="banner1" src="/images/banner.png" alt="광고 배너" />
+  <img class="banner2" src="/images/banner.png" alt="광고 배너" />
+  <img class="banner3" src="/images/banner.png" alt="광고 배너" />
 </header>
 <div id="search">
   <input class="search" type="text" />
@@ -36,16 +36,29 @@ script{% extends 'layout.html' %} {% block content %}
   <img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" />
 </nav>
 {% endblock %} {% block script %}
+
 <script>
-  let index = 0;
-  let interval = setInterval(banner, 1000);
-  let imgs = document.querySelector('header > img');
+  const imgs = $('header > img');
+  let currentIndex = 0;
 
-  function banner(n) {
-    if (index == 4) index = 0;
+  const slideRight = function () {
+    currentIndex = (currentIndex + 1) % imgs.length;
+    updateTransform();
+  };
 
-    imgs.setAttribute('class', 'on' + (index + 1));
-    index++;
-  }
+  const slideLeft = function () {
+    currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+    updateTransform();
+  };
+
+  const updateTransform = function () {
+    const offset = -currentIndex * 120;
+    imgs.each(function (index) {
+      const translateX = offset + index * 120;
+      $(this).css('transform', `translateX(${translateX}%)`);
+    });
+  };
+
+  setInterval(slideRight, 3000);
 </script>
 {% endblock %}

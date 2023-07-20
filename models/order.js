@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
         targetKey: 'address_id',
         foreignKey: 'address_id',
       });
+      this.belongsTo(models.Address, {
+        targetKey: 'user_id',
+        foreignKey: 'user_id',
+      });
       this.hasMany(models.Order_menu, {
         sourceKey: 'order_id',
         forignKey: 'order_id',
@@ -34,7 +38,10 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       store_id: {
         type: DataTypes.INTEGER,
         allowNull: false,

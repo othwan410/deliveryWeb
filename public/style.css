@@ -134,7 +134,7 @@ table {
 /* ​ @media (max-width: 768px) { */
 #wrap {
   position: relative;
-  width: 23em;
+  width: 22em;
   height: 38rem;
   margin: 50px auto;
   display: grid;
@@ -153,32 +153,25 @@ table {
 #wrap::-webkit-scrollbar {
   display: none;
 }
-header {
-  display: grid;
-}
+
 header img {
   width: 320px;
   border-radius: 10px;
   margin-top: 60px;
-  margin-left: 22px;
+  margin-left: 15px;
   transition: transform 1s ease-in-out;
   cursor: pointer;
   z-index: -1;
   position: absolute;
 }
-header img:nth-child(2) {
-  left: 300px;
-}
-header img:nth-child(3) {
-  left: 600px;
-}
+
 #search {
   width: 19em;
   height: 2em;
   border: 2px solid #424242;
   border-radius: 10px;
   margin-top: 80px;
-  margin-left: 28px;
+  margin-left: 22px;
   display: grid;
   grid-template-columns: 1fr 30px;
 }
@@ -199,7 +192,7 @@ header img:nth-child(3) {
   width: 20rem;
   height: 5rem;
   margin-top: 85px;
-  margin-left: 18px;
+  margin-left: 13px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
@@ -212,7 +205,7 @@ header img:nth-child(3) {
 #food_category {
   width: 300px;
   margin-top: 50px;
-  margin-left: 33px;
+  margin-left: 25px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
