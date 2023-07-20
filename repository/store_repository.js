@@ -49,7 +49,7 @@ class StoreRepository {
       include: [
         {
           model: Menu,
-          attributes: ['name', 'price', 'img_url'],
+          attributes: ['name', 'price', 'img_url', 'desc'],
         },
         {
           model: Dibs,
@@ -57,8 +57,11 @@ class StoreRepository {
         },
       ],
     });
+    const likedCount = await NewsLiked.findAndCountAll({
+      where: { newsId },
+    });
 
-    return readDetailStoreData;
+    return { readDetailStoreData, likedCount };
   };
   //가게 수정
   updateStore = async (

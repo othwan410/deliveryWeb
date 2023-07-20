@@ -153,13 +153,24 @@ table {
 #wrap::-webkit-scrollbar {
   display: none;
 }
-
+header {
+  display: grid;
+}
 header img {
   width: 320px;
   border-radius: 10px;
   margin-top: 60px;
   margin-left: 22px;
+  transition: transform 1s ease-in-out;
   cursor: pointer;
+  z-index: -1;
+  position: absolute;
+}
+header img:nth-child(2) {
+  left: 300px;
+}
+header img:nth-child(3) {
+  left: 600px;
 }
 #search {
   width: 19em;

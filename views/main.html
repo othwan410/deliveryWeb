@@ -1,6 +1,8 @@
-{% extends 'layout.html' %} {% block content %}
+script{% extends 'layout.html' %} {% block content %}
 
 <header>
+  <img src="/images/banner.png" alt="광고 배너" />
+  <img src="/images/banner.png" alt="광고 배너" />
   <img src="/images/banner.png" alt="광고 배너" />
 </header>
 <div id="search">
@@ -33,4 +35,17 @@
   <img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" />
   <img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" />
 </nav>
+{% endblock %} {% block script %}
+<script>
+  let index = 0;
+  let interval = setInterval(banner, 1000);
+  let imgs = document.querySelector('header > img');
+
+  function banner(n) {
+    if (index == 4) index = 0;
+
+    imgs.setAttribute('class', 'on' + (index + 1));
+    index++;
+  }
+</script>
 {% endblock %}

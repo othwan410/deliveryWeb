@@ -1,8 +1,9 @@
 const express = require('express');
-const { renderMain } = require('../controllers/page_controller');
+const { renderMain, renderLoading } = require('../controllers/page_controller');
 
 const router = express.Router();
 
-router.get('/', renderMain);
+router.get('/main', renderMain);
+router.get('/', renderLoading);
 
 module.exports = router;
