@@ -6,7 +6,7 @@ const StoresController = require('../controllers/store_controller');
 const storesController = new StoresController();
 const { authorizated } = require('../middleware/userState_middleware');
 
-router.post('/store', authorizated, storesController.createStore);
+router.post('/stores', authorizated, storesController.createStore);
 router.put('/:store_id', authorizated, storesController.updateStore);
 router.delete('/:store_id', authorizated, storesController.deleteStore);
 router.get('/stores', storesController.readStore);

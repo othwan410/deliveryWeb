@@ -81,7 +81,7 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: true,
       modelName: 'Store',
       tableName: 'stores',
-      paranoid: true,
+      paranoid: false,
       charset: 'utf8mb4',
       collate: 'utf8mb4_general_ci',
     }
