@@ -22,6 +22,10 @@ const defaultRoutes = [
     path: '/',
     route: pageRouter,
   },
+  // {
+  //   path: '/',
+  //   route: dibsRouter,
+  // },
 ];
 
 defaultRoutes.forEach((route) => {

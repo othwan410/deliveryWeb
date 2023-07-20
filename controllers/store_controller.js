@@ -27,6 +27,39 @@ class StoresController {
     }
   };
 
+  //카테고리별 가게 조회
+  readStore = async (req, res, next) => {
+    // try {
+    //   const category_id = req.query.category;
+    //   const readAllfindStoreData = await this.readStore(category_id);
+    //   if (readAllfindStoreData) {
+    //     return res
+    //       .status(400)
+    //       .json({ errorMessage: '데이터가 존재하지 않습니다.' });
+    //   }
+    res.render('category_store');
+    // } catch (error) {
+    //   console.log(error);
+    //   return res.status(400).json({ error: error });
+    // }
+  };
+
+  readDetailStore = async (req, res, next) => {
+    // try {
+    //   const store_id = req.query.store;
+    //   const store = await this.readDetailStore(store_id);
+    //   if (!data) {
+    //     return res
+    //       .staus(400)
+    //       .json({ errorMessage: '데이터가 존재하지 않습니다.' });
+    //   }
+    res.render('store_detail');
+    // } catch (error) {
+    //   console.error(error);
+    //   return res.status(400).json({ error: error });
+    // }
+  };
+
   //가게 수정
   updateStore = async (req, res, next) => {
     try {
@@ -65,7 +98,7 @@ class StoresController {
       return res.status(201).json({ data: '가게 삭제에 성공했습니다.' });
     } catch (error) {
       console.log(error);
-        return res
+      return res
         .status(400)
         .json({ errorMessage: '가게 삭제에 실패했습니다.' });
     }
@@ -127,7 +160,7 @@ class StoresController {
       return res.status(201).json({ data: '메뉴 삭제에 성공했습니다.' });
     } catch (error) {
       console.log(error);
-        return res
+      return res
         .status(400)
         .json({ errorMessage: '메뉴 삭제에 실패했습니다.' });
     }
