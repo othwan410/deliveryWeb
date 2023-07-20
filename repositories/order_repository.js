@@ -87,12 +87,12 @@ class orderRepository {
       where: { order_id },
     });
 
+    const t = await sequelize.transaction({
+      isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED, // 트랜잭션 격리 수준을 설정합니다.
+    });
+
     if (parseInt(status) === 0) {
       try {
-        const t = await sequelize.transaction({
-          isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED, // 트랜잭션 격리 수준을 설정합니다.
-        });
-
         const point = await User.findOne({
           attributes: ['point'],
           where: { user_id: order.user_id },
@@ -122,9 +122,6 @@ class orderRepository {
     }
     if (parseInt(status) === 4) {
       try {
-        const t = await sequelize.transaction({
-          isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED, // 트랜잭션 격리 수준을 설정합니다.
-        });
         await Order.update({ status }, { where: { order_id }, transaction: t });
 
         const point = await User.findOne({
@@ -155,15 +152,7 @@ class orderRepository {
     return await Order.update({ status }, { where: { order_id } });
   };
 
-  createOrder = async (
-    user_id,
-    address_id,
-    store_id,
-    price,
-    request,
-    menu_id,
-    ea
-  ) => {
+  createOrder = async (user_id, address_id, store_id, price, request, menu) => {
     const t = await sequelize.transaction({
       isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED, // 트랜잭션 격리 수준을 설정합니다.
     });
@@ -171,7 +160,7 @@ class orderRepository {
       const order = await Order.create(
         {
           user_id,
-          address_id,
+          address_id: parseInt(address_id),
           store_id,
           price,
           request,
@@ -179,11 +168,16 @@ class orderRepository {
         { transaction: t }
       );
 
-      await Order_menu.create(
-        { order_id: order.order_id, menu_id, ea },
-        { transaction: t }
-      );
-
+      for (let i = 0; i < menu.menu_id.length; i++) {
+        await Order_menu.create(
+          {
+            order_id: order.order_id,
+            menu_id: menu.menu_id[i],
+            ea: menu.ea[i],
+          },
+          { transaction: t }
+        );
+      }
       const point = await User.findOne({
         attributes: ['point'],
         where: { user_id },

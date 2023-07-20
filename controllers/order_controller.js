@@ -1,4 +1,4 @@
-const OrderService = require('../service/order_service');
+const OrderService = require('../services/order_service');
 
 class OrderController {
   orderService = new OrderService();
@@ -125,7 +125,7 @@ class OrderController {
 
       const store_id = parseInt(req.query.store_id);
       const user_id = res.locals.user_id;
-      const { address_id, price, request, menu_id, ea } = req.body;
+      const { address_id, price, request, menu } = req.body;
 
       if (!address_id) {
         return res.status(412).json({
@@ -148,17 +148,10 @@ class OrderController {
         });
       }
 
-      if (!menu_id) {
+      if (!menu) {
         return res.status(412).json({
           success: false,
           errorMessage: '메뉴의 형식이 일치하지 않습니다.',
-        });
-      }
-
-      if (!ea) {
-        return res.status(412).json({
-          success: false,
-          errorMessage: '개수의 형식이 일치하지 않습니다.',
         });
       }
 
@@ -168,8 +161,7 @@ class OrderController {
         store_id,
         price,
         request,
-        menu_id,
-        ea
+        menu
       );
 
       return res.status(201).json(createOrder);

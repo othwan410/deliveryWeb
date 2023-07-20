@@ -21,6 +21,7 @@ module.exports = {
           key: 'menu_id', // Menus 모델의 menu_id 참조합니다.
         },
         onDelete: 'CASCADE', // 만약 Menus 모델의 menu_id 삭제되면
+        primaryKey: true,
       },
       createdAt: {
         allowNull: false,
