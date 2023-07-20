@@ -17,8 +17,12 @@ class OrderService {
     return { order, menu };
   };
 
-  updateOrderStatus = async (order_id, status) => {
-    return await this.orderRepository.updateOrderStatus(order_id, status);
+  updateOrderStatus = async (order_id, status, user_id) => {
+    return await this.orderRepository.updateOrderStatus(
+      order_id,
+      status,
+      user_id
+    );
   };
 
   createOrder = async (

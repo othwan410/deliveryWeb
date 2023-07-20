@@ -1,4 +1,5 @@
-const { Order, Order_menus, User, sequelize } = require('../models');
+const { Op } = require('sequelize');
+const { Order, Order_menu, User, sequelize } = require('../models');
 const { Transaction } = require('sequelize');
 
 class orderRepository {
@@ -37,7 +38,7 @@ class orderRepository {
         ],
       ],
       where: { store_id, status: [1, 2, 3, 4] },
-      order: [['status', 'createdAt', 'DESC']],
+      order: [['status'], ['createdAt', 'DESC']],
       raw: true,
     });
   };
@@ -64,11 +65,11 @@ class orderRepository {
   };
 
   findOneOrderMenu = async (order_id) => {
-    return await Order_menus.findOne({
+    return await Order_menu.findOne({
       attributes: [
         [
           sequelize.literal(
-            '(SELECT name AS name FROM Menu WHERE Menu.menu_id = Order_menus.menu_id)'
+            '(SELECT name AS name FROM Menu WHERE Menu.menu_id = Order_menu.menu_id)'
           ),
           'name',
         ],
@@ -79,19 +80,29 @@ class orderRepository {
     });
   };
 
-  updateOrderStatus = async (order_id, status) => {
-    if (status === 0) {
+  //order테이블 status 업데이트
+  updateOrderStatus = async (order_id, status, user_id) => {
+    const order = await Order.findOne({
+      attributes: ['user_id', 'price'],
+      where: { order_id },
+    });
+
+    if (parseInt(status) === 0) {
       try {
         const t = await sequelize.transaction({
           isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED, // 트랜잭션 격리 수준을 설정합니다.
         });
-        const order = await Order.update(
-          { status },
-          { where: { order_id }, transaction: t }
-        );
+
+        const point = await User.findOne({
+          attributes: ['point'],
+          where: { user_id: order.user_id },
+        });
+
+        await Order.update({ status }, { where: { order_id }, transaction: t });
+
         await User.update(
           {
-            point: point + [sequelize.literal('(SELECT price FROM Order)')],
+            point: point.point + order.price,
           },
           {
             where: {
@@ -100,40 +111,43 @@ class orderRepository {
             transaction: t,
           }
         );
+
         await t.commit();
         return true;
       } catch (error) {
+        console.log(error);
         await t.rollback();
         return false;
       }
     }
-    if (status === 4) {
+    if (parseInt(status) === 4) {
       try {
         const t = await sequelize.transaction({
           isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED, // 트랜잭션 격리 수준을 설정합니다.
         });
-        const order = await Order.update(
-          { status },
-          { where: { order_id }, transaction: t }
-        );
+        await Order.update({ status }, { where: { order_id }, transaction: t });
+
+        const point = await User.findOne({
+          attributes: ['point'],
+          where: { user_id },
+        });
+
         await User.update(
           {
-            point: point + [sequelize.literal('(SELECT price FROM Order)')],
+            point: point.point + order.price,
           },
           {
             where: {
-              user_id: [
-                sequelize.literal(
-                  `(SELECT user_id FROM Store WHERE store_id = ${order.store_id})`
-                ),
-              ],
+              user_id,
             },
             transaction: t,
           }
         );
+
         await t.commit();
         return true;
       } catch (error) {
+        console.log(error);
         await t.rollback();
         return false;
       }
@@ -165,17 +179,22 @@ class orderRepository {
         { transaction: t }
       );
 
-      await Order_menus.create(
+      await Order_menu.create(
         { order_id: order.order_id, menu_id, ea },
         { transaction: t }
       );
 
+      const point = await User.findOne({
+        attributes: ['point'],
+        where: { user_id },
+      });
+
       await User.update(
         {
-          point: point - [sequelize.literal('(SELECT price FROM Order)')],
+          point: point.point - order.price,
         },
         {
-          where: user_id,
+          where: { user_id },
           transaction: t,
         }
       );
@@ -183,17 +202,27 @@ class orderRepository {
       await t.commit();
       return true;
     } catch (error) {
+      console.log(error);
       await t.rollback();
       return false;
     }
   };
 
   deleteOrder = async (order_id) => {
-    const t = await sequelize.transaction({
-      isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED, // 트랜잭션 격리 수준을 설정합니다.
-    });
-    await Order.destroy({ order_id }, { transaction: t });
-    await Order_menus.destroy({ order_id }, { transaction: t });
+    try {
+      const t = await sequelize.transaction({
+        isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED, // 트랜잭션 격리 수준을 설정합니다.
+      });
+      await Order.destroy({ where: { order_id }, transaction: t });
+      await Order_menu.destroy({ where: { order_id }, transaction: t });
+
+      await t.commit();
+      return true;
+    } catch (error) {
+      console.log(error);
+      await t.rollback();
+      return false;
+    }
   };
 }
 

@@ -31,6 +31,7 @@ class OrderController {
 
       return res.status(200).json({ data: order });
     } catch (error) {
+      console.log(error);
       return res.status(400).json({
         success: false,
         errorMessage: '게시글 조회에 실패하였습니다.',
@@ -68,13 +69,14 @@ class OrderController {
 
   updateOrderStatus = async (req, res, next) => {
     try {
-      if (!req.params || !req.body) {
+      if (!req.params) {
         return res.status(412).json({
           success: false,
           errorMessage: '데이터 형식이 올바르지 않습니다.',
         });
       }
 
+      const user_id = res.locals.user_id;
       const { order_id } = req.params;
       const { status } = req.query;
 
@@ -94,7 +96,8 @@ class OrderController {
 
       const updateOrderStatus = await this.orderService.updateOrderStatus(
         order_id,
-        status
+        status,
+        user_id
       );
 
       if (!updateOrderStatus) {
@@ -104,6 +107,7 @@ class OrderController {
       }
       return res.status(201).json({ message: '주문상태 수정에 성공했습니다.' });
     } catch (error) {
+      console.log(error);
       return res
         .status(400)
         .json({ errorMessage: '주문상태 수정에 실패했습니다.' });
@@ -119,7 +123,7 @@ class OrderController {
         });
       }
 
-      const store_id = req.params;
+      const store_id = parseInt(req.query.store_id);
       const user_id = res.locals.user_id;
       const { address_id, price, request, menu_id, ea } = req.body;
 
@@ -170,6 +174,7 @@ class OrderController {
 
       return res.status(201).json(createOrder);
     } catch (error) {
+      console.log(error);
       return res.status(400).json({
         success: false,
         errorMessage: "'주문에 실패하였습니다.'",
@@ -196,6 +201,7 @@ class OrderController {
       }
       return res.status(201).json({ message: '주문내역 삭제에 성공했습니다.' });
     } catch (error) {
+      console.log(error);
       return res
         .status(400)
         .json({ errorMessage: '주문내역 삭제에 실패했습니다.' });
