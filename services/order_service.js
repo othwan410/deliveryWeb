@@ -1,4 +1,4 @@
-const OrderRepository = require('../repository/order_repository');
+const OrderRepository = require('../repositories/order_repository');
 
 class OrderService {
   orderRepository = new OrderRepository();
@@ -25,23 +25,14 @@ class OrderService {
     );
   };
 
-  createOrder = async (
-    user_id,
-    address_id,
-    store_id,
-    price,
-    request,
-    menu_id,
-    ea
-  ) => {
+  createOrder = async (user_id, address_id, store_id, price, request, menu) => {
     return await this.orderRepository.createOrder(
       user_id,
       address_id,
       store_id,
       price,
       request,
-      menu_id,
-      ea
+      menu
     );
   };
 

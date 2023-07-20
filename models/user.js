@@ -81,13 +81,17 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
       },
+      deletedAt: {
+        allowNull: true,
+        type: DataTypes.DATE,
+      },
     },
     {
       sequelize,
       timestamps: true,
       modelName: 'User',
       tableName: 'users',
-      paranoid: false,
+      paranoid: true,
       charset: 'utf8mb4',
       collate: 'utf8mb4_general_ci',
     }
