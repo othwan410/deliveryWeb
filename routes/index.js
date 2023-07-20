@@ -4,6 +4,7 @@ const authRouter = require('./auth');
 const storeRouter = require('./store');
 const orderRouter = require('./order');
 const pageRouter = require('./page');
+const addressRouter = require('./address');
 
 const defaultRoutes = [
   {
@@ -21,6 +22,10 @@ const defaultRoutes = [
   {
     path: '/',
     route: pageRouter,
+  },
+  {
+    path: '/',
+    route: addressRouter,
   },
   // {
   //   path: '/',
