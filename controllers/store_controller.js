@@ -128,12 +128,13 @@ class StoresController {
   createMenu = async (req, res, next) => {
     try {
       const { store_id } = req.params;
-      const { name, price, img_url } = req.body;
+      const { name, price, img_url, desc } = req.body;
       const createMenuData = await this.storeService.createMenu(
         store_id,
         name,
         price,
-        img_url
+        img_url,
+        desc
       );
 
       if (!name) {
@@ -194,7 +195,7 @@ class StoresController {
     }
   };
 
-  //가게 와 메뉴 이름을 전체 조회
+  //가게 와 메뉴 이름을 전체 조회 : 덜됨
   findAllName = async (req, res, next) => {
     try {
       const allStoreName = await this.storeService.findAllStoreName();

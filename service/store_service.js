@@ -70,12 +70,13 @@ class StoreService {
   };
 
   //메뉴 등록
-  createMenu = async (store_id, name, price, img_url) => {
+  createMenu = async (store_id, name, price, img_url, desc) => {
     const createMenuData = await this.storeRepository.createMenu(
       store_id,
       name,
       price,
-      img_url
+      img_url,
+      desc
     );
 
     return createMenuData;
