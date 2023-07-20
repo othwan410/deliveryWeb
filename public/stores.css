@@ -55,12 +55,18 @@ hr {
 }
 
 #nav2 {
-  width: 320px;
-  margin-top: 410px;
-  margin-left: 48px;
-  bottom: 370px;
+  position: fixed;
+  width: 325px;
+  margin-top: 300px;
+  margin-left: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 20px solid black;
+  border-radius: 7px;
+  top: 30%;
+  padding: 5px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  background: white;
 }
 
 #store_category {
@@ -68,6 +74,11 @@ hr {
 }
 
 #nav2 img {
-  width: 30px;
+  margin-left: 24px;
+  width: 25px;
+  opacity: 0.7;
   cursor: pointer;
+}
+#nav2 img:hover {
+  opacity: 1;
 }

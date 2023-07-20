@@ -133,18 +133,27 @@ table {
 
 /* ​ @media (max-width: 768px) { */
 #wrap {
+  position: relative;
   width: 23em;
-  height: 38em;
+  height: 38rem;
   margin: 50px auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 100px 50px 100px 220px 50px;
-
+  border-radius: 25px;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-sidth: none;
   background: url('./images/mobile.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+#wrap::-webkit-scrollbar {
+  display: none;
+}
+
 header img {
   width: 320px;
   border-radius: 10px;
@@ -196,8 +205,6 @@ header img {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
-}
-#food_category a {
 }
 #food_category img {
   cursor: pointer;
