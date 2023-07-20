@@ -1,5 +1,23 @@
-router.get('/order', jwtAuthMiddleware, renderOrder);
+const express = require('express');
+const router = express.Router();
 
-router.get('/order/:stroe_id', jwtAuthMiddleware, renderOrderDetail);
+const OrderController = require('../controllers/order_controller');
+const orderController = new OrderController();
+const { authorizated } = require('../middleware/userState_middleware');
 
-router.get('/payment', jwtAuthMiddleware, renderPayment);
+router.get('/userOrders', authorizated, orderController.findAllUserOrder);
+router.get(
+  '/adminOrders/:store_id',
+  authorizated,
+  orderController.findAllAdminOrder
+);
+router.get('/orders/:order_id', authorizated, orderController.findOneOrder);
+router.put(
+  '/orders/:order_id',
+  authorizated,
+  orderController.updateOrderStatus
+);
+router.post('/orders', authorizated, orderController.createOrder);
+router.delete('/orders/:order_id', authorizated, orderController.deleteOrder);
+
+module.exports = router;

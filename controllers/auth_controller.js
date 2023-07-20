@@ -42,6 +42,7 @@ exports.logoutController = (req, res) => {
     res.status(400).json({ error: error });
   }
 };
+
 exports.kakaoAuth = () => {
   passport.authenticate('kakao');
 };

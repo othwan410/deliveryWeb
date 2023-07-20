@@ -25,7 +25,7 @@ nunjucks.configure('views', {
 });
 
 // sequelize
-//   .sync({ force: false })
+//   .sync({ force: true }) //모델(테이블) 수정후 서버 켰다가 다시 켰을 때 자동 반영
 //   .then(() => {
 //     console.log('데이터베이서 연결성공');
 //   })
@@ -40,6 +40,7 @@ app.use((req, res, next) => {
     morgan('dev')(req, res, next);
   }
 });
+
 app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
