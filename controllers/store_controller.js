@@ -45,19 +45,20 @@ class StoresController {
   };
 
   readDetailStore = async (req, res, next) => {
-    // try {
-    //   const store_id = req.query.store;
-    //   const store = await this.readDetailStore(store_id);
-    //   if (!data) {
-    //     return res
-    //       .staus(400)
-    //       .json({ errorMessage: '데이터가 존재하지 않습니다.' });
-    //   }
-    res.render('store_detail');
-    // } catch (error) {
-    //   console.error(error);
-    //   return res.status(400).json({ error: error });
-    // }
+    try {
+      const store_id = req.query;
+      console.log(store_id);
+      const store = await this.readDetailStore(store_id);
+      if (!store) {
+        return res
+          .staus(400)
+          .json({ errorMessage: '데이터가 존재하지 않습니다.' });
+      }
+      res.render('store_detail', store);
+    } catch (error) {
+      console.error(error);
+      return res.status(400).json({ error: error });
+    }
   };
 
   //가게 수정

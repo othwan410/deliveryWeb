@@ -69,7 +69,13 @@ hr {
 }
 
 #store_category {
+  margin-top: 100px;
   margin-bottom: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 #nav2 img {

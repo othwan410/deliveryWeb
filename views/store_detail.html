@@ -1,5 +1,6 @@
 {% extends 'layout.html' %} {% block content %}
-<!-- <div id="main_image"></div>
+<div class="black-space2"></div>
+<div id="main_image"></div>
 <div id="store_header">
   <h2>{{store.title}}</h2>
   <span>
@@ -20,9 +21,9 @@
     <div><a>리뷰 240</a></div>
     <div><a>원산지</a></div>
   </div>
-  <div id="menu_all"> -->
-<!-- {% for menu in store.menu %}
-    <div class="menu_box">
+  <div id="menu_all">
+    --> {% for menu in store.menu %}
+    <div id="{{menu.menu_id}}" class="menu_box">
       <div class="menu_desc">
         <h2>menu.name</h2>
         <p class="desc">{{menu.desc}}</p>
@@ -31,8 +32,9 @@
       </div>
       <img src="{{menu.img_url}}" alt="메뉴사진" />
     </div>
-    {% endfor %} -->
-<div class="black-space2"></div>
+    {% endfor %}
+
+    <!-- <div class="black-space2"></div>
 <div id="main_image"></div>
 <div id="store_header">
   <h2>잇츄 볶음밥</h2>
@@ -89,5 +91,13 @@
   <a><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" /></a>
   <a><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
 </nav>
+<script>
+    const menus = $('.menu_box');
+    console.log(menus);
 
-{% endblock %}
+
+  ​
+</script> -->
+    {% endblock %}
+  </div>
+</div>

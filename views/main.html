@@ -1,5 +1,5 @@
-script{% extends 'layout.html' %} {% block content %}
-
+{% extends 'layout.html' %} {% block content %}
+<div id="address">인동23길 4</div>
 <header>
   <img class="banner1" src="/images/banner.png" alt="광고 배너" />
   <img class="banner2" src="/images/banner.png" alt="광고 배너" />
@@ -36,7 +36,6 @@ script{% extends 'layout.html' %} {% block content %}
   <img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" />
 </nav>
 {% endblock %} {% block script %}
-
 <script>
   const imgs = $('header > img');
   let currentIndex = 0;
