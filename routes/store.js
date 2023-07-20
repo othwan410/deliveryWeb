@@ -72,4 +72,7 @@ router.post('/stores/:store_id/menu', authorizated, storesController.createMenu)
 router.put('/stores/:store_id/menu/:menu_id', authorizated, storesController.updateMenu);
 router.delete('/stores/:store_id/menu/:menu_id', authorizated, storesController.deleteMenu);
 
+//
+router.get('/search', storesController.findAllName);
+
 module.exports = router;

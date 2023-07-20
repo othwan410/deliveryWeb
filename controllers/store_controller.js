@@ -18,6 +18,26 @@ class StoresController {
         img_url
       );
 
+      if (!name) {
+        return res.status(400).json({ data: '가게 이름을 적어주세요.' });
+      }
+
+      if (!call) {
+        return res.status(400).json({ data: '가게 전화번호를 적어주세요.' });
+      }
+
+      if (!category_id) {
+        return res.status(400).json({ data: '업종을 선택 해주세요.' });
+      }
+
+      if (!address) {
+        return res.status(400).json({ data: '주소를 적어주세요.' });
+      }
+
+      if (!content) {
+        return res.status(400).json({ data: '가게 설명을 적어주세요.' });
+      }
+
       return res.status(201).json({ data: createStoreData });
     } catch (error) {
       console.log(error);
@@ -83,6 +103,14 @@ class StoresController {
         img_url
       );
 
+      if (!name) {
+        return res.status(400).json({ data: '메뉴 이름을 적어주세요.' });
+      }
+
+      if (!price) {
+        return res.status(400).json({ data: '메뉴 가격을 적어주세요.' });
+      }
+
       return res.status(201).json({ data: createMenuData });
     } catch (error) {
       console.log(error);
@@ -130,6 +158,20 @@ class StoresController {
         return res
         .status(400)
         .json({ errorMessage: '메뉴 삭제에 실패했습니다.' });
+    }
+  };
+
+  //가게 와 메뉴 이름을 전체 조회
+  findAllName = async (req, res, next) => {
+    try {
+      const allStoreName = await this.storeService.findAllStoreName();
+      const allMenuName = await this.storeService.findAllMenuName();
+      return res.status(200).json({ data: allMenuName });
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(400)
+        .json({ errorMessage: '전체 조회에 실패했습니다.' });
     }
   };
 }

@@ -1,6 +1,5 @@
-const { Op } = require('sequelize');
-const { Store, Menu, sequelize } = require('../models');
-const { Transaction } = require('sequelize');
+const { Store, Menu, User } = require('../models');
+
 
 class StoreRepository {
   
@@ -82,6 +81,46 @@ class StoreRepository {
     });
 
     return deleteMenuData;
+  };
+
+  //가게 이름을 전체 조회
+  findAllStoreName = async () => {
+    const allStoreName = await Store.findAll({
+      attributes: [
+        'store_id',
+        'name',
+      ],
+      order: [['createdAt', 'DESC']],
+      raw: true,
+    });
+
+    return allStoreName;
+  };
+
+  //메뉴 이름을 전체 조회
+  findAllMenuName = async () => {
+    const allMenuName = await Menu.findAll({
+      attributes: [
+        'menu_id',
+        'name',
+      ],
+      order: [['createdAt', 'DESC']],
+      raw: true,
+    });
+
+    return allMenuName;
+  };
+
+  //user_id 의 status
+  findOneStatus = async (user_id) => {
+    const userStatus = await User.findOne({
+      attributes: [
+        'status'
+      ],
+      where: {user_id}
+    });
+
+    return userStatus;
   };
 }
 
