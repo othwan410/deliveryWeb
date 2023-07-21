@@ -14,6 +14,14 @@ exports.renderLoading = (req, res) => {
   res.render('loading', { title: '로딩페이지' });
 };
 
+exports.renderOrderpage = (req, res) => {
+  res.render('order', { title: '주문확인' });
+};
+
+exports.renderOrderpage = (req, res) => {
+  res.render('order', { title: '주문확인' });
+};
+
 exports.renderRegistor = (req,res)=>{
   res.render('store_create');
 }

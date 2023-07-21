@@ -1,5 +1,9 @@
 const express = require('express');
-const {renderRegistor , renderMain, renderLoading } = require('../controllers/page_controller');
+const {
+  renderMain,
+  renderLoading,
+  renderOrderpage,
+} = require('../controllers/page_controller');
 
 const router = express.Router();
 

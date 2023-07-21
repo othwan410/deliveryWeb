@@ -38,6 +38,40 @@ class StoreRepository {
     return readAllfindStoreData;
   };
 
+  readStoreById = async (storeIdSet) => {
+    const store_id = [...storeIdSet];
+
+    const store = await Store.findAll({
+      attributes: ['name', 'img_url', 'rating', 'store_id', 'call'],
+      order: [['createdAt', 'DESC']],
+      where: { store_id: { [Op.in]: store_id } },
+    });
+
+    return store;
+  };
+
+  readStoreByKeywordInMenu = async (keyword) => {
+    const menuStoreIds = await sequelize.query(
+      `SELECT DISTINCT store_id FROM menus WHERE name like '%${keyword}%'`,
+      {
+        type: sequelize.QueryTypes.SELECT,
+      }
+    );
+
+    return menuStoreIds;
+  };
+
+  readStoreByKeywordInStore = async (keyword) => {
+    const storeStoreIds = await sequelize.query(
+      `SELECT DISTINCT store_id FROM stores WHERE name LIKE '%${keyword}%'`,
+      {
+        type: sequelize.QueryTypes.SELECT,
+      }
+    );
+
+    return storeStoreIds;
+  };
+
   readDetailStore = async (store_id) => {
     const readDetailStoreData = await Store.findOne({
       where: { store_id },

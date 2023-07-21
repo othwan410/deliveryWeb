@@ -29,6 +29,28 @@ class StoreService {
     return readAllfindStoreData;
   };
 
+  readStoreByKeyword = async (keyword) => {
+    const menuStoreIds = await this.storeRepository.readStoreByKeywordInMenu(
+      keyword
+    );
+
+    const storeStoreIds = await this.storeRepository.readStoreByKeywordInStore(
+      keyword
+    );
+
+    const storeIdSet = new Set();
+
+    menuStoreIds.forEach((element) => {
+      storeIdSet.add(element.store_id);
+    });
+
+    storeStoreIds.forEach((element) => {
+      storeIdSet.add(element.store_id);
+    });
+
+    return await this.storeRepository.readStoreById(storeIdSet);
+  };
+
   readDetailStore = async (store_id, user_id) => {
     const readDetailStoreData = await this.storeRepository.readDetailStore(
       store_id

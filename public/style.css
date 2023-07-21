@@ -141,15 +141,14 @@ table {
   grid-template-columns: 1fr;
   grid-template-rows: 10px 100px 50px 100px 220px 50px;
   border-radius: 25px;
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   background: url('./images/mobile.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-
 #wrap::-webkit-scrollbar {
   display: none;
 }
