@@ -145,6 +145,12 @@ table {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+#wrap::-webkit-scrollbar {
+  display: none;
 }
 
 header img {
