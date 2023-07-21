@@ -83,7 +83,7 @@ class ReviewRepository {
 
       return;
     } catch (error) {
-      t.rollback();
+      await t.rollback();
 
       throw error;
     }
@@ -101,7 +101,7 @@ class ReviewRepository {
 
       return;
     } catch (error) {
-      t.rollback();
+      await t.rollback();
 
       throw error;
     }

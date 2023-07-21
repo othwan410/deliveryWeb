@@ -71,6 +71,22 @@ class ReviewController {
           .json({ errorMessage: error.errorMessage });
       });
   };
+
+  //유저 리뷰 조회
+  findMyReviews = async (req, res) => {
+    const userId = res.locals.user_id;
+
+    await this.reviewService
+      .findMyReviews(userId)
+      .then((reviews) => {
+        return res.status(200).json({ reviews });
+      })
+      .catch((error) => {
+        return res
+          .status(error.status)
+          .json({ errorMessage: error.errorMessage });
+      });
+  };
 }
 
 module.exports = ReviewController;

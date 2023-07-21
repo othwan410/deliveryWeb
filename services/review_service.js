@@ -208,6 +208,7 @@ class ReviewService {
     try {
       const query = `select s.name, r.review, r.rating, r.img_url from reviews r
                     inner join stores s on r.store_id = s.store_id
+                    where r.user_id = ${userId}
                     order by r.createdAt desc`;
 
       const reviews = await this.reviewRepository.findMyReviews(query);
