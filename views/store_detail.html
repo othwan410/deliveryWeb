@@ -4,15 +4,11 @@
 <div id="store_header">
   <h2>{{store.title}}</h2>
   <span>
-    <img id="rating_star" src="/images/Untitled-2.png" /><span
-      >{{store.rating}}</span
-    ></span
-  >
+    <img id="rating_star" src="/images/Untitled-2.png" /><span>{{store.rating}}</span></span>
   <div id="social">
     <a><img id="phone" src="/images/전화기.png" alt="icon" /></a>
     <a>
-      <img id="heart" src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
-    /></a>
+      <img id="heart" src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" /></a>
     <a><img id="share" src="/images/공유.png" alt="icon" /></a>
   </div>
 </div>
@@ -22,7 +18,7 @@
     <div><a>원산지</a></div>
   </div>
   <div id="menu_all">
-    --> {% for menu in store.menu %}
+    {% for menu in store.menu %}
     <div id="{{menu.menu_id}}" class="menu_box">
       <div class="menu_desc">
         <h2>menu.name</h2>
