@@ -3,11 +3,29 @@
 #main_image {
   width: 350px;
   height: 200px;
+  margin-top: 10px;
   background: url('./images/식당간판.jpeg');
   background-size: cover;
   border-radius: 20px;
   z-index: -10;
   cursor: pointer;
+}
+
+.scroll_container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll_container {
+  width: 350px;
+  height: 500px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 1fr 1fr;
+  scrollbar-width: none;
+  overflow-y: auto;
+  border-radius: 25px;
+  -ms-overflow-style: none;
 }
 
 #store_header {
@@ -126,17 +144,16 @@
 }
 
 #nav3 {
-  position: fixed;
-  width: 325px;
-  margin-top: 290px;
+  width: 320px;
+  height: 30px;
+  margin-top: 520px;
   margin-left: 7px;
   border-top: 1px solid rgba(0, 0, 0, 0.4);
   border-bottom: 20px solid black;
   border-radius: 7px;
-  top: 30%;
-  left: 40.9%;
-  padding: 5px;
+  padding: 8px;
   display: grid;
+  z-index: 10;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   background: white;
 }
@@ -153,12 +170,13 @@
 }
 
 .black-space2 {
-  width: 334px;
-  height: 1px;
+  width: 340px;
+  height: 13px;
   position: fixed;
   background: black;
   border-top: 20px solid black;
   border-radius: 10px 10px 0 0;
-  margin-left: 8px;
+  margin-left: 4px;
+  z-index: 14;
   top: 5%;
 }

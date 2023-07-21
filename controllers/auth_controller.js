@@ -2,7 +2,6 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
 exports.loginController = async (req, res, next) => {
-  console.log(res.locals.isLoggedIn);
   try {
     if (res.locals.isLoggedIn) {
       return res.status(400).json({ errorMessage: '이미 로그인 중입니다.' });
@@ -19,6 +18,7 @@ exports.loginController = async (req, res, next) => {
           { user_id: user.user_id },
           process.env.COOKIE_SECRET
         );
+        console.log(token);
         res.cookie('authorization', `Bearer ${token}`);
         return res.status(200).json({ message: '로그인 되었습니다.' });
       });
