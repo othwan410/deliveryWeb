@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{메뉴등록}}</title>
+    <link rel="stylesheet" href="../public/storeCreate.css" />
+    <link rel="stylesheet" href="../public/loading.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="store">
+        <p><label for="name">메뉴이름</label>
+        <input type="text" id="name" placeholder="menu name" /></p>
+        <p><label for="desc">메뉴설명</label>
+        <input type="text" id="desc" placeholder="add information" /></p>
+        <p><label for="price">메뉴가격</label>
+        <input type="text" id="price" placeholder="price" /></p>
+        <p><label for="img_url">메뉴사진</label>
+        <input type="text" id="img_url" placeholder="이미지넣을 부분" /></p>
+            <button type="submit" onclick="">등록하기</button>
+        <div class="white-space"></div>
+      </div>
+    </div>
+    {% block script %} {%endblock%}
+    <script></script>
+  </body>
+</html>

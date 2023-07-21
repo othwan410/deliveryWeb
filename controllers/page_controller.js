@@ -17,3 +17,11 @@ exports.renderLoading = (req, res) => {
 exports.renderOrderComplete = (req, res) => {
   res.render('orderComplete', { title: '주문완료' });
 };
+
+exports.renderOrderpage = (req, res) => {
+  res.render('order', { title: '주문확인' });
+};
+
+exports.renderRegistor = (req,res)=>{
+  res.render('store_create');
+}
