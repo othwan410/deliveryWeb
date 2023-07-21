@@ -1,4 +1,4 @@
-const ReviewRepository = require('../repository/review_repository');
+const ReviewRepository = require('../repositories/review_repository');
 
 const { sequelize } = require('../models');
 const { Transaction } = require('sequelize');
