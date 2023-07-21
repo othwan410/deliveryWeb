@@ -50,7 +50,7 @@ hr {
 }
 
 #store_category {
-  margin-top: 100px;
+  margin-top: 25px;
   margin-bottom: 20px;
 }
 
@@ -83,11 +83,11 @@ a {
   width: 325px;
   height: 100px;
 }
-#scroll_container::-webkit-scrollbar {
+#scroll_container2::-webkit-scrollbar {
   display: none;
 }
 
-#scroll_container {
+#scroll_container2 {
   width: 350px;
   height: 450px;
   margin: 0 auto;
