@@ -35,6 +35,13 @@ class ReviewService {
         throw { status: 404, errorMessage: '주문 내역이 존재하지 않습니다.' };
       }
 
+      if (order[0].user_id !== userId) {
+        throw {
+          status: 403,
+          errorMessage: '리뷰를 작성할 권한이 존재하지 않습니다.',
+        };
+      }
+
       const query = `insert into reviews (order_id, store_id, user_id, review, rating, img_url)
                     values (${orderId}, ${storeId}, ${userId}, '${review}', ${rating}, '${imgUrl}')`;
 
