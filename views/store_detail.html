@@ -1,0 +1,112 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="black-space2"></div>
+<div id="main_image"></div>
+<div id="store_header">
+  <h2>{{store.store.name}}</h2>
+  <span>
+    <img id="rating_star" src="/images/Untitled-2.png" /><span
+      >{{store.store.rating}}</span
+    ></span
+  >
+  <div id="social">
+    <a><img id="phone" src="/images/전화기.png" alt="icon" /></a>
+
+    {% if store.isDibs %}
+    <a
+      ><img id="heart" src="/images/favorite2_FILL0_wght400_GRAD0_opsz48.png"
+    /></a>
+    {% endif %}
+    <a>
+      <img id="heart" src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
+    /></a>
+    <a><img id="share" src="/images/공유.png" alt="icon" /></a>
+  </div>
+</div>
+<div id="store_content">
+  <div id="store_info">
+    <div><a>리뷰 </a></div>
+    <div><a>원산지</a></div>
+  </div>
+  <div id="menu_all">
+    {% for menu in store.store.menu %}
+    <div id="{{menu.menu_id}}" class="menu_box">
+      <div class="menu_desc">
+        <h2>{{menu.name}}</h2>
+        <p class="desc">{{menu.desc}}</p>
+        <p class="price">{{menu.price}}원</p>
+      </div>
+      <img src="{{menu.img_url}}" alt="메뉴사진" />
+    </div>
+    {% endfor %}
+    <nav id="nav3">
+      <a href="/main"
+        ><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png"
+      /></a>
+      <a><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" /></a>
+      <a><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" /></a>
+      <a><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
+    </nav>
+    <div class="white-space"></div>
+    {% endblock %}
+
+    <!-- <div class="black-space2"></div>
+<div id="main_image"></div>
+<div id="store_header">
+  <h2>잇츄 볶음밥</h2>
+  <span>
+    <img id="rating_star" src="/images/Untitled-2.png" /><span>4.5</span></span
+  >
+  <div id="social">
+    <a><img id="phone" src="/images/전화기.png" alt="icon" /></a>
+    <a>
+      <img id="heart" src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
+    /></a>
+    <a><img id="share" src="/images/공유.png" alt="icon" /></a>
+  </div>
+</div>
+<div id="store_content">
+  <div id="store_info">
+    <div><a>리뷰 240</a></div>
+    <div><a>원산지</a></div>
+  </div>
+  <div id="menu_all">
+    <div class="menu_box">
+      <div class="menu_desc">
+        <h2>잇츄 볶음밥</h2>
+        <p class="desc">[대패삼겹살볶음밥 + 콩나물국 + 단무지]</p>
+        <p class="review">리뷰 (4)</p>
+        <p class="price">9,500원</p>
+      </div>
+      <img src="/images/볶음밥.png" alt="메뉴사진" />
+    </div>
+    <div class="menu_box">
+      <div class="menu_desc">
+        <h2>잇츄 볶음밥</h2>
+        <p class="desc">[대패삼겹살볶음밥 + 콩나물국 + 단무지]</p>
+        <p class="review">리뷰 (4)</p>
+        <p class="price">9,500원</p>
+      </div>
+      <img src="/images/볶음밥.png" alt="메뉴사진" />
+    </div>
+    <div class="menu_box">
+      <div class="menu_desc">
+        <h2>잇츄 볶음밥</h2>
+        <p class="desc">[대패삼겹살볶음밥 + 콩나물국 + 단무지]</p>
+        <p class="review">리뷰 (4)</p>
+        <p class="price">9,500원</p>
+      </div>
+      <img src="/images/볶음밥.png" alt="메뉴사진" />
+    </div>
+  </div>
+
+</div>
+
+<script>
+    const menus = $('.menu_box');
+    console.log(menus);
+
+
+  ​
+</script> -->
+  </div>
+</div>
