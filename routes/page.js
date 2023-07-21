@@ -3,6 +3,7 @@ const {
   renderMain,
   renderLoading,
   renderOrderComplete,
+  renderRegistor,
 } = require('../controllers/page_controller');
 
 const router = express.Router();
