@@ -3,9 +3,8 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Reviews', {
-      review_id: {
+      order_id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
@@ -35,7 +34,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      umg_url: {
+      img_url: {
         type: Sequelize.STRING,
         allowNull: false,
       },
