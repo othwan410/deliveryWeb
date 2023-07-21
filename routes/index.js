@@ -4,12 +4,13 @@ const authRouter = require('./auth');
 const storeRouter = require('./store');
 const pageRouter = require('./page');
 const dibsRouter = require('./dibs');
+const reviewRouter = require('./review');
 
 const defaultRoutes = [
   {
     path: '/auth',
     route: authRouter,
-  },               
+  },
   {
     path: '/',
     route: storeRouter,
@@ -18,9 +19,13 @@ const defaultRoutes = [
     path: '/',
     route: pageRouter,
   },
+  // {
+  //   path: '/',
+  //   route: dibsRouter,
+  // },
   {
     path: '/',
-    route: dibsRouter,
+    route: reviewRouter,
   },
 ];
 

@@ -28,6 +28,7 @@ module.exports = {
       rating: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        defaultValue: 0,
       },
       content: {
         type: Sequelize.STRING,
