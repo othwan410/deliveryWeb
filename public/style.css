@@ -153,6 +153,10 @@ table {
   display: none;
 }
 
+#scroll_container::-webkit-scrollbar {
+  display: none;
+}
+
 header img {
   width: 320px;
   border-radius: 10px;
@@ -175,7 +179,7 @@ header img {
   grid-template-columns: 1fr 30px;
 }
 #search input {
-  width: 10rem;
+  width: 16rem;
   border: none;
   border-radius: 20px;
   outline: none;

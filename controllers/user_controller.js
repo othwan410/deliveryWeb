@@ -19,6 +19,23 @@ class UserController {
       });
   };
 
+  //오더 페이지에 들어갈 유저 잔액 및 주소
+  findUserForOrder = async (req, res) => {
+    const user_id = res.locals.user_id;
+
+    await this.userService
+      .findUserForOrder(user_id)
+      .then((user) => {
+        console.log(...user);
+        return res.render('order', ...user);
+      })
+      .catch((error) => {
+        return res
+          .status(error.status)
+          .json({ errorMessage: error.errorMessage });
+      });
+  };
+
   //유저 정보 수정
   updateUser = async (req, res) => {
     const userId = res.locals.user_id;
