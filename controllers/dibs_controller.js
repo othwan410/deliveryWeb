@@ -31,6 +31,22 @@ class DibsController {
       return res.status(400).json({ error: error });
     }
   };
+
+  //내가 찜한 가게 조회
+  findMyDibs = async (req, res) => {
+    const userId = res.locals.user_id;
+
+    await this.dibsService
+      .findMyDibs(userId)
+      .then((myDibs) => {
+        return res.status(200).json({ myDibs });
+      })
+      .catch((error) => {
+        return res
+          .status(error.status)
+          .json({ errorMessage: error.errorMessage });
+      });
+  };
 }
 
 module.exports = DibsController;

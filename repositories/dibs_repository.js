@@ -1,4 +1,4 @@
-const { Dibs } = require('../models');
+const { Dibs, sequelize } = require('../models');
 
 class DibsRepository {
   //찜 등록
@@ -18,6 +18,19 @@ class DibsRepository {
     });
 
     return deleteDibsData;
+  };
+
+  //내가 찜한 가게 조회
+  findMyDibs = async (query) => {
+    try {
+      const myDibs = await sequelize.query(query, {
+        type: sequelize.QueryTypes.SELECT,
+      });
+
+      return myDibs;
+    } catch (error) {
+      throw error;
+    }
   };
 }
 
