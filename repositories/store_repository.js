@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-const { Store, Menu, User } = require('../models');
-
-=======
 const { Op } = require('sequelize');
-const { Store, Menu, sequelize, Review, Dibs } = require('../models');
+const { Store, Menu, sequelize, Review, Dibs, User } = require('../models');
 const { Transaction } = require('sequelize');
->>>>>>> main
 
 class StoreRepository {
   //가게 등록

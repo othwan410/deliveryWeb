@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{사장님 페이지}}</title>
+    <link rel="stylesheet" href="../public/storeCreate.css" />
+    <link rel="stylesheet" href="../public/loading.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="store">
+        <r><label for="name">가게이름</label>
+        <button type="submit" onclick="">수정</button>
+        <button type="submit" onclick="">삭제</button></r>
+        <div id="menu">
+          <r><label for="name">메뉴1</label>
+          <button type="submit" onclick="">수정</button>
+          <button type="submit" onclick="">삭제</button></r>
+        </div>
+        <div id="menu">
+          <r><label for="name">메뉴2</label>
+          <button type="submit" onclick="">수정</button>
+          <button type="submit" onclick="">삭제</button></r>
+        </div>
+        
+        <q><label for="point">보유한 포인트</label></q>
+        <s><button type="submit" onclick="">메뉴 등록하기</button>
+           <button type="submit" onclick="">주문내역 조회하기</button></s>
+        <!-- <div class="white-space"></div> -->
+      </div>
+    </div>
+    {% block script %} {%endblock%}
+    <script></script>
+  </body>
+</html>

@@ -1,46 +1,79 @@
-{% extends 'layout.html' %} {% block content %}
-<div class="black-space"></div>
-<header>
-  <nav id="">
-    <ul>
-      <li>가게 등록</li>
-    </ul>
-    <hr />
-  </nav>
-</header>
-<div id="store">
-    <label for="name">가게 이름</label>
-    <p><input type="text" id="name" placeholder="store name" /></p>
-    <label for="call">전화 번호</label>
-    <p><input type="text" id="call" placeholder="call number" /></p>
-    <label for="category_id">카테고리</label>
-    <select id="category_id">
-        <option value="1">전체</option>
-        <option value="2">치킨</option>
-        <option value="3">버거</option>
-        <option value="4">한식</option>
-        <option value="5">족발</option>
-        <option value="6">고기</option>
-        <option value="7">분식</option>
-        <option value="8">샐러드</option>
-        <option value="9">일식</option>
-        <option value="10">죽</option>
-        <option value="11">중식</option>
-    </select>
-    <label for="address">가게 주소</label>
-    <p><input type="text" id="address" placeholder="address" /></p>
-    <label for="content">가게 설명</label>
-    <p><input type="text" id="content" placeholder="content" /></p>
-    <label for="img_url">가게 사진</label>
-    <p><input type="text" id="img_url" placeholder="이미지넣을 부분" /></p>
-        <button type="submit" onclick="createStore()">등록하기</button>
-  <div class="white-space"></div>
-</div>
-<nav id="nav2">
-  <img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" />
-  <img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" />
-  <img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" />
-  <img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" />
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{가게등록}}</title>
+    <link rel="stylesheet" href="../public/storeCreate.css" />
+    <link rel="stylesheet" href="../public/loading.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="store">
+        <p><label for="name">가게이름</label>
+        <input type="text" id="name" placeholder="store name" /></p>
+        <p><label for="call">전화번호</label>
+        <input type="text" id="call" placeholder="call number" /></p>
+        <p><label for="category_id">카테고리</label>
+          <select id="category_id">
+            <option value="1">전체</option>
+            <option value="2">치킨</option>
+            <option value="3">버거</option>
+            <option value="4">한식</option>
+            <option value="5">족발</option>
+            <option value="6">고기</option>
+            <option value="7">분식</option>
+            <option value="8">샐러드</option>
+            <option value="9">일식</option>
+            <option value="10">죽</option>
+            <option value="11">중식</option>
+          </select></p>
+        <p><label for="address">가게주소</label>
+        <input type="text" id="address" placeholder="address" /></p>
+        <p><label for="content">가게설명</label>
+        <input type="text" id="content" placeholder="content" /></p>
+        <p><label for="img_url">가게사진</label>
+        <input type="text" id="img_url" placeholder="이미지넣을 부분" /></p>
+            <button type="submit" onclick="createStore()">등록하기</button>
+        <div class="white-space"></div>
+      </div>
+    </div>
+    {% block script %} {%endblock%}
+    <script>
+      const storeName = document.querySelector('#name');
+      const storeCall = document.querySelector('#call');
+      const storeCategory = document.querySelector('#category_id');
+      const storeAddress = document.querySelector('#address');
+      const storeContent = document.querySelector('#content');
+      const storeImage = document.querySelector('#img_url');
 
-{% endblock %}
+      async function createStore() {
+        try {
+          const name = storeName.value;
+          const call = storeCall.value;
+          const category_id = storeCategory.value;
+          const address = storeAddress.value;
+          const content = storeContent.value;
+          const img_url = storeImage.value;
+          const response = await fetch(`http://localhost:3000/stores`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({name, call, category_id, address, content, img_url}),
+      });
+      const result = await response.json();
+      console.log('result');
+      return alert('가게 등록')
+        } catch (error) {
+          console.log('error');
+        }
+      }
+    </script>
+  </body>
+</html>
