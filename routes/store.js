@@ -1,17 +1,19 @@
 const express = require('express');
-const { Store, Menu } = require('../models');
 const router = express.Router();
 
 const StoresController = require('../controllers/store_controller');
 const storesController = new StoresController();
-const { authorizated } = require('../middleware/userState_middleware');
+const {
+  authorizated,
+  isLoggedIn,
+} = require('../middleware/userState_middleware');
 
 router.post('/stores', authorizated, storesController.createStore);
 router.put('/stores/:store_id', authorizated, storesController.updateStore);
 router.delete('/stores/:store_id', authorizated, storesController.deleteStore);
 router.get('/stores', storesController.readStore);
 
-router.get('/stores/detail', storesController.readDetailStore);
+router.get('/stores/detail', isLoggedIn, storesController.readDetailStore);
 
 router.post(
   '/stores/:store_id/menu',

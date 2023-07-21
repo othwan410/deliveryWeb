@@ -176,7 +176,7 @@ class OrderController {
 
   deleteOrder = async (req, res, next) => {
     try {
-      if (!req.params || !req.body) {
+      if (!req.params) {
         return res.status(400).json({
           success: false,
           errorMessage: "'데이터 형식이 올바르지 않습니다.'",

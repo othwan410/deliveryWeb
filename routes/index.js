@@ -4,6 +4,8 @@ const authRouter = require('./auth');
 const storeRouter = require('./store');
 const orderRouter = require('./order');
 const pageRouter = require('./page');
+const addressRouter = require('./address');
+const dibsRouter = require('./dibs');
 
 const defaultRoutes = [
   {
@@ -22,10 +24,14 @@ const defaultRoutes = [
     path: '/',
     route: pageRouter,
   },
-  // {
-  //   path: '/',
-  //   route: dibsRouter,
-  // },
+  {
+    path: '/',
+    route: addressRouter,
+  },
+  {
+    path: '/',
+    route: dibsRouter,
+  },
 ];
 
 defaultRoutes.forEach((route) => {

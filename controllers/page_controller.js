@@ -9,3 +9,7 @@ exports.renderMain = (req, res) => {
 exports.renderCategoryStore = (req, res) => {
   res.render('category_store', { title: '식당들' });
 };
+
+exports.renderLoading = (req, res) => {
+  res.render('loading', { title: '로딩페이지' });
+};

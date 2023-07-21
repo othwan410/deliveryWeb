@@ -22,26 +22,32 @@ class StoreService {
   };
   //카테고리별 가게조회
   readStore = async (category_id) => {
-    const readAllfindStoreData = await this.createStore(category_id);
+    const readAllfindStoreData = await this.storeRepository.readStore(
+      category_id
+    );
 
     return readAllfindStoreData;
   };
 
-  readDetailStore = async (store_id) => {
-    const readDetailStore = await this.readDetailStore(store_id);
+  readDetailStore = async (store_id, user_id) => {
+    const readDetailStoreData = await this.storeRepository.readDetailStore(
+      store_id
+    );
+
     const data = {
       store: {
-        name: store.name,
-        img_url: store.img_url,
-        call: store.call,
-        content: store.content,
-        rating: store.rating,
-        menu: store.menus.map((menu) => ({
+        name: readDetailStoreData.name,
+        img_url: readDetailStoreData.img_url,
+        call: readDetailStoreData.call,
+        content: readDetailStoreData.content,
+        rating: readDetailStoreData.rating,
+        menu: readDetailStoreData.Menus.map((menu) => ({
           name: menu.name,
+          desc: menu.desc,
           price: menu.price,
           img_url: menu.img_url,
         })),
-        isDibs: store.dibs.user_id ? true : false,
+        dibs: readDetailStoreData.Dibs,
       },
     };
 

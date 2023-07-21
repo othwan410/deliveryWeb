@@ -1,7 +1,9 @@
 {% extends 'layout.html' %} {% block content %}
-
+<div id="address">인동23길 4</div>
 <header>
-  <img src="/images/banner.png" alt="광고 배너" />
+  <img class="banner1" src="/images/banner.png" alt="광고 배너" />
+  <img class="banner2" src="/images/banner.png" alt="광고 배너" />
+  <img class="banner3" src="/images/banner.png" alt="광고 배너" />
 </header>
 <div id="search">
   <input class="search" type="text" />
@@ -14,18 +16,18 @@
   <img src="/images/선물하기.png" />
 </div>
 <div id="food_category">
-  <a href="/stores?category=1"><img src="/images/total.png" /></a>
-  <a href="/stores?category=2"><img src="/images/chi.png" /></a>
-  <a href="/stores?category=3"> <img src="/images/버거.png" /></a>
-  <a href="/stores?category=4"> <img src="/images/한식.png" /></a>
-  <a href="/stores?category=5"> <img src="/images/일식.png" /></a>
-  <a href="/stores?category=6"><img src="/images/족발.png" /></a>
-  <a href="/stores?category=7"><img src="/images/고기.png" /></a>
-  <a href="/stores?category=8"><img src="/images/분식.png" /></a>
-  <a href="/stores?category=9"><img src="/images/샐러드.png" /></a>
-  <a href="/stores?category=10"> <img src="/images/일식.png" /></a>
-  <a href="/stores?category=11"><img src="/images/죽.png" /></a>
-  <a href="/stores?category=12"><img src="/images/중국집.png" /></a>
+  <a href="/stores?category_id=1"><img src="/images/total.png" /></a>
+  <a href="/stores?category_id=2"><img src="/images/chi.png" /></a>
+  <a href="/stores?category_id=3"> <img src="/images/버거.png" /></a>
+  <a href="/stores?category_id=4"> <img src="/images/한식.png" /></a>
+  <a href="/stores?category_id=5"> <img src="/images/일식.png" /></a>
+  <a href="/stores?category_id=6"><img src="/images/족발.png" /></a>
+  <a href="/stores?category_id=7"><img src="/images/고기.png" /></a>
+  <a href="/stores?category_id=8"><img src="/images/분식.png" /></a>
+  <a href="/stores?category_id=9"><img src="/images/샐러드.png" /></a>
+  <a href="/stores?category_id=10"> <img src="/images/일식.png" /></a>
+  <a href="/stores?category_id=11"><img src="/images/죽.png" /></a>
+  <a href="/stores?category_id=12"><img src="/images/중국집.png" /></a>
 </div>
 <nav id="nav">
   <img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" />
@@ -33,4 +35,29 @@
   <img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" />
   <img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" />
 </nav>
+{% endblock %} {% block script %}
+<script>
+  const imgs = $('header > img');
+  let currentIndex = 0;
+
+  const slideRight = function () {
+    currentIndex = (currentIndex + 1) % imgs.length;
+    updateTransform();
+  };
+
+  const slideLeft = function () {
+    currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+    updateTransform();
+  };
+
+  const updateTransform = function () {
+    const offset = -currentIndex * 120;
+    imgs.each(function (index) {
+      const translateX = offset + index * 120;
+      $(this).css('transform', `translateX(${translateX}%)`);
+    });
+  };
+
+  setInterval(slideRight, 3000);
+</script>
 {% endblock %}
