@@ -27,29 +27,30 @@
             </div>
             <div>
                 <div id="titleDiv">
-                    <h2>주문 하기</h2>
+                    <h2>주문 목록</h2>
                 </div>
             </div>
-            <div style="margin-top: 70px;">
-                <div id="orderAdress">
-                    <h2>주소</h2>
-                    <p style="word-break: keep-all; line-height: 1.5;">{{address}}</p>
-                    <hr style="border: solid 1px rgb(202, 25, 84);">
-                    <h2 style="margin-top: 40px;">결제</h2>
-                    <p style="float: right;">{{point}}원 보유&nbsp&nbsp&nbsp</p>
-                    <p>포인트: </p>
-                    <p style="margin-top: 10px; color: rgb(202, 25, 84); float: right;">-{{price}}원&nbsp&nbsp&nbsp</p>
-                    <p style="margin-top: 10px;">결제금액:</p>
-                    <hr style="border: solid 1px rgb(202, 25, 84);">
-                    <p style="float: right;">{{point - price}}원&nbsp&nbsp&nbsp</p>
-                    <p>예상잔액: </p>
+            <div style="margin-top: 50px;">
+                <!-- {% for menu in store.store.menu %} -->
+                <div id="menus">
+                    <p style="float: right;">{{몇}}개 &nbsp</p>
+                    <p style="white-space : nowrap; overflow : hidden; text-overflow : ellipsis;">{{메뉴이름}}</p>
                 </div>
+                <!-- {% endfor %} -->
+                <div id="menus">
+                    <hr style="border: solid 1px rgb(202, 25, 84);">
+                    <p style="float: right;">{{몇}}원 &nbsp</p>
+                    <p>결제 예정금액:&nbsp;</p>
+                    <hr style="border: solid 1px rgb(202, 25, 84);">
+                </div>
+            </div>
+            <div>
             </div>
         </div>
     </div>
     <nav id="nav5">
         <a href="./order">
-            <h2>결제 하기</h2>
+            <h2>주문 하러 가기</h2>
         </a>
     </nav>
     </div>
