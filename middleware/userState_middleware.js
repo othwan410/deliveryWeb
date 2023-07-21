@@ -25,15 +25,23 @@ exports.authorizated = async (req, res, next) => {
 
 exports.isLoggedIn = async (req, res, next) => {
   const { authorization } = req.cookies;
+
+  if (!authorization) {
+    res.locals.isLoggedIn = false;
+    next();
+    return;
+  }
+
   const [authType, authToken] = (authorization ?? '').split(' ');
 
+  const { user_id } = jwt.verify(authToken, process.env.COOKIE_SECRET);
   if (!authorization || authType !== 'Bearer' || !authToken) {
     res.locals.isLoggedIn = false;
     next();
     return;
   }
-  const { user_id } = jwt.verify(authToken, process.env.COOKIE_SECRET);
-  res.locals.user_id = user_id;
+
   res.locals.isLoggedIn = true;
+  res.locals.user_id = user_id;
   next();
 };

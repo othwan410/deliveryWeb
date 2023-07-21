@@ -29,7 +29,6 @@ class StoresController {
 
   //카테고리별 가게 조회
   readStore = async (req, res, next) => {
-    console.log(req.query.category_id);
     try {
       const category_id = parseInt(req.query.category_id);
 
@@ -41,7 +40,7 @@ class StoresController {
           .json({ errorMessage: '데이터가 존재하지 않습니다.' });
       }
       const stores = data.map((d) => d.dataValues);
-      console.log(stores);
+
       res.render('category_store', { stores });
     } catch (error) {
       console.log(error);
@@ -50,24 +49,20 @@ class StoresController {
   };
 
   readDetailStore = async (req, res, next) => {
-    let user_id;
-
     try {
       const store_id = parseInt(req.query.store_id);
       const store = await this.storeService.readDetailStore(store_id);
-      console.log(store);
       if (!store) {
         return res
           .status(400)
           .json({ errorMessage: '데이터가 존재하지 않습니다.' });
       }
-
-      if (res.locals.isLoggedIn && store.store.dibs.length !== 0) {
-        user_id = res.locals.user_id;
-        isDibs = store.store.dibs.indexOf(user_id) !== -1 ? true : false;
-        return res.render('store_detail', { store, isDibs });
+      if (!res.locals.isLoggedIn) {
+        return res.render('store_detail', { store, isDibs: false });
       }
-      return res.render('store_detail', { store, isDibs: false });
+      const isDibs =
+        store.store.dibs.indexOf(res.locals.user_id) !== -1 ? true : false;
+      return res.render('store_detail', { store, isDibs });
     } catch (error) {
       console.error(error);
       return res.status(400).json({ error: error });

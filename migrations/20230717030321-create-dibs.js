@@ -6,6 +6,7 @@ module.exports = {
       store_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        primaryKey: true,
         references: {
           model: 'Stores', // Stores 모델을 참조합니다.
           key: 'store_id', // Stores 모델의 store_id 참조합니다.
@@ -14,6 +15,7 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
         allowNull: false,
         references: {
           model: 'Users', // Users 모델을 참조합니다.

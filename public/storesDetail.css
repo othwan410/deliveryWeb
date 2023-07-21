@@ -3,6 +3,7 @@
 #main_image {
   width: 350px;
   height: 200px;
+  margin-top: 20px;
   background: url('./images/식당간판.jpeg');
   background-size: cover;
   border-radius: 20px;
@@ -153,12 +154,13 @@
 }
 
 .black-space2 {
-  width: 334px;
-  height: 1px;
+  width: 340px;
+  height: 13px;
   position: fixed;
   background: black;
   border-top: 20px solid black;
   border-radius: 10px 10px 0 0;
-  margin-left: 8px;
+  margin-left: 4px;
+  z-index: 14;
   top: 5%;
 }
