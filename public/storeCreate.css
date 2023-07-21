@@ -232,7 +232,7 @@ button {
   }
 
 input {
-    width: 210px;
+    width: 190px;
     height: 20px;
     border-left-width: 0;
     border-right-width: 0;
@@ -243,9 +243,9 @@ input {
 
 p {
     display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-gap: 10px;
-    padding: 10px;
+    grid-template-columns: 1.5fr 3fr;
+    grid-gap: 5px;
+    padding-top:20px;
     margin-right: 20px;
     background-color: white;
 }
@@ -268,7 +268,16 @@ r {
     background-color: white;
 }
 
-s {
+v {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    padding: 10px;
+    margin-right: 20px;
+    background-color: white;
+}
+
+t {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;

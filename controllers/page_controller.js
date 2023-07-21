@@ -13,3 +13,7 @@ exports.renderCategoryStore = (req, res) => {
 exports.renderLoading = (req, res) => {
   res.render('loading', { title: '로딩페이지' });
 };
+
+exports.renderRegistor = (req,res)=>{
+  res.render('store_create');
+}

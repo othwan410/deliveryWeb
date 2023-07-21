@@ -6,18 +6,8 @@ class StoresController {
   //가게 등록
   createStore = async (req, res, next) => {
     try {
-      const user_id = res.locals.user_id;
-      const { name, call, category_id, address, content, img_url } = req.body;
-      const createStoreData = await this.storeService.createStore(
-        user_id,
-        name,
-        call,
-        category_id,
-        address,
-        content,
-        img_url
-      );
 
+      const { name, call, category_id, address, content, img_url } = req.body;
       if (!name) {
         return res.status(400).json({ data: '가게 이름을 적어주세요.' });
       }
@@ -37,6 +27,16 @@ class StoresController {
       if (!content) {
         return res.status(400).json({ data: '가게 설명을 적어주세요.' });
       }
+      const user_id = res.locals.user_id;
+      const createStoreData = await this.storeService.createStore(
+        user_id,
+        name,
+        call,
+        category_id,
+        address,
+        content,
+        img_url
+      );
 
       return res.status(201).json({ data: createStoreData });
     } catch (error) {

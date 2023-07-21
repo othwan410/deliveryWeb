@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{사장님 페이지}}</title>
+    <title>{{사장님 주문페이지}}</title>
     <link rel="stylesheet" href="../public/storeCreate.css" />
     <link rel="stylesheet" href="../public/loading.css" />
     <link
@@ -15,23 +15,21 @@
   <body>
     <div id="wrap">
       <div id="store">
-        <r><label for="name">가게이름</label>
-        <button type="submit" onclick="">수정</button>
-        <button type="submit" onclick="">삭제</button></r>
         <div id="menu">
-          <r><label for="name">메뉴1</label>
-          <button type="submit" onclick="">수정</button>
-          <button type="submit" onclick="">삭제</button></r>
+          <t><label for="name">{{메뉴1}}</label>
+          <label for="number">{{1}}개</label>
+          <button type="submit" onclick="">배달완료</button>
+          <button type="submit" onclick="">주문취소</button></t>
         </div>
         <div id="menu">
-          <r><label for="name">메뉴2</label>
-          <button type="submit" onclick="">수정</button>
-          <button type="submit" onclick="">삭제</button></r>
+          <!-- order_id 로 메뉴랑 수량 -->
+          <t><label for="name">{{메뉴2}}</label>
+          <label for="number">{{2}}개</label>
+          <button type="submit" onclick="">배달완료</button>
+          <button type="submit" onclick="">주문취소</button></t>
+          <!-- status상태가 걸리게 배달완료랑 주문취소에 -->
         </div>
         
-        <q><label for="point">보유한 포인트</label></q>
-        <v><button type="submit" onclick="">메뉴 등록하기</button>
-           <button type="submit" onclick="">주문내역 조회하기</button></v>
         <!-- <div class="white-space"></div> -->
       </div>
     </div>
