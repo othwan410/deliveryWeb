@@ -31,4 +31,7 @@ router.delete(
   reviewController.deleteReview
 );
 
+//유저 리뷰 조회
+router.get('/review/user', authorizated, reviewController.findMyReviews);
+
 module.exports = router;

@@ -44,6 +44,8 @@ class UserController {
     await this.userService
       .deleteUser(userId, password)
       .then(() => {
+        res.clearCookie('authorization');
+
         return res.status(200).json({ message: '유저 정보가 삭제되었습니다.' });
       })
       .catch((error) => {
