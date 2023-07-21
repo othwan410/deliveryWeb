@@ -32,7 +32,7 @@ const defaultRoutes = [
   {
     path: '/',
     route: dibsRouter,
-  }
+  },
   {
     path: '/',
     route: reviewRouter,
