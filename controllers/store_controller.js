@@ -29,32 +29,45 @@ class StoresController {
 
   //카테고리별 가게 조회
   readStore = async (req, res, next) => {
-    // try {
-    //   const category_id = req.query.category;
-    //   const readAllfindStoreData = await this.readStore(category_id);
-    //   if (readAllfindStoreData) {
-    //     return res
-    //       .status(400)
-    //       .json({ errorMessage: '데이터가 존재하지 않습니다.' });
-    //   }
-    res.render('category_store');
-    // } catch (error) {
-    //   console.log(error);
-    //   return res.status(400).json({ error: error });
-    // }
+    console.log(req.query.category_id);
+    try {
+      const category_id = parseInt(req.query.category_id);
+
+      const data = await this.storeService.readStore(category_id);
+
+      if (!data) {
+        return res
+          .status(400)
+          .json({ errorMessage: '데이터가 존재하지 않습니다.' });
+      }
+      const stores = data.map((d) => d.dataValues);
+      console.log(stores);
+      res.render('category_store', { stores });
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({ error: error });
+    }
   };
 
   readDetailStore = async (req, res, next) => {
+    let user_id;
+
     try {
-      const store_id = req.query;
-      console.log(store_id);
-      const store = await this.readDetailStore(store_id);
+      const store_id = parseInt(req.query.store_id);
+      const store = await this.storeService.readDetailStore(store_id);
+      console.log(store);
       if (!store) {
         return res
-          .staus(400)
+          .status(400)
           .json({ errorMessage: '데이터가 존재하지 않습니다.' });
       }
-      res.render('store_detail', store);
+
+      if (res.locals.isLoggedIn && store.store.dibs.length !== 0) {
+        user_id = res.locals.user_id;
+        isDibs = store.store.dibs.indexOf(user_id) !== -1 ? true : false;
+        return res.render('store_detail', { store, isDibs });
+      }
+      return res.render('store_detail', { store, isDibs: false });
     } catch (error) {
       console.error(error);
       return res.status(400).json({ error: error });

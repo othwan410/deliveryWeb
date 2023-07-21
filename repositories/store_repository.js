@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { Store, Menu, sequelize } = require('../models');
+const { Store, Menu, sequelize, Review, Dibs } = require('../models');
 const { Transaction } = require('sequelize');
 
 class StoreRepository {
@@ -29,15 +29,11 @@ class StoreRepository {
   //카테고리별 가게조회
 
   readStore = async (category_id) => {
-    const readAllfindStoreData = await Store.findAll(
-      {
-        attributes: ['name', 'img_url', 'rating', 'store_id'],
-        order: [['createdAt', 'DESC']],
-      },
-      {
-        where: { category_id },
-      }
-    );
+    const readAllfindStoreData = await Store.findAll({
+      attributes: ['name', 'img_url', 'rating', 'store_id', 'call'],
+      order: [['createdAt', 'DESC']],
+      where: { category_id },
+    });
 
     return readAllfindStoreData;
   };
@@ -45,7 +41,7 @@ class StoreRepository {
   readDetailStore = async (store_id) => {
     const readDetailStoreData = await Store.findOne({
       where: { store_id },
-      attributes: ['name', 'img_url', 'call', 'content', 'rating'],
+      attributes: ['name', 'img_url', 'call', 'content', 'rating', 'store_id'],
       include: [
         {
           model: Menu,
@@ -57,11 +53,11 @@ class StoreRepository {
         },
       ],
     });
-    const likedCount = await NewsLiked.findAndCountAll({
-      where: { newsId },
-    });
+    // const reviewCount = await Review.findAndCountAll({
+    //   where: { store_id },
+    // });
 
-    return { readDetailStoreData, likedCount };
+    return readDetailStoreData;
   };
   //가게 수정
   updateStore = async (

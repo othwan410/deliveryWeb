@@ -2,14 +2,20 @@
 <div class="black-space2"></div>
 <div id="main_image"></div>
 <div id="store_header">
-  <h2>{{store.title}}</h2>
+  <h2>{{store.store.name}}</h2>
   <span>
     <img id="rating_star" src="/images/Untitled-2.png" /><span
-      >{{store.rating}}</span
+      >{{store.store.rating}}</span
     ></span
   >
   <div id="social">
     <a><img id="phone" src="/images/전화기.png" alt="icon" /></a>
+
+    {% if store.isDibs %}
+    <a
+      ><img id="heart" src="/images/favorite2_FILL0_wght400_GRAD0_opsz48.png"
+    /></a>
+    {% endif %}
     <a>
       <img id="heart" src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
     /></a>
@@ -18,21 +24,30 @@
 </div>
 <div id="store_content">
   <div id="store_info">
-    <div><a>리뷰 240</a></div>
+    <div><a>리뷰 </a></div>
     <div><a>원산지</a></div>
   </div>
   <div id="menu_all">
-    --> {% for menu in store.menu %}
+    {% for menu in store.store.menu %}
     <div id="{{menu.menu_id}}" class="menu_box">
       <div class="menu_desc">
-        <h2>menu.name</h2>
+        <h2>{{menu.name}}</h2>
         <p class="desc">{{menu.desc}}</p>
-        <p class="review">리뷰 (4)</p>
         <p class="price">{{menu.price}}원</p>
       </div>
       <img src="{{menu.img_url}}" alt="메뉴사진" />
     </div>
     {% endfor %}
+    <nav id="nav3">
+      <a href="/main"
+        ><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png"
+      /></a>
+      <a><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" /></a>
+      <a><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" /></a>
+      <a><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
+    </nav>
+    <div class="white-space"></div>
+    {% endblock %}
 
     <!-- <div class="black-space2"></div>
 <div id="main_image"></div>
@@ -83,14 +98,9 @@
       <img src="/images/볶음밥.png" alt="메뉴사진" />
     </div>
   </div>
-  <div class="white-space"></div>
+
 </div>
-<nav id="nav3">
-  <a href="/main"><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></a>
-  <a><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" /></a>
-  <a><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" /></a>
-  <a><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
-</nav>
+
 <script>
     const menus = $('.menu_box');
     console.log(menus);
@@ -98,6 +108,5 @@
 
   ​
 </script> -->
-    {% endblock %}
   </div>
 </div>

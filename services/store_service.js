@@ -27,15 +27,18 @@ class StoreService {
   };
   //카테고리별 가게조회
   readStore = async (category_id) => {
-    const readAllfindStoreData = await this.createStore(category_id);
+    const readAllfindStoreData = await this.storeRepository.readStore(
+      category_id
+    );
 
     return readAllfindStoreData;
   };
 
-  readDetailStore = async (store_id) => {
-    const { readDetailStoreData, likedCount } = await this.readDetailStore(
+  readDetailStore = async (store_id, user_id) => {
+    const readDetailStoreData = await this.storeRepository.readDetailStore(
       store_id
     );
+
     const data = {
       store: {
         name: readDetailStoreData.name,
@@ -43,14 +46,13 @@ class StoreService {
         call: readDetailStoreData.call,
         content: readDetailStoreData.content,
         rating: readDetailStoreData.rating,
-        menu: readDetailStoreData.menus.map((menu) => ({
+        menu: readDetailStoreData.Menus.map((menu) => ({
           name: menu.name,
           desc: menu.desc,
           price: menu.price,
           img_url: menu.img_url,
         })),
-        isDibs: readDetailStoreData.dibs.user_id ? true : false,
-        likedCount: likedCount,
+        dibs: readDetailStoreData.Dibs,
       },
     };
 

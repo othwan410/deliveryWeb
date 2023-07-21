@@ -21,10 +21,12 @@ module.exports = (sequelize, DataTypes) => {
   Dibs.init(
     {
       store_id: {
+        primaryKey: true,
         type: DataTypes.INTEGER,
         allowNull: false,
       },
       user_id: {
+        primaryKey: true,
         type: DataTypes.INTEGER,
         allowNull: false,
       },
