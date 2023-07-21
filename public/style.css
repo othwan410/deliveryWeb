@@ -141,16 +141,16 @@ table {
   grid-template-columns: 1fr;
   grid-template-rows: 10px 100px 50px 100px 220px 50px;
   border-radius: 25px;
-<<<<<<< HEAD
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-=======
->>>>>>> 9fffc4e7dbbc7ba207a2770ba461c80e837eb460
   background: url('./images/mobile.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+#wrap::-webkit-scrollbar {
+  display: none;
 }
 
 header img {
@@ -240,4 +240,59 @@ header img {
   font-weight: bold;
   cursor: pointer;
   z-index: 14;
+}
+/* } */
+
+#address_modal {
+  width: 335px;
+  height: 400px;
+  background: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 100%;
+  left: 2%;
+  border-radius: 15px;
+  display: none;
+}
+
+#modal_up {
+  padding-top: 20px;
+  margin-top: 10px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  border-radius: 15px 15px 0 0;
+}
+#modal_up h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+#modal_up div {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+#modal_up img {
+  width: 30px;
+}
+.change {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.now_address {
+  width: 300px;
+  margin: 10px auto;
+}
+.change_button {
+  width: 50px;
+  height: 20px;
+  margin: 30px auto;
+  padding-top: 5px;
+  background: #c4cbd0;
+  border-radius: 15px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 0 4px #71555c;
 }
