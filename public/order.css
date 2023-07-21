@@ -22,21 +22,20 @@
 
 #nav5 {
   text-align: center;
-  position: fixed;
+  position: absolute;
   width: 325px;
   margin-top: 250px;
   margin-left: 7px;
   border-top: 1px solid rgba(0, 0, 0, 0.4);
   border-bottom: 20px solid black;
   border-radius: 7px;
-  top: 30%;
-  left: 40.9%;
+  top: 45%;
   padding: 5px;
   display: grid;
   background: rgb(202, 25, 84);
 }
 
-#nav5 h2:hover {
+#nav5 p:hover {
   opacity: 0.5;
 }
 

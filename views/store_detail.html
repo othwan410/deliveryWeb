@@ -45,21 +45,10 @@
 
 {% endblock %} {% block script %}
 <script>
-<<<<<<< HEAD
-  const menus = $('.menu_box');
-  console.log(menus);
-
-
-
-</script> -->
-</div>
-</div>
-=======
-$('.heart').click(() => {
-axios.post('/dibs?store_id={{store.store.store_id}}').then(() => {
-window.location.reload();
-});
-});
+  $('.heart').click(() => {
+    axios.post('/dibs?store_id={{store.store.store_id}}').then(() => {
+      window.location.reload();
+    });
+  });
 </script>
 {%endblock%}
->>>>>>> 8101be9f6cec5600a518cb51b3f9c21aaf94fbc4

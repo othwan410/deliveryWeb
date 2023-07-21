@@ -6,7 +6,7 @@ applet,
 object,
 iframe,
 h1,
-/* h2, */
+h2,
 h3,
 h4,
 h5,
@@ -241,59 +241,4 @@ header img {
   font-weight: bold;
   cursor: pointer;
   z-index: 14;
-}
-/* } */
-
-#address_modal {
-  width: 335px;
-  height: 400px;
-  background: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  top: 100%;
-  left: 2%;
-  border-radius: 15px;
-  display: none;
-}
-
-#modal_up {
-  padding-top: 20px;
-  margin-top: 10px;
-  height: 200px;
-  background: rgba(255, 255, 255, 0.9);
-  text-align: center;
-  border-radius: 15px 15px 0 0;
-}
-#modal_up h2 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 40px;
-}
-
-#modal_up div {
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-#modal_up img {
-  width: 30px;
-}
-.change {
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.now_address {
-  width: 300px;
-  margin: 10px auto;
-}
-.change_button {
-  width: 50px;
-  height: 20px;
-  margin: 30px auto;
-  padding-top: 5px;
-  background: #c4cbd0;
-  border-radius: 15px;
-  cursor: pointer;
-  z-index: 10;
-  box-shadow: 0 0 4px #71555c;
 }

@@ -1,61 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>띵동</title>
-    <link rel="stylesheet" href="../public/style.css" />
-    <link rel="stylesheet" href="../public/stores.css" />
-    <link rel="stylesheet" href="../public/storesDetail.css" />
-    <link rel="stylesheet" href="../public/loading.css" />
-    <link rel="stylesheet" href="../public/order.css" />
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-
-<body>
-
-    <div id="wrap">
-        <div>
-            <div id="top">
-                <a href="/main"><img id='home' src="../public/images/home_FILL0_wght400_GRAD0_opsz48.png"
-                        style="width:30px; height:30px; float: right; margin-left: 250px;" /></a>
-                <img src="../public/images/back.png" style="width:20px; height:20px; margin-top: 5px;"
-                    onclick="window.history.back()" />
-            </div>
-            <div>
-                <div id="titleDiv">
-                    <h2>주문 목록</h2>
-                </div>
-            </div>
-            <div style="margin-top: 50px;">
-                <!-- {% for menu in store.store.menu %} -->
-                <div id="menus">
-                    <p style="float: right;">{{몇}}개 &nbsp</p>
-                    <p style="white-space : nowrap; overflow : hidden; text-overflow : ellipsis;">{{메뉴이름}}</p>
-                </div>
-                <!-- {% endfor %} -->
-                <div id="menus">
-                    <hr style="border: solid 1px rgb(202, 25, 84);">
-                    <p style="float: right;">{{몇}}원 &nbsp</p>
-                    <p>결제 예정금액:&nbsp;</p>
-                    <hr style="border: solid 1px rgb(202, 25, 84);">
-                </div>
-            </div>
-            <div>
-            </div>
-        </div>
-    </div>
-    <nav id="nav5">
-        <a href="./order">
-            <h2>주문 하러 가기</h2>
-        </a>
-    </nav>
-    </div>
-
-
-</body>
-
-</html>
+{% extends 'layout.html' %} {%block content %}
+<div id="loading" style="margin-top: 250px;">
+    <p style="padding-bottom: 30px;">결제완료!</p>
+    <p>배달의 혁신</p>
+    <h2>띵동</h2>
+</div>
+{%endblock%} {% block script %}
+<script>
+    setTimeout(() => {
+        window.location.href = '/main';
+    }, 4000);
+</script>
+{%endblock%}
