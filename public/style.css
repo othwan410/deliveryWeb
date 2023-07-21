@@ -141,12 +141,6 @@ table {
   grid-template-columns: 1fr;
   grid-template-rows: 10px 100px 50px 100px 220px 50px;
   border-radius: 25px;
-<<<<<<< HEAD
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-=======
->>>>>>> 9fffc4e7dbbc7ba207a2770ba461c80e837eb460
   background: url('./images/mobile.png');
   background-position: center;
   background-repeat: no-repeat;

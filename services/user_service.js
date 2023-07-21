@@ -25,6 +25,21 @@ class UserService {
     }
   };
 
+  findUserForOrder = async (user_id) => {
+    try {
+      const query = `SELECT point, address FROM users a INNER JOIN addresses b ON a.user_id = b.user_id WHERE a.user_id = ${user_id}`;
+
+      const user = await this.userRepository.findUser(query);
+
+      return user;
+    } catch (error) {
+      console.error(error);
+
+      throw !error.status
+        ? { status: 400, errorMessage: '유저 정보 조회에 실패하였습니다.' }
+        : error;
+    }
+  };
   //유저 정보 수정
   updateUser = async (userId, nickname) => {
     try {

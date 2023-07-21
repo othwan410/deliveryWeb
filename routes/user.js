@@ -10,6 +10,9 @@ const router = express.Router();
 //유저 정보 조회
 router.get('/user', authorizated, userController.findUser);
 
+//유저 정보 조회
+router.get('/userPoint', authorizated, userController.findUserForOrder);
+
 //유저 정보 수정
 router.put('/user/put', authorizated, userController.updateUser);
 
