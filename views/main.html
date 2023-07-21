@@ -35,29 +35,52 @@
   <img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" />
   <img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" />
 </nav>
-{% endblock %} {% block script %}
-<script>
-  const imgs = $('header > img');
-  let currentIndex = 0;
+<div id="address_modal">
+  <div id="modal_up">
+    <h2>[ 주소 설정 ]</h2>
+    <div><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></div>
+    <div class="now_address">인동23길 4</div>
+    <div class="change_button">
+      <a>변경</a>
+      <div></div>
+    </div>
+  </div>
+  {% endblock %} {% block script %}
+  <script>
+    const imgs = $('header > img');
+    let currentIndex = 0;
 
-  const slideRight = function () {
-    currentIndex = (currentIndex + 1) % imgs.length;
-    updateTransform();
-  };
+    const slideRight = function () {
+      currentIndex = (currentIndex + 1) % imgs.length;
+      updateTransform();
+    };
 
-  const slideLeft = function () {
-    currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
-    updateTransform();
-  };
+    const slideLeft = function () {
+      currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+      updateTransform();
+    };
 
-  const updateTransform = function () {
-    const offset = -currentIndex * 120;
-    imgs.each(function (index) {
-      const translateX = offset + index * 120;
-      $(this).css('transform', `translateX(${translateX}%)`);
+    const updateTransform = function () {
+      const offset = -currentIndex * 120;
+      imgs.each(function (index) {
+        const translateX = offset + index * 120;
+        $(this).css('transform', `translateX(${translateX}%)`);
+      });
+    };
+
+    setInterval(slideRight, 3000);
+    const modal = $('#address_modal');
+    $('header').click(() => {
+      modal.animate({ top: '100%' }, 1000);
     });
-  };
+    $('#address').click(() => {
+      modal.css('display', 'block');
+      modal.animate({ top: '25%' }, 1000);
+    });
 
-  setInterval(slideRight, 3000);
-</script>
-{% endblock %}
+    $('#address_modal .change_button').click((event) => {
+      location.href = '/';
+    });
+  </script>
+  {% endblock %}
+</div>

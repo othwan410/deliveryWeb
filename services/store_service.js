@@ -36,6 +36,7 @@ class StoreService {
 
     const data = {
       store: {
+        store_id: readDetailStoreData.store_id,
         name: readDetailStoreData.name,
         img_url: readDetailStoreData.img_url,
         call: readDetailStoreData.call,
@@ -47,7 +48,9 @@ class StoreService {
           price: menu.price,
           img_url: menu.img_url,
         })),
-        dibs: readDetailStoreData.Dibs,
+        dibs: readDetailStoreData.Dibs.map((dibs) => {
+          return dibs.user_id;
+        }),
       },
     };
 
