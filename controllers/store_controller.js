@@ -61,8 +61,7 @@ class StoresController {
 
       const stores = data.map((d) => d.dataValues);
 
-      res.status(200).json({ stores });
-      // res.render('category_store', { stores });
+      res.render('keyword', { stores });
     } catch (error) {
       console.log(error);
       return res.status(400).json({ error: error });

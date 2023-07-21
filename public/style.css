@@ -179,7 +179,7 @@ header img {
   grid-template-columns: 1fr 30px;
 }
 #search input {
-  width: 10rem;
+  width: 16rem;
   border: none;
   border-radius: 20px;
   outline: none;
