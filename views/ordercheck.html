@@ -7,7 +7,7 @@
     <title>띵동</title>
     <link rel="stylesheet" href="../public/style.css" />
     <link rel="stylesheet" href="../public/stores.css" />
-    <link rel="stylesheet" href="../public/storesDetail.css" />
+    <!-- <link rel="stylesheet" href="../public/storesDetail.css" /> -->
     <link rel="stylesheet" href="../public/loading.css" />
     <link rel="stylesheet" href="../public/order.css" />
     <link rel="stylesheet"
@@ -18,7 +18,7 @@
 <body>
 
     <div id="wrap">
-        <div>
+        <div id="order_scroll_container">
             <div id="top">
                 <a href="/main"><img id='home' src="../public/images/home_FILL0_wght400_GRAD0_opsz48.png"
                         style="width:30px; height:30px; float: right; margin-left: 250px;" /></a>
@@ -37,46 +37,6 @@
                     <p style="white-space : nowrap; overflow : hidden; text-overflow : ellipsis;">{{메뉴이름}}</p>
                     <hr style="border: solid 1px rgb(202, 25, 84);">
                 </div>
-                <div id="menus">
-                    <p style="float: right;">{{몇}}개 &nbsp</p>
-                    <p style="white-space : nowrap; overflow : hidden; text-overflow : ellipsis;">{{메뉴이름}}</p>
-                    <hr style="border: solid 1px rgb(202, 25, 84);">
-                </div>
-                <div id="menus">
-                    <p style="float: right;">{{몇}}개 &nbsp</p>
-                    <p style="white-space : nowrap; overflow : hidden; text-overflow : ellipsis;">{{메뉴이름}}</p>
-                    <hr style="border: solid 1px rgb(202, 25, 84);">
-                </div>
-                <div id="menus">
-                    <p style="float: right;">{{몇}}개 &nbsp</p>
-                    <p style="white-space : nowrap; overflow : hidden; text-overflow : ellipsis;">{{메뉴이름}}</p>
-                    <hr style="border: solid 1px rgb(202, 25, 84);">
-                </div>
-                <div id="menus">
-                    <p style="float: right;">{{몇}}개 &nbsp</p>
-                    <p style="white-space : nowrap; overflow : hidden; text-overflow : ellipsis;">{{메뉴이름}}</p>
-                    <hr style="border: solid 1px rgb(202, 25, 84);">
-                </div>
-                <div id="menus">
-                    <p style="float: right;">{{몇}}개 &nbsp</p>
-                    <p style="white-space : nowrap; overflow : hidden; text-overflow : ellipsis;">{{메뉴이름}}</p>
-                    <hr style="border: solid 1px rgb(202, 25, 84);">
-                </div>
-                <div id="menus">
-                    <p style="float: right;">{{몇}}개 &nbsp</p>
-                    <p style="white-space : nowrap; overflow : hidden; text-overflow : ellipsis;">{{메뉴이름}}</p>
-                    <hr style="border: solid 1px rgb(202, 25, 84);">
-                </div>
-                <div id="menus">
-                    <p style="float: right;">{{몇}}개 &nbsp</p>
-                    <p style="white-space : nowrap; overflow : hidden; text-overflow : ellipsis;">{{메뉴이름}}</p>
-                    <hr style="border: solid 1px rgb(202, 25, 84);">
-                </div>
-                <div id="menus">
-                    <p style="float: right;">{{몇}}개 &nbsp</p>
-                    <p style="white-space : nowrap; overflow : hidden; text-overflow : ellipsis;">{{메뉴이름}}</p>
-                    <hr style="border: solid 1px rgb(202, 25, 84);">
-                </div>
                 <!-- {% endfor %} -->
                 <div id="menus" style="margin-top: 60px; padding-bottom: 300px;">
                     <p style="float: right; font-weight: bold;">{{몇}}원 &nbsp</p>
@@ -86,7 +46,7 @@
             </div>
         </div>
         <nav id="nav5">
-            <a href="./order">
+            <a href="/order">
                 <p style="font-size: 30px; font-weight: bold; margin-top: 10px; margin-bottom: 10px;">주문 하러 가기
                 </p>
             </a>
