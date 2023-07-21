@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.get('/main', renderMain);
 router.get('/', renderLoading);
-router.get('/order', renderOrderpage);
+router.get('/store_create', renderRegistor);
 
 module.exports = router;

@@ -4,15 +4,9 @@ class StoreService {
   storeRepository = new StoreRepository();
 
   //가게 등록
-  createStore = async (
-    user_id,
-    name,
-    call,
-    category_id,
-    address,
-    content,
-    img_url
-  ) => {
+  createStore = async (user_id, name, call, category_id, address, content, img_url) => {
+    const userStatus = await this.storeRepository.findOneStatus(user_id);
+    if (userStatus.status === 'admin') {
     const createStoreData = await this.storeRepository.createStore(
       user_id,
       name,
@@ -22,8 +16,9 @@ class StoreService {
       content,
       img_url
     );
-
+    
     return createStoreData;
+    };
   };
   //카테고리별 가게조회
   readStore = async (category_id) => {
@@ -106,12 +101,13 @@ class StoreService {
   };
 
   //메뉴 등록
-  createMenu = async (store_id, name, price, img_url) => {
+  createMenu = async (store_id, name, price, img_url, desc) => {
     const createMenuData = await this.storeRepository.createMenu(
       store_id,
       name,
       price,
-      img_url
+      img_url,
+      desc
     );
 
     return createMenuData;
@@ -133,6 +129,20 @@ class StoreService {
     const deleteMenuData = await this.storeRepository.deleteMenu(menu_id);
 
     return deleteMenuData;
+  };
+
+  //가게 이름을 전체 조회
+  findAllStoreName = async () => {
+    const allStoreName = await this.storeRepository.findAllStoreName();
+
+    return allStoreName;
+  };
+
+  //메뉴 이름을 전체 조회
+  findAllMenuName = async () => {
+    const allMenuName = await this.storeRepository.findAllMenuName();
+
+    return allMenuName;
   };
 }
 
