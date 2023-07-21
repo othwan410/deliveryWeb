@@ -195,17 +195,29 @@ class StoresController {
     }
   };
 
-  //가게 와 메뉴 이름을 전체 조회 : 덜됨
-  findAllName = async (req, res, next) => {
+  //가게 이름을 전체 조회
+  findAllStoreName = async (req, res, next) => {
     try {
       const allStoreName = await this.storeService.findAllStoreName();
+      return res.status(200).json({ data: allStoreName });
+    } catch (error) {
+      console.log(error);
+      return res
+        .status(400)
+        .json({ errorMessage: '가게 조회에 실패했습니다.' });
+    }
+  };
+
+  //메뉴 이름을 전체 조회
+  findAllMenuName = async (req, res, next) => {
+    try {
       const allMenuName = await this.storeService.findAllMenuName();
       return res.status(200).json({ data: allMenuName });
     } catch (error) {
       console.log(error);
       return res
         .status(400)
-        .json({ errorMessage: '전체 조회에 실패했습니다.' });
+        .json({ errorMessage: '메뉴 조회에 실패했습니다.' });
     }
   };
 }
