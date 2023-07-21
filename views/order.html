@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>띵동</title>
+    <link rel="stylesheet" href="../public/style.css" />
+    <link rel="stylesheet" href="../public/stores.css" />
+    <link rel="stylesheet" href="../public/storesDetail.css" />
+    <link rel="stylesheet" href="../public/loading.css" />
+    <link rel="stylesheet" href="../public/order.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <div id="wrap">
+        <div>
+            <div id="top">
+                <a href="/main"><img id='home' src="../public/images/home_FILL0_wght400_GRAD0_opsz48.png"
+                        style="width:30px; height:30px; float: right; margin-left: 250px;" /></a>
+                <img src="../public/images/back.png" style="width:20px; height:20px; margin-top: 5px;"
+                    onclick="window.history.back()" />
+            </div>
+            <div>
+                <div id="titleDiv">
+                    <p style="font-size: 30px; font-weight: bold;">주문 하기</p>
+                </div>
+            </div>
+            <div style="margin-top: 70px;">
+                <div id="orderAdress">
+                    <h2>주소</h2>
+                    <p style="word-break: keep-all; line-height: 1.5;">{{address}}</p>
+                    <hr style="border: solid 1px rgb(202, 25, 84);">
+                    <h2 style="margin-top: 40px;">결제</h2>
+                    <p style="float: right;">{{point}}원 보유&nbsp&nbsp&nbsp</p>
+                    <p>포인트: </p>
+                    <p style="margin-top: 10px; color: rgb(202, 25, 84); float: right;">-{{price}}원&nbsp&nbsp&nbsp</p>
+                    <p style="margin-top: 10px;">결제금액:</p>
+                    <hr style="border: solid 1px rgb(202, 25, 84);">
+                    <p style="float: right;">{{point - price}}원&nbsp&nbsp&nbsp</p>
+                    <p>예상잔액: </p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <nav id="nav5">
+                <a href="./order">
+                    <p style="font-size: 30px; font-weight: bold; margin-top: 10px; margin-bottom: 10px;">결제 하기
+                    </p>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

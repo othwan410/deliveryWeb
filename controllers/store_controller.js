@@ -48,6 +48,27 @@ class StoresController {
     }
   };
 
+  readStoreByKeyword = async (req, res, next) => {
+    try {
+      const keyword = req.query.keyword;
+      if (keyword.length === 0) {
+        return res.status(400).json({
+          success: false,
+          errorMessage: "'데이터 형식이 올바르지 않습니다.'",
+        });
+      }
+      const data = await this.storeService.readStoreByKeyword(keyword);
+
+      const stores = data.map((d) => d.dataValues);
+
+      res.status(200).json({ stores });
+      // res.render('category_store', { stores });
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({ error: error });
+    }
+  };
+
   readDetailStore = async (req, res, next) => {
     try {
       const store_id = parseInt(req.query.store_id);
