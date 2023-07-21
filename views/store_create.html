@@ -33,32 +33,33 @@
 
 {%endblock%} {% block script %}
 <script>
-  const storeCreateBtn = $('.storeCreateBtn');
+  // const storeCreateBtn = document.querySelector('.storeCreateBtn');
 
-  storeCreateBtn.addEventListener('click', async (e) => {
-    e.preventDefault();
-    const storeName = document.querySelector('.storeName').value;
-    console.log(storeName);
-    const storeCall = document.querySelector('.storeCall').value;
-    const storeCategory = document.querySelector('.storeCategory').value;
-    const storeAddress = document.querySelector('.storeAddress').value;
-    const storeContent = document.querySelector('.storeContent').value;
-    const storeImg = document.querySelector('.storeImg').value;
-    const data = {
-      storeName: storeName,
-      storeCall: storeCall,
-      storeCategory: '1',
-      storeAddress: storeAddress,
-      storeContent: storeContent,
-      storeImg: storeImg,
-    }
-    await axios.post('/stores', data, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then((res) => {alert('등록완료')})
-  }
-  )
+  // storeCreateBtn.addEventListener('click', async (e) => {
+  //   e.preventDefault();
+  //   const storeName = document.querySelector('.storeName').value;
+  //   //console.log(storeName);
+  //   const storeCall = document.querySelector('.storeCall').value;
+  //   console.log(storeCall);
+  //   const storeCategory = document.querySelector('.storeCategory').value;
+  //   const storeAddress = document.querySelector('.storeAddress').value;
+  //   const storeContent = document.querySelector('.storeContent').value;
+  //   const storeImg = document.querySelector('.storeImg').value;
+  //   const data = {
+  //     storeName: storeName,
+  //     storeCall: storeCall,
+  //     storeCategory: '1',
+  //     storeAddress: storeAddress,
+  //     storeContent: storeContent,
+  //     storeImg: storeImg,
+  //   }
+  //   await axios.post('/stores', data, {
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   })
+  //   .then((res) => {alert('등록완료')})
+  // }
+  // )
 </script>
 {%endblock%}
