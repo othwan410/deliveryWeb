@@ -59,10 +59,11 @@ class OrderController {
       }
 
       const order = await this.orderService.findOneOrder(order_id);
-
+      console.log(order);
       res.render('orderDetail', { order });
       return { order };
     } catch (error) {
+      console.log(error);
       return res.status(400).json({
         success: false,
         errorMessage: '주문내역의 조회에 실패하였습니다.',
@@ -119,7 +120,7 @@ class OrderController {
 
   createOrder = async (req, res, next) => {
     try {
-      if (!req.params || !req.body) {
+      if (!req.query || !req.body) {
         return res.status(412).json({
           success: false,
           errorMessage: '데이터 형식이 올바르지 않습니다.',
