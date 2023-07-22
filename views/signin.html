@@ -1,0 +1,41 @@
+{% extends 'layout.html' %} {% block content %}
+<div>
+  <form>
+    <input id="account" , type="text" placeholder="이메일" /><br />
+    <input id="password" type="text" placeholder="비밀번호" /><br />
+    <button id="signin-btn">로그인</button><br />
+    <button id="signup-btn">회원가입</button>
+  </form>
+</div>
+{% endblock %} {% block script %}
+<script>
+  $('#signin-btn').on('click', async function (e) {
+    e.preventDefault();
+
+    const account = $('#account').val();
+    const password = $('#password').val();
+    await axios({
+      method: 'POST',
+      url: 'http://localhost:3000/auth/login',
+      data: {
+        account,
+        password,
+      },
+    })
+      .then((response) => {
+        alert('로그인 완료');
+
+        window.location.href = '/main';
+      })
+      .catch((response) => {
+        alert(response.response.data.errorMessage);
+      });
+  });
+
+  $('#signup-btn').on('click', function (e) {
+    e.preventDefault();
+
+    window.location.href = '/join';
+  });
+</script>
+{% endblock %}

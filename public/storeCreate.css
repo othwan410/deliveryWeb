@@ -219,26 +219,26 @@ header img {
 }
 
 #store {
-    margin-top: 80px;
-    margin-left: 20px;
+  margin-top: 80px;
+  margin-left: 20px;
 }
 
 button {
-    align-items: center;
-    background: #212529;
-    color: #fff;
-    border-radius: 10px;
-    cursor: pointer;
-  }
+  align-items: center;
+  background: #212529;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+}
 
 input {
-    width: 190px;
-    height: 20px;
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 1;
-    outline: none;
+  width: 190px;
+  height: 20px;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 0;
+  border-bottom-width: 1;
+  outline: none;
 }
 
 at {
@@ -260,27 +260,27 @@ rr {
 }
 
 r {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    grid-gap: 10px;
-    padding: 10px;
-    margin-right: 20px;
-    background-color: white;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-gap: 10px;
+  padding: 10px;
+  margin-right: 20px;
+  background-color: white;
 }
 
 v {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-    padding: 10px;
-    margin-right: 20px;
-    background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  padding: 10px;
+  margin-right: 20px;
+  background-color: white;
 }
 
 t {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
-    margin-top:20px;
-    margin-right: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
 }

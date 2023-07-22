@@ -1,0 +1,38 @@
+{% extends 'layout.html' %} {% block content %}
+<div id="profile-box">
+  <div id="profile-info">
+    <label for=""
+      ><span>이메일</span
+      ><input type="text" value="{{user.account}}" readonly /></label
+    ><br />
+    <label for=""><span>닉네임</span><input type="text" readonly /></label>
+    <button>수정</button><br />
+    <label for=""><span>포인트</span><input type="text" readonly /></label
+    ><br />
+    <span>aaaaaaaa{{user.user.account}}</span>
+  </div>
+  <div>
+    <button>찜</button>
+    <button>리뷰</button><br />
+    <button>로그아웃</button>
+    <button>탈퇴</button>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script>
+  //   $('document').ready(async () => {
+  //     await axios({
+  //       method: 'GET',
+  //       url: 'http://localhost:3000/user',
+  //     })
+  //       .then((response) => {
+  //         const user = response.data.user[0];
+  //         console.log(response.data.user[0]);
+  //       })
+  //       .catch((response) => {
+  //         alert('실패');
+  //         console.log(response);
+  //       });
+  //   });
+</script>
+{% endblock %}

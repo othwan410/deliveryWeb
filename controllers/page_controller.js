@@ -22,7 +22,7 @@ exports.renderOrderpage = (req, res) => {
   res.render('order', { title: '주문확인' });
 };
 
-exports.renderRegistor = (req,res)=>{
+exports.renderRegistor = (req, res) => {
   res.render('store_create');
 }
 
@@ -33,3 +33,12 @@ exports.renderAdminpage = (req,res)=>{
 exports.renderCreateMenuPage = (req,res)=>{
   res.render('menu_create')
 }
+
+exports.renderSignIn = (req, res) => {
+  res.render('signin', { title: '로그인' });
+};
+
+exports.renderProfile = (req, res) => {
+  res.render('profile', { title: '프로필' });
+};
+
