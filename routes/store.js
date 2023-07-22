@@ -34,7 +34,7 @@ router.delete(
 );
 
 //가게이름, 메뉴이름
-router.get('/searchS', storesController.findAllStoreName);
-router.get('/searchM', storesController.findAllMenuName);
+router.get('/searchStore/:store_id', storesController.findStoreName);
+router.get('/searchMenu/:store_id', storesController.findAllMenuName);
 
 module.exports = router;

@@ -241,7 +241,7 @@ input {
     outline: none;
 }
 
-p {
+at {
     display: grid;
     grid-template-columns: 1.5fr 3fr;
     grid-gap: 5px;
@@ -250,7 +250,7 @@ p {
     background-color: white;
 }
 
-q {
+rr {
     display: grid;
     grid-gap: 10px;
     padding: 5px;

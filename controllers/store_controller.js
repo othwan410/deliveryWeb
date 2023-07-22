@@ -224,11 +224,13 @@ class StoresController {
     }
   };
 
-  //가게 이름을 전체 조회
-  findAllStoreName = async (req, res, next) => {
+  //사장님 가게 이름을 조회
+  findStoreName = async (req, res, next) => {
     try {
-      const allStoreName = await this.storeService.findAllStoreName();
-      return res.status(200).json({ data: allStoreName });
+      const { store_id } = req.params;
+      const data = await this.storeService.findStoreName(store_id);
+      const storeName = data.map((d) => d.dataValues);
+      res.render('adminpage', { storeName });
     } catch (error) {
       console.log(error);
       return res
@@ -237,10 +239,11 @@ class StoresController {
     }
   };
 
-  //메뉴 이름을 전체 조회
+  //사장님 메뉴 이름을 전체 조회
   findAllMenuName = async (req, res, next) => {
     try {
-      const allMenuName = await this.storeService.findAllMenuName();
+      const { store_id } = req.params;
+      const allMenuName = await this.storeService.findAllMenuName(store_id);
       return res.status(200).json({ data: allMenuName });
     } catch (error) {
       console.log(error);

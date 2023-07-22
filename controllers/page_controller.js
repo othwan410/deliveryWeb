@@ -25,3 +25,11 @@ exports.renderOrderpage = (req, res) => {
 exports.renderRegistor = (req,res)=>{
   res.render('store_create');
 }
+
+exports.renderAdminpage = (req,res)=>{
+  res.render('adminpage')
+}
+
+exports.renderCreateMenuPage = (req,res)=>{
+  res.render('menu_create')
+}

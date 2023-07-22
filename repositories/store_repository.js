@@ -160,23 +160,24 @@ class StoreRepository {
     return deleteMenuData;
   };
 
-  //가게 이름을 전체 조회
-  findAllStoreName = async () => {
-    const allStoreName = await Store.findAll({
+  //사장님 가게 이름 조회
+  findStoreName = async (store_id) => {
+    const storeName = await Store.findOne({
+      where: { store_id },
       attributes: [
         'store_id',
         'name',
       ],
-      order: [['createdAt', 'DESC']],
       raw: true,
     });
 
-    return allStoreName;
+    return storeName;
   };
 
-  //메뉴 이름을 전체 조회
-  findAllMenuName = async () => {
+  //사장님 메뉴이름 전체 조회
+  findAllMenuName = async (store_id) => {
     const allMenuName = await Menu.findAll({
+      where: { store_id },
       attributes: [
         'menu_id',
         'name',

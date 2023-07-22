@@ -131,16 +131,16 @@ class StoreService {
     return deleteMenuData;
   };
 
-  //가게 이름을 전체 조회
-  findAllStoreName = async () => {
-    const allStoreName = await this.storeRepository.findAllStoreName();
+  //사장님 가게 이름을 조회
+  findStoreName = async (store_id) => {
+    const storeName = await this.storeRepository.findStoreName(store_id);
 
-    return allStoreName;
+    return storeName;
   };
 
-  //메뉴 이름을 전체 조회
-  findAllMenuName = async () => {
-    const allMenuName = await this.storeRepository.findAllMenuName();
+  //사장님 메뉴 이름을 전체 조회
+  findAllMenuName = async (store_id) => {
+    const allMenuName = await this.storeRepository.findAllMenuName(store_id);
 
     return allMenuName;
   };
