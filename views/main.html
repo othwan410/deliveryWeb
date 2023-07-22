@@ -46,12 +46,7 @@
     ><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
   /></a>
   <img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" />
-  <a href="/store_create"
-    ><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
-  /></a>
-  <a href="/signin"
-    ><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
-  /></a>
+  <img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png" />
 </nav>
 <div id="address_modal">
   <div id="modal_up">
@@ -98,6 +93,36 @@
 
     $('#address_modal .change_button').click((event) => {
       location.href = '/';
+    });
+
+    $('#profile').on('click', async () => {
+      await axios({
+        method: 'GET',
+        url: 'http://localhost:3000/auth/isLogin',
+      })
+        .then(async (response) => {
+          const isLoggedIn = response.data.isLoggedIn;
+
+          if (isLoggedIn) {
+            await axios({
+              method: 'GET',
+              url: 'http://localhost:3000/user',
+            })
+              .then((response) => {
+                window.location.href = '/profile';
+              })
+              .catch((response) => {
+                alert('통신 오류');
+                console.log(response);
+              });
+          } else {
+            window.location.href = '/signin';
+          }
+        })
+        .catch((response) => {
+          alert('통신 오류');
+          console.log(response);
+        });
     });
   </script>
   {% endblock %}

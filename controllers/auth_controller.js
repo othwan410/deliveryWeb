@@ -54,3 +54,9 @@ exports.kakaoCallback = (req, res) => {
 
   res.redirect('/');
 };
+
+exports.isLogin = (req, res) => {
+  const isLoggedIn = res.locals.isLoggedIn;
+
+  return res.status(200).json({ isLoggedIn });
+};

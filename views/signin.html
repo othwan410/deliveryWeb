@@ -23,11 +23,11 @@
       },
     })
       .then((response) => {
-        alert('aaa');
-        console.log(response);
+        alert('로그인 완료');
+
+        window.location.href = '/main';
       })
       .catch((response) => {
-        console.log(response.response.data.errorMessage);
         alert(response.response.data.errorMessage);
       });
   });
