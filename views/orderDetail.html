@@ -70,7 +70,7 @@
 
 <!-- {% endblock %} {% block script %} -->
 <script>
-    const orderDeleteBtn = document.getElementById('#orderdelete');
+    const orderDeleteBtn = document.getElementById('orderdelete');
 
     orderDeleteBtn.addEventListener('click', async (e) => {
         e.preventDefault();
@@ -78,7 +78,7 @@
         await axios.delete('/orders/:{{order.order_id}}')
             .then((res) => { alert('등록완료') })
 
-
+        window.location.href = "/userOrders";
     }
     )
 </script>
