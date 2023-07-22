@@ -6,8 +6,9 @@ class OrderController {
   findAllUserOrder = async (req, res, next) => {
     try {
       const user_id = res.locals.user_id;
-      const order = await this.orderService.findAllUserOrder(user_id);
-      return res.status(200).json({ data: order });
+      const orders = await this.orderService.findAllUserOrder(user_id);
+      console.log(orders);
+      res.render('orderList', { orders });
     } catch (error) {
       console.log(error);
       return res.status(400).json({
@@ -58,6 +59,8 @@ class OrderController {
       }
 
       const order = await this.orderService.findOneOrder(order_id);
+
+      res.render('orderDetail', { order });
       return { order };
     } catch (error) {
       return res.status(400).json({

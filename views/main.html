@@ -5,7 +5,7 @@
   <img class="banner2" src="/images/banner.png" alt="광고 배너" />
   <img class="banner3" src="/images/banner.png" alt="광고 배너" />
 </header>
-<form id="search" action="/keyword" method="get">
+<form id="searchFrom" action="/keyword" method="get">
   <input
     class="search"
     type="text"
@@ -17,7 +17,6 @@
     style="margin-top: 5px; margin-right: 1px"
     onclick="document.forms[0].submit()"
   >
-    search
   </span>
 </form>
 <div id="offline">
@@ -62,6 +61,18 @@
   </div>
   {% endblock %} {% block script %}
   <script>
+    axios
+      .get('/addressOne')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        // 오류발생시 실행
+      })
+      .then(function () {
+        // 항상 실행
+      });
+
     const imgs = $('header > img');
     let currentIndex = 0;
 
