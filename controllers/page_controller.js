@@ -22,6 +22,9 @@ exports.renderOrderpage = (req, res) => {
   res.render('order', { title: '주문확인' });
 };
 
-exports.renderRegistor = (req,res)=>{
+exports.renderRegistor = (req, res) => {
   res.render('store_create');
-}
+};
+exports.renderSignIn = (req, res) => {
+  res.render('signin', { title: '로그인' });
+};

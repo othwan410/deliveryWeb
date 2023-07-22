@@ -6,6 +6,7 @@ const signupController = async (req, res, next) => {
   const { account, sns_id, nickname, phone, password, confirm, status } =
     req.body;
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
   try {
     if (!account) {
       return res.status(400).json({ errorMessage: 'email을 입력해주세요' });
