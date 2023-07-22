@@ -5,6 +5,14 @@ const { sequelize } = require('../models');
 class AddressService {
   addressRepository = new AddressesRepository();
 
+  findCurrentAddress = async (user_id) => {
+    const currentAddr = await this.addressRepository.findUserAddressOne(
+      user_id
+    );
+    const addresses = await this.addressRepository.findUserAddress(user_id);
+    return { currentAddr, addresses };
+  };
+
   findUserAddress = async (user_id) => {
     return await this.addressRepository.findUserAddress(user_id);
   };

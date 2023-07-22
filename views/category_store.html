@@ -1,35 +1,40 @@
 {% extends 'layout.html' %} {% block content %}
-<div class="black-space"></div>
-<header>
-  <nav id="top_menu">
-    <ul>
-      <li>전체</li>
-      <li>치킨</li>
-      <li>버거</li>
-      <li>한식</li>
-      <li>일식</li>
-      <li>중식</li>
-      <li>구이</li>
-    </ul>
-    <hr />
-  </nav>
-</header>
-<div id="store_category">
-  {% for store in stores %}
-  <div class="store_box">
-    <a href="/stores/detail?store_id={{store.store_id}}"><img src="{{ store.img_url }}" alt="음식점 이미지" /></a>
-    <a href="/stores/detail?store_id={{store.store_id}}">
-      <p>{{store.name}}</p>
-      <div class="rating">
-        <img src="/images/Untitled-2.png" /><span>{{store.rating}}</span>
-      </div>
-    </a>
-  </div>
-  {% endfor %}
-  <div class="white-space"></div>
-</div>
+<div id="scroll_container2">
+  <header>
+    <nav id="top_menu">
+      <ul>
+        <li><a>전체</a></li>
+        <li><a>치킨</a></li>
+        <li><a>버거</a></li>
+        <li><a>한식</a></li>
+        <li><a>일식</a></li>
+        <li><a>식중</a></li>
+        <li><a>구이</a></li>
+      </ul>
+      <hr />
+    </nav>
+  </header>
 
-<nav id="nav3">
+  <div id="store_category">
+    {% for store in stores %}
+    <div class="store_box">
+      <a href="/stores/detail?store_id={{store.store_id}}"
+        ><img src="{{ store.img_url }}" alt="음식점 이미지"
+      /></a>
+      <a href="/stores/detail?store_id={{store.store_id}}">
+        <p>{{store.name}}</p>
+        <div class="rating">
+          <img src="/images/Untitled-2.png" /><span>{{store.rating}}</span>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+    <div class="white-space"></div>
+    <div class="white-space"></div>
+    <div class="white-space"></div>
+  </div>
+</div>
+<nav id="nav2">
   <a href="/main"><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></a>
   <a><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" /></a>
   <a><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" /></a>
@@ -37,3 +42,5 @@
 </nav>
 
 {% endblock %}
+
+<a href="/store"> </a>

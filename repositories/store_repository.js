@@ -131,7 +131,7 @@ class StoreRepository {
       name,
       price,
       img_url,
-      desc
+      desc,
     });
 
     return createMenuData;
@@ -163,10 +163,7 @@ class StoreRepository {
   //가게 이름을 전체 조회
   findAllStoreName = async () => {
     const allStoreName = await Store.findAll({
-      attributes: [
-        'store_id',
-        'name',
-      ],
+      attributes: ['store_id', 'name'],
       order: [['createdAt', 'DESC']],
       raw: true,
     });
@@ -177,10 +174,7 @@ class StoreRepository {
   //메뉴 이름을 전체 조회
   findAllMenuName = async () => {
     const allMenuName = await Menu.findAll({
-      attributes: [
-        'menu_id',
-        'name',
-      ],
+      attributes: ['menu_id', 'name'],
       order: [['createdAt', 'DESC']],
       raw: true,
     });
@@ -191,10 +185,8 @@ class StoreRepository {
   //user_id 의 status
   findOneStatus = async (user_id) => {
     const userStatus = await User.findOne({
-      attributes: [
-        'status'
-      ],
-      where: {user_id}
+      attributes: ['status'],
+      where: { user_id },
     });
 
     return userStatus;

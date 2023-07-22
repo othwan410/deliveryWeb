@@ -17,11 +17,11 @@
 
 .scroll_container {
   width: 350px;
-  height: 500px;
+  height: 550px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 2fr 1fr 1fr;
+  grid-template-rows: 1fr;
   scrollbar-width: none;
   overflow-y: auto;
   border-radius: 25px;
@@ -31,7 +31,7 @@
 #store_header {
   width: 330px;
   height: 130px;
-  margin-top: 200px;
+  margin-top: 50px;
   margin-left: 17px;
   display: grid;
   grid-template-columns: 1fr;
@@ -40,9 +40,9 @@
 
 #store_header h2 {
   font-size: 20px;
+  height: 25px;
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: bold;
-  margin-top: 30px;
   margin-left: 15px;
 }
 
@@ -63,7 +63,7 @@
   height: 30px;
   display: grid;
   grid-template-columns: 70px 70px 70px;
-  margin-top: 25px;
+  margin-top: 50px;
   margin-left: 75px;
 }
 #social a {
@@ -78,14 +78,14 @@
 #store_content {
   width: 335px;
   height: 250px;
-  margin-top: 180px;
+  margin-top: 10px;
   margin-left: 15px;
 }
 #store_info {
   width: 250px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-top: 77px;
+  margin-top: 20px;
 }
 
 #store_info div {
