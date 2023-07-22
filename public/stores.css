@@ -92,6 +92,7 @@ a {
   height: 450px;
   margin: 0 auto;
   display: grid;
+  align-self: center;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   scrollbar-width: none;

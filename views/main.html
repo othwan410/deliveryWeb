@@ -5,10 +5,21 @@
   <img class="banner2" src="/images/banner.png" alt="광고 배너" />
   <img class="banner3" src="/images/banner.png" alt="광고 배너" />
 </header>
-<div id="search">
-  <input class="search" type="text" />
-  <span class="material-symbols-sharp lens"> search </span>
-</div>
+<form id="search" action="/keyword" method="get">
+  <input
+    class="search"
+    type="text"
+    placeholder="키워드로 검색하세요! ex)버거"
+    name="keyword"
+  />
+  <span
+    class="material-symbols-sharp lens"
+    style="margin-top: 5px; margin-right: 1px"
+    onclick="document.forms[0].submit()"
+  >
+    search
+  </span>
+</form>
 <div id="offline">
   <img src="/images/띵동마트.png" />
   <img src="/images/편의점.png" />
@@ -33,7 +44,9 @@
   <img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" />
   <img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" />
   <img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" />
-  <a href="/store_create"><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
+  <a href="/store_create"
+    ><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
+  /></a>
 </nav>
 <div id="address_modal">
   <div id="modal_up">

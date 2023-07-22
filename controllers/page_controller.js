@@ -14,8 +14,8 @@ exports.renderLoading = (req, res) => {
   res.render('loading', { title: '로딩페이지' });
 };
 
-exports.renderOrderpage = (req, res) => {
-  res.render('order', { title: '주문확인' });
+exports.renderOrderComplete = (req, res) => {
+  res.render('orderComplete', { title: '주문완료' });
 };
 
 exports.renderOrderpage = (req, res) => {
