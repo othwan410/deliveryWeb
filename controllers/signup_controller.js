@@ -38,7 +38,8 @@ const signupController = async (req, res, next) => {
       password: hash,
       status,
     });
-    return res.status(201).json({ user });
+    // return res.status(201).json({ user });
+    res.render('signin');
   } catch (error) {
     console.error(error);
     return next(error);

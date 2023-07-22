@@ -3,7 +3,8 @@
   <form>
     <input id="account" , type="text" placeholder="이메일" /><br />
     <input id="password" type="text" placeholder="비밀번호" /><br />
-    <button id="signin-btn">로그인</button>
+    <button id="signin-btn">로그인</button><br />
+    <button id="signup-btn">회원가입</button>
   </form>
 </div>
 {% endblock %} {% block script %}
@@ -29,6 +30,12 @@
         console.log(response.response.data.errorMessage);
         alert(response.response.data.errorMessage);
       });
+  });
+
+  $('#signup-btn').on('click', function (e) {
+    e.preventDefault();
+
+    window.location.href = '/join';
   });
 </script>
 {% endblock %}
