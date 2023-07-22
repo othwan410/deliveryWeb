@@ -168,7 +168,7 @@ header img {
   position: absolute;
 }
 
-#search {
+#searchFrom {
   width: 19em;
   height: 2em;
   border: 2px solid #424242;
@@ -178,7 +178,7 @@ header img {
   display: grid;
   grid-template-columns: 1fr 30px;
 }
-#search input {
+#searchFrom input {
   width: 16rem;
   border: none;
   border-radius: 20px;
