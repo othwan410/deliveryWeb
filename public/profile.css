@@ -1,0 +1,9 @@
+#profile-box {
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+#profile-info {
+  display: grid;
+  grid-template-rows: repeat((3, 1fr));
+}

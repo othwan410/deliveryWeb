@@ -18,7 +18,7 @@ class DibsService {
   //내가 찜한 가게 조회
   findMyDibs = async (userId) => {
     try {
-      const query = `select s.name, s.img_url, s.rating from users u
+      const query = `select s.store_id, s.name, s.img_url, s.rating from users u
                   inner join dibs d on u.user_id = d.user_id
                   inner join stores s on d.store_id = s.store_id
                   where u.user_id = ${userId};`;
