@@ -57,6 +57,7 @@ class AddressController {
     }
   };
 
+  //마지막으로 선택
   updateIsCurren = async (req, res, next) => {
     try {
       if (!req.param) {
