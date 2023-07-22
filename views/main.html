@@ -45,9 +45,10 @@
     ><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
   /></a>
   <img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" />
-  <a href="/user"
-    ><img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
-  /></a>
+  <!-- <a href="/user"
+    > -->
+  <img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png" />
+  <!-- </a> -->
 </nav>
 <div id="address_modal">
   <div id="modal_up">
@@ -114,11 +115,17 @@
         url: 'http://localhost:3000/auth/isLogin',
       })
         .then(async (response) => {
+          console.log(response);
           const isLoggedIn = response.data.isLoggedIn;
+          const status = response.data.status;
 
-          if (!isLoggedIn) {
-            window.location.href = '/signin';
-          }
+          // console.log(isLoggedIn);
+          alert(status);
+          // if (!isLoggedIn) {
+          //   window.location.href = '/signin';
+          // }
+
+          // if ()
         })
         .catch((response) => {
           alert('통신 오류');

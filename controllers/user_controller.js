@@ -10,7 +10,6 @@ class UserController {
     await this.userService
       .findUser(userId)
       .then((user) => {
-        console.log(user[0]);
         // return res.status(200).json({ user });
         res.render('profile', { user: user[0] });
       })
