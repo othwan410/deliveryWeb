@@ -7,6 +7,7 @@ class DibsController {
   createDibs = async (req, res, next) => {
     try {
       const user_id = res.locals.user_id;
+
       const store_id = parseInt(req.query.store_id);
 
       await this.dibsService.updateDibs(user_id, store_id);

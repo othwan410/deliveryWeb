@@ -1,8 +1,28 @@
+const { User, Address } = reqire('../models/');
+
 exports.renderJoin = (req, res) => {
   res.render('join', { title: '회원 가입' });
 };
 
-exports.renderMain = (req, res) => {
+exports.renderMain = async (req, res) => {
+  const user_id = rel.locals.user_id;
+  try {
+    if (!user_id) {
+      const address = '';
+      res.render('main', { address });
+    }
+    const recentAddress = await Address.findOne({
+      attributes: ['addressId'],
+      where: { user_id },
+      order: [['address_id', 'DESC']],
+    });
+
+    const mainInfo = { recentAddress, user_id };
+    render('main', mainInfo);
+  } catch (error) {
+    console.error(error);
+    return res.status(400).json({ error: error });
+  }
   res.render('main', { title: '메인페이지' });
 };
 
@@ -22,6 +42,6 @@ exports.renderOrderpage = (req, res) => {
   res.render('order', { title: '주문확인' });
 };
 
-exports.renderRegistor = (req,res)=>{
+exports.renderRegistor = (req, res) => {
   res.render('store_create');
-}
+};

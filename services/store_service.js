@@ -4,21 +4,29 @@ class StoreService {
   storeRepository = new StoreRepository();
 
   //가게 등록
-  createStore = async (user_id, name, call, category_id, address, content, img_url) => {
+  createStore = async (
+    user_id,
+    name,
+    call,
+    category_id,
+    address,
+    content,
+    img_url
+  ) => {
     const userStatus = await this.storeRepository.findOneStatus(user_id);
     if (userStatus.status === 'admin') {
-    const createStoreData = await this.storeRepository.createStore(
-      user_id,
-      name,
-      call,
-      category_id,
-      address,
-      content,
-      img_url
-    );
-    
-    return createStoreData;
-    };
+      const createStoreData = await this.storeRepository.createStore(
+        user_id,
+        name,
+        call,
+        category_id,
+        address,
+        content,
+        img_url
+      );
+
+      return createStoreData;
+    }
   };
   //카테고리별 가게조회
   readStore = async (category_id) => {

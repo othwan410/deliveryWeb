@@ -5,15 +5,20 @@
   <div id="store_header">
     <h2>{{store.store.name}}</h2>
     <span>
-      <img id="rating_star" src="/images/Untitled-2.png" /><span>{{store.store.rating}}</span></span>
+      <img id="rating_star" src="/images/Untitled-2.png" /><span
+        >{{store.store.rating}}</span
+      ></span
+    >
     <div id="social">
       <a><img id="phone" src="/images/전화기.png" alt="icon" /></a>
       {% if isDibs ===true %}
       <a class="heart">
-        <img id="heart" src="/images/favorite2_FILL0_wght400_GRAD0_opsz48.png" /></a>
+        <img id="heart" src="/images/favorite2_FILL0_wght400_GRAD0_opsz48.png"
+      /></a>
       {%elif isDibs ===false %}
       <a class="heart">
-        <img id="heart" src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" /></a>
+        <img id="heart" src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
+      /></a>
       {% endif %}
       <a><img id="share" src="/images/공유.png" alt="icon" /></a>
     </div>
@@ -36,6 +41,7 @@
       {% endfor %}
     </div>
   </div>
+  <div class="white-space"></div>
 </div>
 <nav id="nav3">
   <a href="/main"><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></a>
@@ -43,7 +49,6 @@
   <a><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" /></a>
   <a><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
 </nav>
-<div class="white-space"></div>
 
 {% endblock %} {% block script %}
 <script>
