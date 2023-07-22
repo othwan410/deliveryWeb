@@ -1,13 +1,13 @@
 {% extends 'layout.html' %} {% block content %}
 <div class="black-space">
   <div id="store">
-    <form class="storeForm" action="/stores" method="post">
+   
       <p><label>가게이름</label>
-        <input type="text" class="storeName" placeholder="store name" /></p>
+        <input type="text" class="storeName" name="name" placeholder="store name" /></p>
         <p><label>전화번호</label>
-        <input type="text" class="storeCall" placeholder="call number" /></p>
+        <input type="text" class="storeCall" name="call" placeholder="call number" /></p>
         <p><label>카테고리</label>
-          <select class="category_id">
+          <select name="category" class="category_id">
             <option value="1">전체</option>
             <option value="2">치킨</option>
             <option value="3">버거</option>
@@ -21,45 +21,47 @@
             <option value="11">중식</option>
           </select></p>
         <p><label>가게주소</label>
-        <input type="text" class="storeAddress" placeholder="address" /></p>
+        <input type="text" name="address" class="storeAddress" placeholder="address" /></p>
         <p><label>가게설명</label>
-        <input type="text" class="storeContent" placeholder="content" /></p>
+        <input type="text" name="content" class="storeContent" placeholder="content" /></p>
         <p><label>가게사진</label>
-        <input type="text" class="storeImg" placeholder="이미지넣을 부분" /></p>
-        <p><button type="submit" class="storeCreateBtn">등록하기</button></p>
-    </form>
+        <input type="text" class="storeImg" name="img_url" placeholder="이미지넣을 부분" /></p>
+        <p><button  class="storeCreateBtn">등록하기</button></p>
+    
   </div>
 </div>
 
 {%endblock%} {% block script %}
 <script>
-  // const storeCreateBtn = document.querySelector('.storeCreateBtn');
 
-  // storeCreateBtn.addEventListener('click', async (e) => {
-  //   e.preventDefault();
-  //   const storeName = document.querySelector('.storeName').value;
-  //   //console.log(storeName);
-  //   const storeCall = document.querySelector('.storeCall').value;
-  //   console.log(storeCall);
-  //   const storeCategory = document.querySelector('.storeCategory').value;
-  //   const storeAddress = document.querySelector('.storeAddress').value;
-  //   const storeContent = document.querySelector('.storeContent').value;
-  //   const storeImg = document.querySelector('.storeImg').value;
-  //   const data = {
-  //     storeName: storeName,
-  //     storeCall: storeCall,
-  //     storeCategory: '1',
-  //     storeAddress: storeAddress,
-  //     storeContent: storeContent,
-  //     storeImg: storeImg,
-  //   }
-  //   await axios.post('/stores', data, {
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  //   .then((res) => {alert('등록완료')})
-  // }
-  // )
+  const storeCreateBtn = document.querySelector('.storeCreateBtn');
+  
+  storeCreateBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const storeName = document.querySelector('.storeName').value;
+
+    const storeCall = document.querySelector('.storeCall').value;
+    
+    const categoryId= $('.category_id').val();
+
+    const storeAddress = document.querySelector('.storeAddress').value;
+   
+    const storeContent = document.querySelector('.storeContent').value;
+    
+    const storeImg = document.querySelector('.storeImg').value;
+    
+    const data = {
+      name: storeName,
+      call: storeCall,
+      category_id: categoryId,
+      address: storeAddress,
+      content: storeContent,
+      img_url: storeImg,
+    } 
+   
+    await axios.post('/stores', data)
+    .then((res) => {alert('등록완료')})
+  } 
+  )
 </script>
 {%endblock%}
