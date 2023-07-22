@@ -4,29 +4,6 @@ exports.renderJoin = (req, res) => {
   res.render('join', { title: '회원 가입' });
 };
 
-exports.renderMain = async (req, res) => {
-  // const user_id = res.locals.user_id;
-  // try {
-  //   if (!user_id) {
-  //     const address = '';
-  //     res.render('main', { address });
-  //   }
-  //   const recentAddress = await Address.findOne({
-  //     attributes: ['addressId'],
-  //     where: { user_id },
-  //     order: [['address_id', 'DESC']],
-  //   });
-
-  //   const mainInfo = { recentAddress, user_id };
-  res.render('main');
-  //   } catch (error) {
-  //     console.error(error);
-  //     return res.status(400).json({ error: error });
-  //   }
-  //   res.render('main', { title: '메인페이지' });
-  // };
-};
-
 exports.renderCategoryStore = (req, res) => {
   res.render('category_store', { title: '식당들' });
 };

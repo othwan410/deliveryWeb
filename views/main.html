@@ -1,5 +1,5 @@
 {% extends 'layout.html' %} {% block content %}
-<div id="address">인동23길 4</div>
+<div id="address">{{currentAddr}}</div>
 <header>
   <img class="banner1" src="/images/banner.png" alt="광고 배너" />
   <img class="banner2" src="/images/banner.png" alt="광고 배너" />
@@ -41,22 +41,25 @@
 </div>
 <nav id="nav">
   <img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" />
-  <a href="/store_create"
-    ><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
-  /></a>
+
   <a href="/myDibs"
     ><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
   /></a>
   <a href="/userOrders"
     ><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png"
   /></a>
-  <img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png" />
+  <a href="/user"
+    ><img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
+  /></a>
 </nav>
 <div id="address_modal">
   <div id="modal_up">
     <h2>[ 주소 설정 ]</h2>
     <div><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></div>
-    <div class="now_address">인동23길 4</div>
+    <div class="now_address">{{current.currentAddr}}</div>
+    {% for addr in address.addresses %}
+    <div>{{addr}}</div>
+    {% endfor %}
     <div class="change_button">
       <a>변경</a>
       <div></div>

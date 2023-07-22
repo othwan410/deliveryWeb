@@ -3,6 +3,31 @@ const AddressService = require('../services/address_service');
 class AddressController {
   addressService = new AddressService();
 
+  findCurrentAddress = async (req, res) => {
+    try {
+      const user_id = res.locals.user_id;
+
+      if (!user_id) {
+        return res.render('main');
+      }
+
+      const data = await this.addressService.findCurrentAddress(user_id);
+
+      if (!data.currentAddr || addresses.length === 0) {
+        const currentAddr = '주소 설정';
+        const addresses = null;
+        return res.render('main', { currentAddr, addresses });
+      }
+
+      return res.render('main', {
+        currentAddr: data.currentAddr,
+        addresses: data.addresses,
+      });
+    } catch (error) {
+      res.status(400).json({ error: error });
+    }
+  };
+
   findUserAddress = async (req, res, nextr_id) => {
     try {
       const user_id = res.locals.user_id;
