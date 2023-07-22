@@ -10,6 +10,7 @@ class AddressRepository {
     });
   };
 
+  //마지막으로 사용한 주소
   findUserAddressOne = async (user_id) => {
     return await Address.findOne({
       attributes: ['address_id', 'address'],

@@ -41,7 +41,9 @@
 </div>
 <nav id="nav">
   <img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" />
-
+  <a href="/store_create"
+    ><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
+  /></a>
   <a href="/myDibs"
     ><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
   /></a>
@@ -117,19 +119,7 @@
         .then(async (response) => {
           const isLoggedIn = response.data.isLoggedIn;
 
-          if (isLoggedIn) {
-            await axios({
-              method: 'GET',
-              url: 'http://localhost:3001/user',
-            })
-              .then((response) => {
-                window.location.href = '/profile';
-              })
-              .catch((response) => {
-                alert('통신 오류');
-                console.log(response);
-              });
-          } else {
+          if (!isLoggedIn) {
             window.location.href = '/signin';
           }
         })

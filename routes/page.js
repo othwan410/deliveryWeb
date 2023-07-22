@@ -18,6 +18,6 @@ router.get('/orderComplete', renderOrderComplete);
 router.get('/store_create', renderRegistor);
 router.get('/join', renderJoin);
 router.get('/signin', renderSignIn);
-router.get('/profile', renderProfile);
+// router.get('/profile', renderProfile);
 
 module.exports = router;

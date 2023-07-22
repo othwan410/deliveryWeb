@@ -27,7 +27,7 @@ class UserService {
 
   findUserForOrder = async (user_id) => {
     try {
-      const query = `SELECT point, address FROM users a INNER JOIN addresses b ON a.user_id = b.user_id WHERE a.user_id = ${user_id}`;
+      const query = `SELECT point, address FROM users a INNER JOIN addresses b ON a.user_id = b.user_id WHERE a.user_id = ${user_id} AND b.isCurrent = 1`;
 
       const user = await this.userRepository.findUser(query);
 
