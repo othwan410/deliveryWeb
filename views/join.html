@@ -1,0 +1,67 @@
+{% extends 'layout.html' %} {% block content %}
+<div>
+  <form>
+    <input id="account" , type="text" placeholder="이메일" /><br />
+    <input id="nickname" type="text" placeholder="닉네임" /><br />
+    <input id="phone" type="text" placeholder="전화번호" /><br />
+    <input id="password" type="text" placeholder="비밀번호" /><br />
+    <input id="confirm" type="text" placeholder="비밀번호 확인" /><br />
+    <input id="status" type="text" placeholder="normal or admin" /><br />
+    <button id="join-btn">회원가입</button>
+  </form>
+</div>
+{% endblock %} {% block script %}
+<script>
+  $('#join-btn').on('click', async function (e) {
+    e.preventDefault();
+
+    const account = $('#account').val();
+    const nickname = $('#nickname').val();
+    const phone = $('#phone').val();
+    const password = $('#password').val();
+    const confirm = $('#confirm').val();
+    const status = $('#status').val();
+
+    // $.ajax({
+    //   type: 'POST',
+    //   url: '/auth/join',
+    //   data: {
+    //     account,
+    //     nickname,
+    //     phone,
+    //     password,
+    //     confirm,
+    //     status,
+    //   },
+    //   success: function (response) {
+    //     console.log(response['user']);
+    //     alert(response['user']);
+    //   },
+    //   error: function (response) {
+    //     console.log(response);
+    //     alert(response['error']);
+    //   },
+    // });
+    await axios({
+      method: 'POST',
+      url: 'http://localhost:3000/auth/join',
+      data: {
+        account,
+        nickname,
+        phone,
+        password,
+        confirm,
+        status,
+      },
+    })
+      .then((response) => {
+        alert('aaa');
+        console.log(response);
+      })
+      .catch((response) => {
+        console.log(response.response.data.errorMessage);
+        alert(response.response.data.errorMessage);
+      });
+  });
+</script>
+{% endblock %}

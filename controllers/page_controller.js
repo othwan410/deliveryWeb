@@ -13,3 +13,7 @@ exports.renderCategoryStore = (req, res) => {
 exports.renderLoading = (req, res) => {
   res.render('loading', { title: '로딩페이지' });
 };
+
+exports.renderSignIn = (req, res) => {
+  res.render('signin', { title: '로그인' });
+};

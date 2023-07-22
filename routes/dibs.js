@@ -9,6 +9,6 @@ router.post('/dibs', authorizated, dibsController.createDibs);
 
 router.delete('/dibs', authorizated, dibsController.deleteDibs);
 
-router.get('/dibs', authorizated, dibsController.findMyDibs);
+router.get('/myDibs', authorizated, dibsController.findMyDibs);
 
 module.exports = router;

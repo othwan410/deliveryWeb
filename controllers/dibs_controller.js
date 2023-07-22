@@ -39,7 +39,8 @@ class DibsController {
     await this.dibsService
       .findMyDibs(userId)
       .then((myDibs) => {
-        return res.status(200).json({ myDibs });
+        // return res.status(200).json({ myDibs });
+        return res.render('myDibs', { myDibs });
       })
       .catch((error) => {
         return res
