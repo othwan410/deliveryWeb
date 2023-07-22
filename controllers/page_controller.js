@@ -45,3 +45,11 @@ exports.renderOrderpage = (req, res) => {
 exports.renderRegistor = (req, res) => {
   res.render('store_create');
 };
+
+exports.renderSignIn = (req, res) => {
+  res.render('signin', { title: '로그인' });
+};
+
+exports.renderProfile = (req, res) => {
+  res.render('profile', { title: '프로필' });
+};

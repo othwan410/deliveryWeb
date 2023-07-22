@@ -7,6 +7,8 @@ const { authorizated } = require('../middleware/userState_middleware');
 
 router.post('/dibs', authorizated, dibsController.createDibs);
 
-router.get('/dibs', authorizated, dibsController.findMyDibs);
+router.delete('/dibs', authorizated, dibsController.deleteDibs);
+
+router.get('/myDibs', authorizated, dibsController.findMyDibs);
 
 module.exports = router;

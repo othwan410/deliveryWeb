@@ -17,6 +17,17 @@
     style="margin-top: 5px; margin-right: 1px"
     onclick="document.forms[0].submit()"
   >
+  <input
+    class="search"
+    type="text"
+    placeholder="키워드로 검색하세요! ex)버거"
+    name="keyword"
+  />
+  <span
+    class="material-symbols-sharp lens"
+    style="margin-top: 5px; margin-right: 1px"
+    onclick="document.forms[0].submit()"
+  >
     search
   </span>
 </form>
@@ -42,11 +53,11 @@
 </div>
 <nav id="nav">
   <img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" />
-  <img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" />
-  <img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" />
-  <a href="/store_create"
-    ><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
+  <a href="/myDibs"
+    ><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
   /></a>
+  <img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" />
+  <img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png" />
 </nav>
 <div id="address_modal">
   <div id="modal_up">
@@ -93,6 +104,36 @@
 
     $('#address_modal .change_button').click((event) => {
       location.href = '/';
+    });
+
+    $('#profile').on('click', async () => {
+      await axios({
+        method: 'GET',
+        url: 'http://localhost:3000/auth/isLogin',
+      })
+        .then(async (response) => {
+          const isLoggedIn = response.data.isLoggedIn;
+
+          if (isLoggedIn) {
+            await axios({
+              method: 'GET',
+              url: 'http://localhost:3000/user',
+            })
+              .then((response) => {
+                window.location.href = '/profile';
+              })
+              .catch((response) => {
+                alert('통신 오류');
+                console.log(response);
+              });
+          } else {
+            window.location.href = '/signin';
+          }
+        })
+        .catch((response) => {
+          alert('통신 오류');
+          console.log(response);
+        });
     });
   </script>
   {% endblock %}
