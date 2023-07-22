@@ -1,7 +1,7 @@
 #loading {
   width: 200px;
   text-align: center;
-  margin: 280px auto;
+  margin: 250px auto;
 }
 
 #loading p {
@@ -13,7 +13,8 @@
 #loading h2 {
   font-size: 25px;
   font-weight: bold;
-  margin-top: 5px;
+  /* margin-top: 5px;
+  margin-bottom: 50px; */
   color: red;
   text-shadow: 0 2px 2px black;
   animation-duration: 4s;
