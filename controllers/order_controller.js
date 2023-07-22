@@ -188,6 +188,7 @@ class OrderController {
       }
 
       const { order_id } = req.params;
+      console.log(order_id);
       const deleteOrder = await this.orderService.deleteOrder(order_id);
 
       if (!deleteOrder) {
