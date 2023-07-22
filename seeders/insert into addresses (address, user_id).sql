@@ -5,7 +5,7 @@ insert into categories (name) values ('전체');
 insert into categories (name) values ('치킨');
 insert into categories (name) values ('버거');
 insert into categories (name) values ('한식');
-insert into categories (name) values ('족빌');
+insert into categories (name) values ('족발');
 insert into categories (name) values ('고기');
 insert into categories (name) values ('분식');
 insert into categories (name) values ('샐러드');
