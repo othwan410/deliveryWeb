@@ -1,0 +1,73 @@
+{% extends 'layout.html' %} {% block content %}
+
+<div id="choice_wrap2">
+  {%for cart in carts%}
+  <div class="{{cart.cart_id}}" id="menu_wrap">
+    <p id="menu_detail_title">{{cart.menu}}</p>
+    <p id="menu_detail_price">{{cart.price}}</p>
+    <p id="won">원</p>
+
+    <div id="menu_detail_ea">
+      <p>수량</p>
+      <button class="{{cart.cart_id}}" id="sub">-</button>
+      <p id="ea_number">{{cart.ea}}</p>
+      <button class="{{cart.cart_id}}" id="add">+</button>
+    </div>
+    <hr />
+  </div>
+  {%endfor%}
+
+  <div id="ea_info">
+    <p>총 주문금액</p>
+    <span id="total_price">{{total.price}}원</span>
+  </div>
+  <a href="/orderCheck" id="botton_bottom"
+    ><button id="order_complet">주문하기</button></a
+  >
+</div>
+<nav id="nav6">
+  <a href="/"><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></a>
+  <a href="/myDibs"
+    ><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
+  /></a>
+  <a href="/userOrders"
+    ><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png"
+  /></a>
+  <a href="/user"
+    ><img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
+  /></a>
+</nav>
+{%endblock%} {%block script%}
+<script>
+  let number = $('#ea_number').text();
+  let ea = parseInt(number);
+  let price = $('#menu_detail_price').text();
+  let totalPrice = parseInt(price);
+
+  $('#sub').click((e) => {
+    e.preventDefault();
+    if (ea < 1) {
+      alert('수량은 0보다 커야합니다.');
+      return;
+    }
+    ea--;
+    $('#ea_number').text(ea);
+    $('#total_price').text(totalPrice * ea + '원');
+    const cart_id = $('#sub').attr('class');
+
+    axios.put(`/carts?cart_id=${cart_id}&ea=${ea}`);
+    return;
+  });
+
+  $('#add').click((e) => {
+    e.preventDefault();
+    ea++;
+    $('#ea_number').text(ea);
+    $('#total_price').text(totalPrice * ea + '원');
+    const cart_id = $('#add').attr('class');
+
+    axios.put(`/carts?cart_id=${cart_id}&ea=${ea}`);
+    return;
+  });
+</script>
+{% endblock %}

@@ -10,10 +10,15 @@ const {
   renderJoin,
   renderSignIn,
   renderProfile,
+  renderSelectedMenu,
+  renderReview,
 } = require('../controllers/page_controller');
 const addressController = new AddressController();
 
-const { isLoggedIn } = require('../middleware/userState_middleware');
+const {
+  isLoggedIn,
+  authorizated,
+} = require('../middleware/userState_middleware');
 
 const router = express.Router();
 
@@ -26,6 +31,10 @@ router.get('/adminpage', renderAdminpage);
 router.get('/menu_create', renderCreateMenuPage);
 router.get('/join', renderJoin);
 router.get('/signin', renderSignIn);
+router.get('/review', renderReview);
 // router.get('/profile', renderProfile);
+
+//메뉴 선택시 넘어가는 화면
+router.get('/selectedMenus', authorizated, renderSelectedMenu);
 
 module.exports = router;

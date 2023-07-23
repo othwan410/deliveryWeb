@@ -5,12 +5,15 @@ const { authorizated } = require('../middleware/userState_middleware');
 const ReviewController = require('../controllers/review_controller');
 const reviewController = new ReviewController();
 
+const { upload } = require('../middleware/upload_middleware');
+
 const router = express.Router();
 
 //리뷰 작성
 router.post(
   '/stores/:storeId/review/:orderId',
   authorizated,
+  upload.single('img_url'),
   reviewController.createReview
 );
 

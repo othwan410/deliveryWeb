@@ -38,4 +38,7 @@ router.delete(
 router.get('/getStoreUpdate', authorizated, storesController.readStoreUpdate);
 router.get('/getMenuUpdate/:menu_id', storesController.findOneMenu);
 
+//메뉴 상세화면
+router.get('/stores/menusDetail', storesController.findMenuDetail);
+
 module.exports = router;
