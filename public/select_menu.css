@@ -132,3 +132,23 @@
 #nav6 img:hover {
   opacity: 1;
 }
+
+#order_complet {
+  width: 300px;
+  heihgt: 50px;
+  padding: 7px;
+  margin-left: 23px;
+  margin-top: 25px;
+  background: #f72e11;
+  border: none;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+#choice_wrap2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
