@@ -30,6 +30,7 @@ class UserService {
       const query = `SELECT point, address, address_id, c.store_id FROM users a INNER JOIN addresses b ON a.user_id = b.user_id INNER JOIN carts c ON a.user_id = c.user_id WHERE a.user_id = ${user_id} AND b.isCurrent = 1`;
 
       const user = await this.userRepository.findUser(query);
+
       return user;
     } catch (error) {
       console.error(error);

@@ -60,8 +60,8 @@
       img_url: storeImg,
     } 
    
-    await axios.post('/stores', data)
-    .then((res) => {alert('등록완료')})
+    await axios.put('/stores/{{store_id}}', data)
+    .then((res) => {alert('수정완료')})
   } 
   )
 </script>

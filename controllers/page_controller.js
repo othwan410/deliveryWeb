@@ -22,7 +22,15 @@ exports.renderOrderpage = (req, res) => {
 
 exports.renderRegistor = (req, res) => {
   res.render('store_create');
-};
+}
+
+exports.renderAdminpage = (req,res)=>{
+  res.render('adminpage')
+}
+
+exports.renderCreateMenuPage = (req,res)=>{
+  res.render('menu_create')
+}
 
 exports.renderSignIn = (req, res) => {
   res.render('signin', { title: '로그인' });
@@ -39,3 +47,4 @@ exports.renderSelectedMenu = (req, res) => {
 exports.renderReview = (req, res) => {
   res.render('review', { title: '리뷰' });
 };
+

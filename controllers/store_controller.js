@@ -46,6 +46,31 @@ class StoresController {
     }
   };
 
+  readStoreId = async (req, res, next) => {
+    try {
+
+      const user_id = res.locals.user_id;
+      const store_id = await this.storeService.readStoreId(user_id);
+      res.render('menu_create', {store_id});
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({ error: error });
+    }
+  }
+
+  readStoreByUser = async (req, res, next) => {
+    try {
+
+      const user_id = res.locals.user_id;
+      const store = await this.storeService.readStoreByUser(user_id);
+      console.log(store);
+      res.render('adminpage', {store});
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({ error: error });
+    }
+  }
+
   //카테고리별 가게 조회
   readStore = async (req, res, next) => {
     try {
@@ -138,9 +163,10 @@ class StoresController {
   //가게 삭제
   deleteStore = async (req, res, next) => {
     try {
-      const { store_id } = req.params;
+      const { store_id } =  parseInt(req.params.store_id);
+   
       const deleteStoreData = await this.storeService.deleteStore(store_id);
-
+              console.log(deleteStoreData);
       if (!deleteStoreData) {
         return res.status(400).json({ data: '가게 삭제에 실패했습니다.' });
       }
@@ -209,7 +235,8 @@ class StoresController {
   //메뉴 삭제
   deleteMenu = async (req, res, next) => {
     try {
-      const { menu_id } = req.params;
+      const menu_id  = parseInt(req.params.menu_id);
+      console.log("메뉴아이디",menu_id);
       const deleteMenuData = await this.storeService.deleteMenu(menu_id);
 
       if (!deleteMenuData) {
@@ -224,29 +251,27 @@ class StoresController {
     }
   };
 
-  //가게 이름을 전체 조회
-  findAllStoreName = async (req, res, next) => {
+  readStoreUpdate = async (req, res, next) => {
     try {
-      const allStoreName = await this.storeService.findAllStoreName();
-      return res.status(200).json({ data: allStoreName });
-    } catch (error) {
-      console.log(error);
-      return res
-        .status(400)
-        .json({ errorMessage: '가게 조회에 실패했습니다.' });
-    }
-  };
 
-  //메뉴 이름을 전체 조회
-  findAllMenuName = async (req, res, next) => {
-    try {
-      const allMenuName = await this.storeService.findAllMenuName();
-      return res.status(200).json({ data: allMenuName });
+      const user_id = res.locals.user_id;
+      const store_id = await this.storeService.getStoreId(user_id);
+      res.render('store_update', {store_id});
     } catch (error) {
       console.log(error);
-      return res
-        .status(400)
-        .json({ errorMessage: '메뉴 조회에 실패했습니다.' });
+      return res.status(400).json({ error: error });
+    }
+  }
+
+  findOneMenu = async (req, res, next) => {
+    try {
+      const menu_id = parseInt(req.params.menu_id);
+      const store = await this.storeService.findOneMenu(menu_id);
+      console.log(store);
+      res.render('menu_update', {store});
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({ error: error });
     }
   };
 

@@ -15,6 +15,10 @@ router.get('/stores', storesController.readStore);
 router.get('/stores/detail', isLoggedIn, storesController.readDetailStore);
 router.get('/keyword', storesController.readStoreByKeyword);
 
+router.get('/getStoreId', authorizated, storesController.readStoreId)
+
+router.get('/getStoreIdToPost', authorizated, storesController.readStoreByUser)
+
 router.post(
   '/stores/:store_id/menu',
   authorizated,
@@ -31,9 +35,8 @@ router.delete(
   storesController.deleteMenu
 );
 
-//가게이름, 메뉴이름
-router.get('/searchS', storesController.findAllStoreName);
-router.get('/searchM', storesController.findAllMenuName);
+router.get('/getStoreUpdate', authorizated, storesController.readStoreUpdate);
+router.get('/getMenuUpdate/:menu_id', storesController.findOneMenu);
 
 //메뉴 상세화면
 router.get('/stores/menusDetail', storesController.findMenuDetail);

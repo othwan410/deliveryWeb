@@ -179,36 +179,69 @@ class StoreRepository {
     return deleteMenuData;
   };
 
-  //가게 이름을 전체 조회
-  findAllStoreName = async () => {
-    const allStoreName = await Store.findAll({
-      attributes: ['store_id', 'name'],
-      order: [['createdAt', 'DESC']],
-      raw: true,
+  //
+  findStoreByUser = async (user_id) => {
+    const userStatus = await Store.findOne({
+      attributes: [
+        'store_id',
+        'name',
+        [
+          sequelize.literal(
+            `(SELECT point FROM users WHERE users.user_id = ${user_id})`
+          ),
+          'point',
+        ],
+      ],
+      where: {user_id},
+      raw: true
     });
 
-    return allStoreName;
+    return userStatus;
   };
 
-  //메뉴 이름을 전체 조회
-  findAllMenuName = async () => {
-    const allMenuName = await Menu.findAll({
-      attributes: ['menu_id', 'name'],
-      order: [['createdAt', 'DESC']],
-      raw: true,
+  findStoreMenuByUser = async (store_id) => {
+    const userStatus = await Menu.findAll({
+      attributes: [
+        'menu_id',
+        'name',
+      ],
+      where: {store_id},
+      raw: true
     });
 
-    return allMenuName;
+    return userStatus;
   };
 
   //user_id 의 status
   findOneStatus = async (user_id) => {
     const userStatus = await User.findOne({
-      attributes: ['status'],
-      where: { user_id },
+      attributes: [
+        'status',
+        [
+          sequelize.literal(
+            `(SELECT store_id FROM stores WHERE stores.user_id = ${user_id})`
+          ),
+          'store_id',
+        ],
+      ],
+      where: {user_id},
+      raw: true
     });
 
     return userStatus;
+  };
+
+  findOneMenu = async (menu_id) => {
+    const adminMenu = await Menu.findOne({
+      attributes: [
+        'menu_id',
+        'store_id',
+      ],
+      where: {menu_id},
+      raw: true
+    });
+
+    return adminMenu;
   };
 }
 
