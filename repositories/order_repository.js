@@ -47,6 +47,7 @@ class orderRepository {
     return await Order.findOne({
       attributes: [
         'order_id',
+        'store_id',
         'price',
         'request',
         [

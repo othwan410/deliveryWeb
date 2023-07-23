@@ -75,7 +75,8 @@
       {%elif order.order.status === '3' %}
       <p style="line-height: 1.5">배달중</p>
       {%elif order.order.status === '4' %}
-      <a href="/review"
+      <a
+        href="/review?store_id={{order.order.store_id}}&order_id={{order.order.order_id}}"
         ><button id="review" class="orderBtn">리뷰 작성</button></a
       >
       <p style="line-height: 1.5">배달 완료</p>

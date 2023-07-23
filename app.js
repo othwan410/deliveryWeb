@@ -40,6 +40,7 @@ nunjucks.configure('views', {
 //     morgan('dev')(req, res, next);
 //   }
 // });
+
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
@@ -50,6 +51,7 @@ app.use(passport.initialize());
 
 try {
   fs.readdirSync('uploads');
+  app.use('/', express.static(path.join(__dirname, 'uploads')));
 } catch (error) {
   console.error('uploads 폴더가 없어 uploads 폴더를 생성합니다.');
   fs.mkdirSync('uploads');
