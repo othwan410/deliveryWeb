@@ -30,14 +30,18 @@
     </div>
     <div id="menu_all">
       {% for menu in store.store.menu %}
-      <div id="{{menu.menu_id}}" class="menu_box">
+      <a
+        href="/stores/menusDetail?menu_id={{menu.menu_id}}"
+        id="{{menu.menu_id}}"
+        class="menu_box"
+      >
         <div class="menu_desc">
           <h2>{{menu.name}}</h2>
           <p class="desc">{{menu.desc}}</p>
           <p class="price">{{menu.price}}원</p>
         </div>
         <img src="{{menu.img_url}}" alt="메뉴사진" />
-      </div>
+      </a>
 
       {% endfor %}
     </div>
@@ -56,13 +60,6 @@
   $('.heart').click(() => {
     axios.post('/dibs?store_id={{store.store.store_id}}').then(() => {
       window.location.reload();
-    });
-  });
-
-  $('.menu_box').each((idx, menu) => {
-    $(menu).click(() => {
-      const menu_id = $(menu).attr('id');
-      console.log(menu_id);
     });
   });
 </script>

@@ -123,6 +123,13 @@ class StoreService {
     return createMenuData;
   };
 
+  //메뉴 상세조회
+  selectedMenu = async (menu_id) => {
+    const selectedMenu = await this.storeRepository.selectedMenu(menu_id);
+
+    return selectedMenu;
+  };
+
   //메뉴 수정
   updateMenu = async (name, price, img_url) => {
     const updateMenuData = await this.storeRepository.updateMenu(

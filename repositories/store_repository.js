@@ -137,6 +137,16 @@ class StoreRepository {
     return createMenuData;
   };
 
+  //메뉴 상세 조회
+  selectedMenu = async (menu_id) => {
+    const selectedMenu = await Menu.findOne({
+      attributes: [`menu_id`, `store_id`, `name`, `desc`, `price`, `img_url`],
+      where: { menu_id },
+    });
+
+    return selectedMenu;
+  };
+
   //메뉴 수정
   updateMenu = async (menu_id, name, price, img_url) => {
     const updateMenuData = await Menu.update(

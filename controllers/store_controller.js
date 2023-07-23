@@ -249,6 +249,17 @@ class StoresController {
         .json({ errorMessage: '메뉴 조회에 실패했습니다.' });
     }
   };
+
+  //메뉴 상세 조회
+  findMenuDetail = async (req, res, next) => {
+    try {
+      const menu_id = parseInt(req.query.menu_id);
+      const menu = await this.storeService.selectedMenu(menu_id);
+      res.render('select_menu', { menu: menu.dataValues });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 }
 
 module.exports = StoresController;

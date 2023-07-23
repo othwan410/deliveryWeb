@@ -35,4 +35,7 @@ router.delete(
 router.get('/searchS', storesController.findAllStoreName);
 router.get('/searchM', storesController.findAllMenuName);
 
+//메뉴 상세화면
+router.get('/stores/menusDetail', storesController.findMenuDetail);
+
 module.exports = router;

@@ -44,7 +44,9 @@ class CartController {
         });
       }
 
-      const { menu_id, store_id, ea } = req.query;
+      const menu_id = parseInt(req.query.menu_id);
+      const store_id = parseInt(req.query.store_id);
+      const ea = parseInt(req.query.ea);
       const user_id = res.locals.user_id;
       const cart = await this.cartService.createCart(
         user_id,
