@@ -56,7 +56,7 @@ class ReviewService {
       console.error(error);
 
       throw !error.status
-        ? { status: 400, errorMessage: '리뷰 등록에 실파해였습니다.' }
+        ? { status: 400, errorMessage: '이미 리뷰를 작성하였습니다.' }
         : error;
     }
   };

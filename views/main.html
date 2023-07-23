@@ -129,16 +129,21 @@
     location.href = '/';
   });
 
-  $('#profile').on('click', async () => {
+  $(document).on('click', '#profile', async function () {
     await axios({
       method: 'GET',
-      url: 'http://localhost:3001/auth/isLogin',
+      url: '/auth/isLogin',
     })
-      .then(async (response) => {
+      .then((response) => {
         const isLoggedIn = response.data.isLoggedIn;
+        const status = response.data.status;
 
         if (!isLoggedIn) {
           window.location.href = '/signin';
+        }
+
+        if (status === 'admin') {
+          window.location.href = '/store_create';
         }
       })
       .catch((response) => {

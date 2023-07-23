@@ -1,4 +1,17 @@
 {% extends 'layout.html' %} {% block content %}
+<div id="top">
+  <a href="/main"
+    ><img
+      id="home"
+      src="/images/home_FILL0_wght400_GRAD0_opsz48.png"
+      style="width: 30px; height: 30px; float: right; margin-left: 250px"
+  /></a>
+  <img
+    src="/images/back.png"
+    style="width: 20px; height: 20px; margin-top: 5px"
+    onclick="window.history.back()"
+  />
+</div>
 <h3 id="dibs-title">찜 목록</h3>
 
 <div id="dibs-list">
@@ -16,13 +29,44 @@
   </div>
   {% endfor %}
 
-  <nav id="nav2">
+  <nav id="nav4">
     <a href="/main"
       ><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png"
     /></a>
-    <a><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" /></a>
-    <a><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" /></a>
-    <a><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
+    <a href="/myDibs"
+      ><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
+    /></a>
+    <a href="/userOrders"
+      ><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png"
+    /></a>
+    <a href="/user"
+      ><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
+    /></a>
   </nav>
 </div>
+{% endblock %} {% block script %}
+<script>
+  $(document).on('click', '#profile', async function () {
+    await axios({
+      method: 'GET',
+      url: '/auth/isLogin',
+    })
+      .then((response) => {
+        const isLoggedIn = response.data.isLoggedIn;
+        const status = response.data.status;
+
+        if (!isLoggedIn) {
+          window.location.href = '/signin';
+        }
+
+        if (status === 'admin') {
+          window.location.href = '/store_create';
+        }
+      })
+      .catch((response) => {
+        alert('통신 오류');
+        console.log(response);
+      });
+  });
+</script>
 {% endblock %}
