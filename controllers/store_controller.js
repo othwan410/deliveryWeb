@@ -126,6 +126,7 @@ class StoresController {
       }
       const isDibs =
         store.store.dibs.indexOf(res.locals.user_id) !== -1 ? true : false;
+
       return res.render('store_detail', { store, isDibs });
     } catch (error) {
       console.error(error);
@@ -272,7 +273,18 @@ class StoresController {
       console.log(error);
       return res.status(400).json({ error: error });
     }
-  }
+  };
+
+  //메뉴 상세 조회
+  findMenuDetail = async (req, res, next) => {
+    try {
+      const menu_id = parseInt(req.query.menu_id);
+      const menu = await this.storeService.selectedMenu(menu_id);
+      res.render('select_menu', { menu: menu.dataValues });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 }
 
 module.exports = StoresController;

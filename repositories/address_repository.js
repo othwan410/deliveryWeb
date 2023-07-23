@@ -6,14 +6,14 @@ class AddressRepository {
     return await Address.findAll({
       attributes: ['address_id', 'address'],
       where: { user_id },
-      order: [['updatedAt', 'DESC']],
+      order: [['address_id', 'DESC']],
     });
   };
 
   //마지막으로 사용한 주소
   findUserAddressOne = async (user_id) => {
     return await Address.findOne({
-      attributes: ['address_id', 'address'],
+      attributes: ['createdAt', 'address'],
       where: { isCurrent: 1, user_id },
     });
   };
@@ -37,10 +37,6 @@ class AddressRepository {
       { isCurrent: true },
       { where: { address_id }, transaction: t }
     );
-  };
-
-  updateAddress = async (address, address_id) => {
-    return await Address.update({ address }, { where: { address_id } });
   };
 
   deleteAddress = async (address_id) => {

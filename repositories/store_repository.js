@@ -38,6 +38,15 @@ class StoreRepository {
     return readAllfindStoreData;
   };
 
+  readStoreAll = async () => {
+    const readAllfindStoreData = await Store.findAll({
+      attributes: ['name', 'img_url', 'rating', 'store_id', 'call'],
+      order: [['createdAt', 'DESC']],
+    });
+
+    return readAllfindStoreData;
+  };
+
   readStoreById = async (storeIdSet) => {
     const store_id = [...storeIdSet];
 
@@ -79,7 +88,7 @@ class StoreRepository {
       include: [
         {
           model: Menu,
-          attributes: ['name', 'price', 'img_url', 'desc'],
+          attributes: ['name', 'price', 'img_url', 'desc', 'menu_id'],
         },
         {
           model: Dibs,
@@ -135,6 +144,16 @@ class StoreRepository {
     });
 
     return createMenuData;
+  };
+
+  //메뉴 상세 조회
+  selectedMenu = async (menu_id) => {
+    const selectedMenu = await Menu.findOne({
+      attributes: [`menu_id`, `store_id`, `name`, `desc`, `price`, `img_url`],
+      where: { menu_id },
+    });
+
+    return selectedMenu;
   };
 
   //메뉴 수정

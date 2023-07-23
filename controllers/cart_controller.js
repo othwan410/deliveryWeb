@@ -7,9 +7,8 @@ class CartController {
     try {
       const user_id = res.locals.user_id;
       const carts = await this.cartService.findAllUserCart(user_id);
-
-      // res.render('cart', { carts });
-      res.status(201).json({ carts });
+      console.log(carts);
+      res.render('carts', { carts: carts.cart, total: carts.price[0] });
     } catch (error) {
       console.log(error);
       return res.status(400).json({
@@ -44,7 +43,9 @@ class CartController {
         });
       }
 
-      const { menu_id, store_id, ea } = req.query;
+      const menu_id = parseInt(req.query.menu_id);
+      const store_id = parseInt(req.query.store_id);
+      const ea = parseInt(req.query.ea);
       const user_id = res.locals.user_id;
       const cart = await this.cartService.createCart(
         user_id,
@@ -72,8 +73,9 @@ class CartController {
         });
       }
 
-      const { cart_id, ea } = req.query;
-
+      const cart_id = parseInt(req.query.cart_id);
+      const ea = parseInt(req.query.ea);
+      console.log(cart_id, ea);
       if (!cart_id) {
         return res.status(412).json({
           success: false,

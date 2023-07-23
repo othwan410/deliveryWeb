@@ -21,12 +21,7 @@ router.put(
   addressController.updateIsCurren
 );
 
-// 유저 주소 수정
-router.put(
-  '/addresses/:address_id',
-  authorizated,
-  addressController.updateAddress
-);
+//유저 등록주소 삭제
 router.delete(
   '/addresses/:address_id',
   authorizated,

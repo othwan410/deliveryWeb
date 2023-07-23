@@ -4,15 +4,20 @@
     <input id="account" , type="text" placeholder="이메일" /><br />
     <input id="nickname" type="text" placeholder="닉네임" /><br />
     <input id="phone" type="text" placeholder="전화번호" /><br />
-    <input id="password" type="text" placeholder="비밀번호" /><br />
-    <input id="confirm" type="text" placeholder="비밀번호 확인" /><br />
-    <input id="status" type="text" placeholder="normal or admin" /><br />
+    <input id="password" type="password" placeholder="비밀번호" /><br />
+    <input id="confirm" type="password" placeholder="비밀번호 확인" /><br />
+    <label for=""
+      ><input type="radio" name="status" value="normal" />사용자</label
+    >
+    <label for=""
+      ><input type="radio" name="status" value="admin" />사장님</label
+    ><br />
     <a href="/auth/join"><button id="join-btn">회원가입</button></a>
   </form>
 </div>
 {% endblock %} {% block script %}
 <script>
-  $('#join-btn').on('click', async function (e) {
+  $(document).on('click', '#join-btn', async function (e) {
     e.preventDefault();
 
     const account = $('#account').val();
@@ -20,11 +25,11 @@
     const phone = $('#phone').val();
     const password = $('#password').val();
     const confirm = $('#confirm').val();
-    const status = $('#status').val();
+    const status = $('input[type=radio][name=status]:checked').val();
 
     await axios({
       method: 'POST',
-      url: 'http://localhost:3000/auth/join',
+      url: '/auth/join',
       data: {
         account,
         nickname,

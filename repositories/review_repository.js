@@ -58,6 +58,18 @@ class ReviewRepository {
     }
   };
 
+  ratingSet = async (query2, t) => {
+    try {
+      await sequelize.query(query2, {
+        type: sequelize.QueryTypes.UPDATE,
+      });
+
+      return;
+    } catch (error) {
+      throw error;
+    }
+  };
+
   //가게별 리뷰 조회
   findReviews = async (query) => {
     try {

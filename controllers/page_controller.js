@@ -40,3 +40,11 @@ exports.renderProfile = (req, res) => {
   res.render('profile', { title: '프로필' });
 };
 
+exports.renderSelectedMenu = (req, res) => {
+  res.render('select_menu');
+};
+
+exports.renderReview = (req, res) => {
+  res.render('review', { title: '리뷰' });
+};
+

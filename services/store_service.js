@@ -47,10 +47,12 @@ class StoreService {
 
   //카테고리별 가게조회
   readStore = async (category_id) => {
-    const readAllfindStoreData = await this.storeRepository.readStore(
-      category_id
-    );
-
+    let readAllfindStoreData;
+    if (parseInt(category_id) === 1) {
+      readAllfindStoreData = await this.storeRepository.readStoreAll();
+    } else {
+      readAllfindStoreData = await this.storeRepository.readStore(category_id);
+    }
     return readAllfindStoreData;
   };
 
@@ -95,6 +97,7 @@ class StoreService {
           desc: menu.desc,
           price: menu.price,
           img_url: menu.img_url,
+          menu_id: menu.menu_id,
         })),
         dibs: readDetailStoreData.Dibs.map((dibs) => {
           return dibs.user_id;
@@ -137,6 +140,13 @@ class StoreService {
     );
 
     return createMenuData;
+  };
+
+  //메뉴 상세조회
+  selectedMenu = async (menu_id) => {
+    const selectedMenu = await this.storeRepository.selectedMenu(menu_id);
+
+    return selectedMenu;
   };
 
   //메뉴 수정
