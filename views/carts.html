@@ -1,29 +1,30 @@
-{%extends 'layout.html'%} {% block content %}
-<h1>장바구니</h1>
+{% extends 'layout.html' %} {% block content %}
 
-<div id="choice_box">
-  {% for menu in carts}
-  <div class="{{menu.cart_id}}" id="menu_wrap">
-    <p id="menu_detail_title">{{menu.menu}}</p>
-    <p id="menu_detail_desc">{{menu.desc}}</p>
-    <p id="menu_detail_price">{{menu.price}}</p>
+<div id="choice_wrap2">
+  {%for cart in carts%}
+  <div class="{{cart.cart_id}}" id="menu_wrap">
+    <p id="menu_detail_title">{{cart.menu}}</p>
+    <p id="menu_detail_price">{{cart.price}}</p>
     <p id="won">원</p>
-    <hr />
+
     <div id="menu_detail_ea">
       <p>수량</p>
-      <button id="sub">-</button>
-      <p id="ea_number">{{menu.ea}}</p>
-      <button id="add">+</button>
+      <button class="{{cart.cart_id}}" id="sub">-</button>
+      <p id="ea_number">{{cart.ea}}</p>
+      <button class="{{cart.cart_id}}" id="add">+</button>
     </div>
+    <hr />
   </div>
-  {% endfor %}
+  {%endfor%}
+
   <div id="ea_info">
     <p>총 주문금액</p>
     <span id="total_price">{{total.price}}원</span>
   </div>
-  <div id="botton_bottom"><button id="input_basket">주문하기</button></div>
+  <a href="/orderCheck" id="botton_bottom"
+    ><button id="order_complet">주문하기</button></a
+  >
 </div>
-
 <nav id="nav6">
   <a href="/"><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></a>
   <a href="/myDibs"
@@ -36,44 +37,37 @@
     ><img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
   /></a>
 </nav>
-{% block script %}
+{%endblock%} {%block script%}
 <script>
+  let number = $('#ea_number').text();
+  let ea = parseInt(number);
+  let price = $('#menu_detail_price').text();
+  let totalPrice = parseInt(price);
+
   $('#sub').click((e) => {
     e.preventDefault();
-    const number = $('#ea_number').text();
-    const ea = parseInt(number);
-    const price = $('#menu_detail_price').text();
-    const totalPrice = parseInt(price);
-    if (ea <= 0) {
-      // alert('수량은 0보다 커야합니다.');
-      $('#ea_number').text('0');
+    if (ea < 1) {
+      alert('수량은 0보다 커야합니다.');
       return;
     }
-    $('#ea_number').text(ea - 1);
+    ea--;
+    $('#ea_number').text(ea);
     $('#total_price').text(totalPrice * ea + '원');
+    const cart_id = $('#sub').attr('class');
 
-    return;
-  });
-  $('#add').click(() => {
-    const number = $('#ea_number').text();
-    const price = $('#menu_detail_price').text();
-    const totalPrice = parseInt(price);
-    const ea = parseInt(number);
-    $('#ea_number').text(ea + 1);
-    $('#total_price').text(totalPrice * ea + '원');
-    eaData = ea + 1;
+    axios.put(`/carts?cart_id=${cart_id}&ea=${ea}`);
     return;
   });
 
-  $('#input_basket').click(() => {
-    const menu_id = '{{menu.menu_id}}';
-    const store_id = '{{menu.store_id}}';
-    const ea = $('#ea_number').text();
-    axios
-      .post(`/carts?menu_id=${menu_id}&store_id=${store_id}&ea=${ea}`)
-      .then(() => {
-        location.reload();
-      });
+  $('#add').click((e) => {
+    e.preventDefault();
+    ea++;
+    $('#ea_number').text(ea);
+    $('#total_price').text(totalPrice * ea + '원');
+    const cart_id = $('#add').attr('class');
+
+    axios.put(`/carts?cart_id=${cart_id}&ea=${ea}`);
+    return;
   });
 </script>
-{%endblock%} {% endblock %}
+{% endblock %}
