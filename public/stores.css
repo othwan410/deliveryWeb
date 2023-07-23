@@ -3,7 +3,7 @@
   margin-top: 20px;
   width: 340px;
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  /* grid-template-columns: 1fr 3fr; */
   cursor: pointer;
 }
 
@@ -52,7 +52,7 @@ hr {
 #store_category {
   height: auto;
   margin-top: 25px;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
 }
 
 a {
@@ -92,13 +92,13 @@ a {
 
 #scroll_container2 {
   width: 350px;
-  height: 450px;
+  height: 550px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   scrollbar-width: none;
-  overflow-y: hidden;
+  overflow-y: auto;
   border-radius: 25px;
   -ms-overflow-style: none;
 }
@@ -107,7 +107,7 @@ a {
   width: 320px;
   height: 20px;
   margin-left: 5px;
-  margin-top: 540px;
+  margin-top: 470px;
   border-top: 1px solid rgba(0, 0, 0, 0.4);
   border-bottom: 20px solid black;
   background: white;
