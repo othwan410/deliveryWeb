@@ -7,7 +7,7 @@
     </div>
     <div>
         <div id="titleDiv">
-            <p style="font-size: 20px; font-weight: bold;">사장님 주문 내역 (orderList 참고)</p>
+            <p style="font-size: 20px; font-weight: bold;">사장님 주문 내역</p>
         </div>
     </div>
     <div style="margin-top: 30px;">
@@ -17,24 +17,28 @@
         </div>
         {% endif %}
         {% for order in order %}
-        <div class="order_box">
+        <div class="order_box" style = "margin-top: 30px;">
+            {% if order.status !== '0' and order.status !== '4' %}
             <a href="/order/{{order.order_id}}">
+            {% endif %}
                 <p style="float: right; font-size: medium; font-weight: bold; padding-right: 20px;">
                     {{order.price}}원</p>
                 <p style="font-size: medium; font-weight: bold;">{{order.name}}</p>
                 {%if order.status === '0' %}
                 <p style="float: right; padding-right: 20px;">주문 취소</p>
-                
+                {%elif order.status === '1' %}
+                <p style="float: right; padding-right: 20px;">주문 요청</p>
                 {%elif order.status === '2' %}
                 <p style="float: right; padding-right: 20px;">조리중</p>
-
                 {%elif order.status === '3' %}
                 <p style="float: right; padding-right: 20px;">배달중</p>
-
                 {%elif order.status === '4' %}
                 <p style="float: right; padding-right: 20px;">배달 완료</p>
                 {% endif %}
+                <p>주문 상태:</p>
+            {% if order.status !== '0' and order.status !== '4' %}
             </a>
+            {% endif %}
             <hr style="border: solid 1px rgb(202, 25, 84);">
         </div>
         {% endfor %}

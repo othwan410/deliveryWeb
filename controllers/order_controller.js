@@ -190,6 +190,37 @@ class OrderController {
         .json({ errorMessage: '주문내역 삭제에 실패했습니다.' });
     }
   };
+
+  findOneAdminOrder = async (req, res, next) => {
+    try {
+      if (!req.params) {
+        return res.status(400).json({
+          success: false,
+          errorMessage: "'데이터 형식이 올바르지 않습니다.'",
+        });
+      }
+
+      const { order_id } = req.params;
+
+      if (!order_id) {
+        return res.status(412).json({
+          success: false,
+          errorMessage: '주문내역의 형식이 일치하지 않습니다.',
+        });
+      }
+
+      const order = await this.orderService.findOneOrder(order_id);
+      console.log(order);
+      res.render('orderAdminDetail', { order });
+      return { order };
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({
+        success: false,
+        errorMessage: '주문내역의 조회에 실패하였습니다.',
+      });
+    }
+  };
 }
 
 module.exports = OrderController;

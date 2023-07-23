@@ -31,4 +31,7 @@ router.post('/orders', authorizated, orderController.createOrder);
 //주문취소일 경우 유저가 확인 시 삭제
 router.delete('/orders/:order_id', authorizated, orderController.deleteOrder);
 
+//사장 오더 상세 조회
+router.get('/order/:order_id', authorizated, orderController.findOneAdminOrder);
+
 module.exports = router;

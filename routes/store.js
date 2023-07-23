@@ -17,7 +17,7 @@ router.get('/keyword', storesController.readStoreByKeyword);
 
 router.get('/getStoreId', authorizated, storesController.readStoreId)
 
-router.get('/getStoreIdToPost', authorizated, storesController.readStoreIdtoPost)
+router.get('/getStoreIdToPost', authorizated, storesController.readStoreByUser)
 
 router.post(
   '/stores/:store_id/menu',
@@ -35,7 +35,7 @@ router.delete(
   storesController.deleteMenu
 );
 
-//가게이름, 메뉴이름
-//router.get('/getStoreIdToPost', storesController.findStoreName);
+router.get('/getStoreUpdate', authorizated, storesController.readStoreUpdate);
+router.get('/getMenuUpdate/:menu_id', storesController.findOneMenu);
 
 module.exports = router;

@@ -37,7 +37,7 @@ class orderRepository {
           'name',
         ],
       ],
-      where: { store_id, status: [1, 2, 3, 4] },
+      where: { store_id, status: [0, 1, 2, 3, 5] },
       order: [['status'], ['createdAt', 'DESC']],
       raw: true,
     });

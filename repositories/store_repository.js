@@ -160,20 +160,38 @@ class StoreRepository {
     return deleteMenuData;
   };
 
-  //사장님 가게 이름 조회
-  findStoreName = async (store_id) => {
-    const storeName = await Store.findAll({
-      where: { store_id },
+  //
+  findStoreByUser = async (user_id) => {
+    const userStatus = await Store.findOne({
       attributes: [
         'store_id',
         'name',
+        [
+          sequelize.literal(
+            `(SELECT point FROM users WHERE users.user_id = ${user_id})`
+          ),
+          'point',
+        ],
       ],
-      raw: true,
+      where: {user_id},
+      raw: true
     });
 
-    return storeName;
+    return userStatus;
   };
 
+  findStoreMenuByUser = async (store_id) => {
+    const userStatus = await Menu.findAll({
+      attributes: [
+        'menu_id',
+        'name',
+      ],
+      where: {store_id},
+      raw: true
+    });
+
+    return userStatus;
+  };
 
   //user_id 의 status
   findOneStatus = async (user_id) => {
@@ -192,6 +210,19 @@ class StoreRepository {
     });
 
     return userStatus;
+  };
+
+  findOneMenu = async (menu_id) => {
+    const adminMenu = await Menu.findOne({
+      attributes: [
+        'menu_id',
+        'store_id',
+      ],
+      where: {menu_id},
+      raw: true
+    });
+
+    return adminMenu;
   };
 }
 

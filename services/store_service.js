@@ -38,6 +38,13 @@ class StoreService {
     return userStoreId.store_id;
   };
 
+  readStoreByUser = async (user_id) => {
+    const store = await this.storeRepository.findStoreByUser(user_id);
+    const menu = await this.storeRepository.findStoreMenuByUser(store.store_id)
+
+    return {store, menu}
+  };
+
   //카테고리별 가게조회
   readStore = async (category_id) => {
     const readAllfindStoreData = await this.storeRepository.readStore(
@@ -150,12 +157,17 @@ class StoreService {
     return deleteMenuData;
   };
 
-  //사장님 가게 이름을 조회
-  findStoreName = async (store_id) => {
-    const storeName = await this.storeRepository.findStoreName(store_id);
+  getStoreId = async (user_id) => {
+    const userStoreId = await this.storeRepository.findOneStatus(user_id);
 
-    return storeName;
+    return userStoreId.store_id;
   };
+
+  findOneMenu = async (menu_id) => {
+    const adminMenu = await this.storeRepository.findOneMenu(menu_id);
+
+    return adminMenu;
+  }
 
 }
 

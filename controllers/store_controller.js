@@ -58,12 +58,13 @@ class StoresController {
     }
   }
 
-  readStoreIdtoPost = async (req, res, next) => {
+  readStoreByUser = async (req, res, next) => {
     try {
 
       const user_id = res.locals.user_id;
-      const store_id = await this.storeService.readStoreId(user_id);
-      res.render('adminpage', {store_id});
+      const store = await this.storeService.readStoreByUser(user_id);
+      console.log(store);
+      res.render('adminpage', {store});
     } catch (error) {
       console.log(error);
       return res.status(400).json({ error: error });
@@ -161,9 +162,10 @@ class StoresController {
   //가게 삭제
   deleteStore = async (req, res, next) => {
     try {
-      const { store_id } = req.params;
+      const { store_id } =  parseInt(req.params.store_id);
+   
       const deleteStoreData = await this.storeService.deleteStore(store_id);
-
+              console.log(deleteStoreData);
       if (!deleteStoreData) {
         return res.status(400).json({ data: '가게 삭제에 실패했습니다.' });
       }
@@ -232,7 +234,8 @@ class StoresController {
   //메뉴 삭제
   deleteMenu = async (req, res, next) => {
     try {
-      const { menu_id } = req.params;
+      const menu_id  = parseInt(req.params.menu_id);
+      console.log("메뉴아이디",menu_id);
       const deleteMenuData = await this.storeService.deleteMenu(menu_id);
 
       if (!deleteMenuData) {
@@ -247,20 +250,29 @@ class StoresController {
     }
   };
 
-  //사장님 가게 이름을 조회
-  // findStoreName = async (req, res, next) => {
-  //   try {
-  //     const { store_id } = req.params;
-  //     const storeName = await this.storeService.findStoreName(store_id);
-  //     console.log(storeName);
-  //     res.render('adminpage', {storeName})
-  //   } catch (error) {
-  //     console.log(error);
-  //     return res
-  //       .status(400)
-  //       .json({ errorMessage: '가게 조회에 실패했습니다.' });
-  //   }
-  // };
+  readStoreUpdate = async (req, res, next) => {
+    try {
+
+      const user_id = res.locals.user_id;
+      const store_id = await this.storeService.getStoreId(user_id);
+      res.render('store_update', {store_id});
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({ error: error });
+    }
+  }
+
+  findOneMenu = async (req, res, next) => {
+    try {
+      const menu_id = parseInt(req.params.menu_id);
+      const store = await this.storeService.findOneMenu(menu_id);
+      console.log(store);
+      res.render('menu_update', {store});
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({ error: error });
+    }
+  }
 }
 
 module.exports = StoresController;
