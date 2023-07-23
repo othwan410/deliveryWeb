@@ -157,12 +157,6 @@ class StoreService {
     return storeName;
   };
 
-  //사장님 메뉴 이름을 전체 조회
-  findAllMenuName = async (store_id) => {
-    const allMenuName = await this.storeRepository.findAllMenuName(store_id);
-
-    return allMenuName;
-  };
 }
 
 module.exports = StoreService;

@@ -1,22 +1,20 @@
 {% extends 'layout.html' %} {% block content %}
 <div id="adminpages">
   <div id="store">
-    <r><label for="name">{{storeName.name}}</label>
+    <r><label for="name">가게 이름</label>
     <button type="submit" onclick="">수정</button>
     <button type="submit" onclick="">삭제</button></r>
-    {% for menu in allMenuName %}
     <div id="menu">
       <r><label for="name">메뉴</label>
       <button type="submit" onclick="">수정</button>
       <button type="submit" onclick="">삭제</button></r>
     </div>
-    {% endfor %}
     <rr><label for="point">보유한 포인트</label></rr>
     <v><a href="/getStoreId"><button>메뉴 등록하기</button></a>
-       <button>주문내역 조회하기</button></v>
+       <a href="/adminOrders/{{store_id}}"><button>주문내역 조회하기</button></a></v>
     <!-- <div class="white-space"></div> -->
   </div>
 </div>
 {%endblock%} {% block script %}
-    <script></script>
+<script></script>
 {%endblock%}

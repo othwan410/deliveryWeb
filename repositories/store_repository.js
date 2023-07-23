@@ -162,10 +162,11 @@ class StoreRepository {
 
   //사장님 가게 이름 조회
   findStoreName = async (store_id) => {
-    const storeName = await Store.findOne({
+    const storeName = await Store.findAll({
       where: { store_id },
       attributes: [
-        'name'
+        'store_id',
+        'name',
       ],
       raw: true,
     });
@@ -173,19 +174,6 @@ class StoreRepository {
     return storeName;
   };
 
-  //사장님 메뉴이름 전체 조회
-  findAllMenuName = async (store_id) => {
-    const allMenuName = await Menu.findAll({
-      where: { store_id },
-      attributes: [
-        'name',
-      ],
-      order: [['createdAt', 'DESC']],
-      raw: true,
-    });
-
-    return allMenuName;
-  };
 
   //user_id 의 status
   findOneStatus = async (user_id) => {

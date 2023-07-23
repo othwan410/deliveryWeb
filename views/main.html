@@ -50,6 +50,7 @@
       <div></div>
     </div>
   </div>
+</div>
   {% endblock %} {% block script %}
   <script>
     axios
@@ -102,7 +103,7 @@
     $('#profile').on('click', async () => {
       await axios({
         method: 'GET',
-        url: 'http://localhost:3001/auth/isLogin',
+        url: 'http://localhost:3000/auth/isLogin',
       })
         .then(async (response) => {
           const isLoggedIn = response.data.isLoggedIn;
@@ -118,4 +119,3 @@
     });
   </script>
   {% endblock %}
-</div>

@@ -58,6 +58,18 @@ class StoresController {
     }
   }
 
+  readStoreIdtoPost = async (req, res, next) => {
+    try {
+
+      const user_id = res.locals.user_id;
+      const store_id = await this.storeService.readStoreId(user_id);
+      res.render('adminpage', {store_id});
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({ error: error });
+    }
+  }
+
   //카테고리별 가게 조회
   readStore = async (req, res, next) => {
     try {
@@ -236,48 +248,19 @@ class StoresController {
   };
 
   //사장님 가게 이름을 조회
-  findStoreName = async (req, res, next) => {
-    try {
-      const { store_id } = req.params;
-      const storeName = await this.storeService.findStoreName(store_id);
-      console.log(storeName);
-      res.render('adminpage', { storeName });
-    } catch (error) {
-      console.log(error);
-      return res
-        .status(400)
-        .json({ errorMessage: '가게 조회에 실패했습니다.' });
-    }
-  };
-
-  //사장님 메뉴 이름을 전체 조회
-  findAllMenuName = async (req, res, next) => {
-    try {
-      const { store_id } = req.params;
-      const allMenuName = await this.storeService.findAllMenuName(store_id);
-      console.log(allMenuName);
-      res.render('adminpage', { allMenuName });
-    } catch (error) {
-      console.log(error);
-      return res
-        .status(400)
-        .json({ errorMessage: '메뉴 조회에 실패했습니다.' });
-    }
-  };
-
-  readStoreId2 = async (req, res, next) => {
-    try {
-
-      const user_id = res.locals.user_id;
-      const store_id = await this.storeService.readStoreId(user_id);
-      console.log(store_id);
-      res.render('store_create', {store_id});
-    } catch (error) {
-      console.log(error);
-      return res.status(400).json({ error: error });
-    }
-  }
-
+  // findStoreName = async (req, res, next) => {
+  //   try {
+  //     const { store_id } = req.params;
+  //     const storeName = await this.storeService.findStoreName(store_id);
+  //     console.log(storeName);
+  //     res.render('adminpage', {storeName})
+  //   } catch (error) {
+  //     console.log(error);
+  //     return res
+  //       .status(400)
+  //       .json({ errorMessage: '가게 조회에 실패했습니다.' });
+  //   }
+  // };
 }
 
 module.exports = StoresController;

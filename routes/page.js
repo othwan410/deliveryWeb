@@ -22,7 +22,7 @@ router.get('/main', isLoggedIn, addressController.findCurrentAddress);
 router.get('/', renderLoading);
 router.get('/orderComplete', renderOrderComplete);
 router.get('/store_create', renderRegistor);
-// router.get('/adminpage', renderAdminpage);
+router.get('/adminpage', renderAdminpage);
 router.get('/menu_create', renderCreateMenuPage);
 router.get('/join', renderJoin);
 router.get('/signin', renderSignIn);

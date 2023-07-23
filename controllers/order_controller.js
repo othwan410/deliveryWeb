@@ -28,8 +28,7 @@ class OrderController {
 
       const { store_id } = req.params;
       const order = await this.orderService.findAllAdminOrder(store_id);
-
-      return res.status(200).json({ data: order });
+      res.render('orderAdmin', { order });
     } catch (error) {
       console.log(error);
       return res.status(400).json({
