@@ -17,6 +17,8 @@ router.get('/stores/detail', isLoggedIn, storesController.readDetailStore);
 
 router.get('/keyword', storesController.readStoreByKeyword);
 
+router.get('/getStoreId', authorizated, storesController.readStoreId)
+
 router.post(
   '/stores/:store_id/menu',
   authorizated,

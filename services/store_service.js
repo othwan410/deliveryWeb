@@ -6,7 +6,7 @@ class StoreService {
   //가게 등록
   createStore = async (user_id, name, call, category_id, address, content, img_url) => {
     const userStatus = await this.storeRepository.findOneStatus(user_id);
-    if (userStatus.status === 'admin') {
+    if (userStatus.status === 'admin' && !userStatus.store_id) {
     const createStoreData = await this.storeRepository.createStore(
       user_id,
       name,
@@ -20,6 +20,16 @@ class StoreService {
     return createStoreData;
     };
   };
+
+  readStoreId = async (user_id) => {
+    const userStoreId = await this.storeRepository.findOneStatus(user_id);
+    if (userStoreId.status !== 'admin' && !userStoreId.store_id) {
+     return false;
+    };
+
+    return userStoreId.store_id;
+  };
+
   //카테고리별 가게조회
   readStore = async (category_id) => {
     const readAllfindStoreData = await this.storeRepository.readStore(

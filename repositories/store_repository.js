@@ -165,8 +165,7 @@ class StoreRepository {
     const storeName = await Store.findOne({
       where: { store_id },
       attributes: [
-        'store_id',
-        'name',
+        'name'
       ],
       raw: true,
     });
@@ -179,7 +178,6 @@ class StoreRepository {
     const allMenuName = await Menu.findAll({
       where: { store_id },
       attributes: [
-        'menu_id',
         'name',
       ],
       order: [['createdAt', 'DESC']],
@@ -193,9 +191,16 @@ class StoreRepository {
   findOneStatus = async (user_id) => {
     const userStatus = await User.findOne({
       attributes: [
-        'status'
+        'status',
+        [
+          sequelize.literal(
+            `(SELECT store_id FROM stores WHERE stores.user_id = ${user_id})`
+          ),
+          'store_id',
+        ],
       ],
-      where: {user_id}
+      where: {user_id},
+      raw: true
     });
 
     return userStatus;

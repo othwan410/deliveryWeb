@@ -29,7 +29,7 @@
       img_url: menuImg
     }
 
-    await axios.post('/stores/:store_id/menu', data)
+    await axios.post('/stores/{{store_id}}/menu', data)
     .then((res) => {alert('등록완료')})
   })
 </script>
