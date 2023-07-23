@@ -38,6 +38,15 @@ class StoreRepository {
     return readAllfindStoreData;
   };
 
+  readStoreAll = async () => {
+    const readAllfindStoreData = await Store.findAll({
+      attributes: ['name', 'img_url', 'rating', 'store_id', 'call'],
+      order: [['createdAt', 'DESC']],
+    });
+
+    return readAllfindStoreData;
+  };
+
   readStoreById = async (storeIdSet) => {
     const store_id = [...storeIdSet];
 

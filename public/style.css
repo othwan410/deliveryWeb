@@ -146,7 +146,7 @@ table {
   background-repeat: no-repeat;
   background-size: cover;
   overflow-x: hidden;
-  overflow-y: hidden; //  이게 있어야 엉뚱한 곳에 스크롤이 안생깁니다.
+  overflow-y: hidden;
 }
 /* #wrap::-webkit-scrollbar {         //이거 지워야 됩니다
   display: none;
@@ -241,11 +241,10 @@ header img {
   font-size: 14px;
   font-weight: bold;
   display: grid;
-  grid-template-column: 1fr 1fr;
+  /* grid-template-column: 1fr 1fr; */
   cursor: pointer;
   z-index: 14;
 }
-/* } */
 
 #address_modal {
   width: 335px;
@@ -319,7 +318,6 @@ header img {
   box-shadow: 0 0 4px #71555c;
 }
 
-//등록된 주소 옆 삭제 버튼
 .delete_addr {
   width: 40px;
   height: 5px;

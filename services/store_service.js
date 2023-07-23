@@ -30,10 +30,12 @@ class StoreService {
   };
   //카테고리별 가게조회
   readStore = async (category_id) => {
-    const readAllfindStoreData = await this.storeRepository.readStore(
-      category_id
-    );
-
+    let readAllfindStoreData;
+    if (parseInt(category_id) === 1) {
+      readAllfindStoreData = await this.storeRepository.readStoreAll();
+    } else {
+      readAllfindStoreData = await this.storeRepository.readStore(category_id);
+    }
     return readAllfindStoreData;
   };
 
