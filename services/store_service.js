@@ -14,20 +14,37 @@ class StoreService {
     img_url
   ) => {
     const userStatus = await this.storeRepository.findOneStatus(user_id);
-    if (userStatus.status === 'admin') {
-      const createStoreData = await this.storeRepository.createStore(
-        user_id,
-        name,
-        call,
-        category_id,
-        address,
-        content,
-        img_url
-      );
-
-      return createStoreData;
-    }
+    if (userStatus.status === 'admin' && !userStatus.store_id) {
+    const createStoreData = await this.storeRepository.createStore(
+      user_id,
+      name,
+      call,
+      category_id,
+      address,
+      content,
+      img_url
+    );
+    
+    return createStoreData;
+    };
   };
+
+  readStoreId = async (user_id) => {
+    const userStoreId = await this.storeRepository.findOneStatus(user_id);
+    if (userStoreId.status !== 'admin' && !userStoreId.store_id) {
+     return false;
+    };
+
+    return userStoreId.store_id;
+  };
+
+  readStoreByUser = async (user_id) => {
+    const store = await this.storeRepository.findStoreByUser(user_id);
+    const menu = await this.storeRepository.findStoreMenuByUser(store.store_id)
+
+    return {store, menu}
+  };
+
   //카테고리별 가게조회
   readStore = async (category_id) => {
     let readAllfindStoreData;
@@ -150,19 +167,18 @@ class StoreService {
     return deleteMenuData;
   };
 
-  //가게 이름을 전체 조회
-  findAllStoreName = async () => {
-    const allStoreName = await this.storeRepository.findAllStoreName();
+  getStoreId = async (user_id) => {
+    const userStoreId = await this.storeRepository.findOneStatus(user_id);
 
-    return allStoreName;
+    return userStoreId.store_id;
   };
 
-  //메뉴 이름을 전체 조회
-  findAllMenuName = async () => {
-    const allMenuName = await this.storeRepository.findAllMenuName();
+  findOneMenu = async (menu_id) => {
+    const adminMenu = await this.storeRepository.findOneMenu(menu_id);
 
-    return allMenuName;
-  };
+    return adminMenu;
+  }
+
 }
 
 module.exports = StoreService;

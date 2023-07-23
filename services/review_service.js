@@ -12,7 +12,7 @@ class ReviewService {
       if (!review) {
         //리뷰를 작성하지 않았을 때
         throw { status: 412, errorMessage: '리뷰를 작성해주세요.' };
-      } else if (!rating) {
+      } else if (!+rating) {
         //별점을 입력하지 않았을 때
         throw { status: 412, errorMessage: '별점을 매겨주세요' };
       }
@@ -53,11 +53,8 @@ class ReviewService {
 
       await this.reviewRepository.createReview(query, t);
       await this.reviewRepository.ratingSet(query2, t);
-
-      await t.commit();
       return;
     } catch (error) {
-      await t.rollback();
       console.error(error);
 
       throw !error.status
@@ -101,7 +98,7 @@ class ReviewService {
       if (!review) {
         //리뷰를 작성하지 않았을 때
         throw { status: 412, errorMessage: '리뷰를 작성해주세요.' };
-      } else if (!rating) {
+      } else if (!+rating) {
         //별점을 입력하지 않았을 때
         throw { status: 412, errorMessage: '별점을 매겨주세요' };
       }
@@ -144,11 +141,15 @@ class ReviewService {
       const query = `update reviews set review='${review}', rating=${rating}, img_url='${imgUrl}'
                     where order_id = ${orderId} and user_id = ${userId}`;
 
+      const query2 = `UPDATE stores set rating = (SELECT AVG(rating) FROM reviews WHERE store_id = ${storeId}) WHERE store_id = ${storeId}`;
+
       const t = await sequelize.transaction({
         isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED,
       });
 
       await this.reviewRepository.updateReview(query, t);
+
+      await this.reviewRepository.ratingSet(query2, t);
 
       return;
     } catch (error) {
@@ -218,7 +219,7 @@ class ReviewService {
   //내가 작성한 리뷰 조회
   findMyReviews = async (userId) => {
     try {
-      const query = `select s.name, r.review, r.rating, r.img_url from reviews r
+      const query = `select r.store_id, r.order_id, s.name, r.review, r.rating, r.img_url from reviews r
                     inner join stores s on r.store_id = s.store_id
                     where r.user_id = ${userId}
                     order by r.createdAt desc`;

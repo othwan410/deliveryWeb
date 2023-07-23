@@ -16,7 +16,7 @@ dotenv.config();
 passportConfig();
 
 const app = express();
-app.set('port', process.env.PORT || 3001);
+app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'html');
 
 nunjucks.configure('views', {
@@ -51,11 +51,12 @@ app.use(passport.initialize());
 
 try {
   fs.readdirSync('uploads');
-  app.use('/', express.static(path.join(__dirname, 'uploads')));
 } catch (error) {
   console.error('uploads 폴더가 없어 uploads 폴더를 생성합니다.');
   fs.mkdirSync('uploads');
 }
+
+app.use('/', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/', routes);
 
