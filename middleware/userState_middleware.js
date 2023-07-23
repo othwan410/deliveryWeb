@@ -42,6 +42,7 @@ exports.isLoggedIn = async (req, res, next) => {
   }
 
   res.locals.isLoggedIn = true;
+  console.log(user);
   res.locals.user_id = user.user_id;
   res.locals.status = user.status;
   next();
