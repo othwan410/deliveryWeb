@@ -4,16 +4,28 @@ const { Cart, sequelize } = require('../models');
 class cartRepository {
   findAllUserCart = async (user_id) => {
     const findAllUserCart = await sequelize.query(
-      `SELECT cart.cart_id, store.name as store, menu.name as menu, menu.price, cart.ea FROM carts cart
+      `SELECT cart.cart_id, store.name as store, menu.name as menu, SUM(menu.price * cart.ea) AS price, cart.ea FROM carts cart
       INNER JOIN stores store ON store.store_id = cart.store_id
       INNER JOIN menus menu ON menu.menu_id = cart.menu_id 
-      WHERE cart.user_id = ${user_id}`,
+      WHERE cart.user_id = ${user_id}
+      GROUP BY cart.cart_id`,
       {
         type: sequelize.QueryTypes.SELECT,
       }
     );
 
     return findAllUserCart;
+  };
+
+  findCartPrice = async (user_id) => {
+    const findOneCart = await sequelize.query(
+      `SELECT SUM(price * ea) AS price FROM carts cart INNER JOIN menus menu ON cart.menu_id = menu.menu_id WHERE cart.user_id = ${user_id}`,
+      {
+        type: sequelize.QueryTypes.SELECT,
+      }
+    );
+
+    return findOneCart;
   };
 
   findOneCart = async (user_id) => {

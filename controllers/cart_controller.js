@@ -19,6 +19,22 @@ class CartController {
     }
   };
 
+  findAllUserCartOrder = async (req, res, next) => {
+    try {
+      const user_id = res.locals.user_id;
+      const carts = await this.cartService.findAllUserCart(user_id);
+
+      console.log(carts);
+      res.render('ordercheck', { carts });
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({
+        success: false,
+        errorMessage: '주문 목록 조회에 실패하였습니다.',
+      });
+    }
+  };
+
   createCart = async (req, res, next) => {
     try {
       if (!req.query) {

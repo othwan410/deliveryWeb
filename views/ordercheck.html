@@ -12,13 +12,13 @@
         </div>
     </div>
     <div style="margin-top: 50px;">
-        <!-- {% for menu in store.store.menu %} -->
+        {% for cart in carts.menu %}
         <div id="menus">
-            <p style="float: right;">{{몇}}개 &nbsp</p>
-            <p style="white-space : nowrap; overflow : hidden; text-overflow : ellipsis;">{{메뉴이름}}</p>
+            <p style="float: right;">{{cart.ea}}개 &nbsp</p>
+            <p style="white-space : nowrap; overflow : hidden; text-overflow : ellipsis;">{{cart.menu}}</p>
             <hr style="border: solid 1px rgb(202, 25, 84);">
         </div>
-        <!-- {% endfor %} -->
+        {% endfor %}
         <div id="menus" style="margin-top: 60px; padding-bottom: 300px;">
             <p style="float: right; font-weight: bold;">{{몇}}원 &nbsp</p>
             <p style="font-weight: bold;">결제 예정금액:&nbsp;</p>
@@ -34,7 +34,7 @@
 </nav>
 {% endblock %}
 
-{% endblock %} {% block script %}
+{% block script %}
 <script>
     const orderDeleteBtn = document.getElementById('orderdelete');
 
