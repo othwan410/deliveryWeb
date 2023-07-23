@@ -72,6 +72,7 @@ class StoreService {
         call: readDetailStoreData.call,
         content: readDetailStoreData.content,
         rating: readDetailStoreData.rating,
+
         menu: readDetailStoreData.Menus.map((menu) => ({
           name: menu.name,
           desc: menu.desc,
