@@ -1,5 +1,10 @@
 {%extends 'layout.html'%} {% block content %}
 <div id="choice_wrap">
+  <div id="top">
+    <a href="/main"><img id="home" src="/images/home_FILL0_wght400_GRAD0_opsz48.png"
+        style="width: 30px; height: 30px; float: right; margin-left: 250px" /></a>
+    <img src="/images/back.png" style="width: 20px; height: 20px; margin-top: 5px" onclick="window.history.back()" />
+  </div>
   <div id="menu_detail_image"></div>
   <div id="menu_wrap">
     <p id="menu_detail_title">{{menu.name}}</p>
@@ -21,7 +26,7 @@
   </div>
   <div id="botton_bottom"><button id="input_basket">담기</button></div>
 </div>
-<nav id="nav6">
+<!-- <nav id="nav6">
   <a href="/"><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></a>
   <a href="/myDibs"
     ><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
@@ -31,7 +36,7 @@
   /></a>
   <a href="/user"
     ><img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
-  /></a>
+  /></a> -->
 </nav>
 {% block script %}
 <script>

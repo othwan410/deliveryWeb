@@ -225,7 +225,6 @@ header img {
 }
 
 #address {
-  background: white;
   width: 330px;
   height: 50px;
   margin-top: 12px;
@@ -237,7 +236,6 @@ header img {
   font-size: 14px;
   font-weight: bold;
   display: grid;
-  /* grid-template-column: 1fr 1fr; */
   cursor: pointer;
   z-index: 14;
 }

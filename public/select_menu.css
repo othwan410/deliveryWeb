@@ -4,6 +4,7 @@
   grid-template-rows: 1fr 1fr;
 }
 #menu_detail_image {
+  margin-top: 70px;
   width: 320;
   height: 150px;
   background: red;

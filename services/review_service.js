@@ -52,7 +52,6 @@ class ReviewService {
       });
 
       await this.reviewRepository.createReview(query, t);
-
       await this.reviewRepository.ratingSet(query2, t);
 
       await t.commit();
