@@ -109,8 +109,9 @@ class StoreService {
   };
 
   //가게 수정
-  updateStore = async (name, call, category_id, address, content, img_url) => {
+  updateStore = async (store_id,name, call, category_id, address, content, img_url) => {
     const updateStoreData = await this.storeRepository.updateStore(
+      store_id,
       name,
       call,
       category_id,
@@ -150,8 +151,9 @@ class StoreService {
   };
 
   //메뉴 수정
-  updateMenu = async (name, price, img_url) => {
+  updateMenu = async (menu_id, name, price, img_url) => {
     const updateMenuData = await this.storeRepository.updateMenu(
+      menu_id,
       name,
       price,
       img_url

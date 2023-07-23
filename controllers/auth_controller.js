@@ -1,5 +1,6 @@
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const StoreRepository = require('../repositories/store_repository');
 
 exports.loginController = async (req, res, next) => {
   try {
@@ -52,9 +53,12 @@ exports.kakaoCallback = (req, res) => {
   res.redirect('/');
 };
 
-exports.isLogin = (req, res) => {
+exports.isLogin = async (req, res) => {
   const isLoggedIn = res.locals.isLoggedIn;
   const status = res.locals.status;
-
-  return res.status(200).json({ isLoggedIn, status });
+  const storerepository = new StoreRepository();
+  if (!res.locals.user_id) { return res.status(200).json({ isLoggedIn, status }); }
+  const user_id = res.locals.user_id;
+  const storeId = await storerepository.findOneStatus(user_id);
+  return res.status(200).json({ isLoggedIn, status, storeId});
 };

@@ -135,17 +135,21 @@
       method: 'GET',
       url: '/auth/isLogin',
     })
-      .then((response) => {
+      .then(async (response) => {
         const isLoggedIn = response.data.isLoggedIn;
         const status = response.data.status;
-
 
         if (!isLoggedIn) {
           window.location.href = '/signin';
         }
 
-        if (status === 'admin') {
+        const storeId = response.data.storeId;
+
+        if (status === 'admin' && !storeId.store_id) {
           window.location.href = '/store_create';
+        }
+        if (status === 'admin' && storeId.store_id) {
+          window.location.href ='/getStoreIdToPost';
         }
       })
       .catch((response) => {

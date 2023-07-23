@@ -24,7 +24,7 @@
     <div id="store_category">
       {% for store in stores %}
       <div class="store_box">
-        <a href="/stores/detail?store_id={{store.store_id}}"><img src="{{ store.img_url }}" alt="음식점 이미지" /></a>
+        <a href="/stores/detail?store_id={{store.store_id}}"><img src="/{{ store.img_url }}" alt="음식점 이미지" /></a>
         <a href="/stores/detail?store_id={{store.store_id}}">
           <p>{{store.name}}</p>
           <div class="rating">
