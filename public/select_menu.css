@@ -1,0 +1,24 @@
+#choice_wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+#choice_wrap img {
+  width: 320;
+  height: 200px;
+  background: red;
+  z-index: -5;
+}
+#menu_wrap {
+  margin-top: 50px;
+}
+
+#choice_wrap p {
+  font-weight: bold;
+}
+#ea_set {
+  margin-top: 50px;
+  width: 320px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}

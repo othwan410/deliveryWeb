@@ -31,3 +31,7 @@ exports.renderSignIn = (req, res) => {
 exports.renderProfile = (req, res) => {
   res.render('profile', { title: '프로필' });
 };
+
+exports.renderSelectedMenu = (req, res) => {
+  res.render('select_menu');
+};

@@ -139,19 +139,18 @@ table {
   margin: 50px auto;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 10px 100px 50px 100px 220px 50px;
+  grid-template-rows: 10px 60px 45px 50px 100px 210px;
   border-radius: 25px;
   background: url('./images/mobile.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   overflow-x: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  overflow-y: hidden; //  이게 있어야 엉뚱한 곳에 스크롤이 안생깁니다.
 }
-#wrap::-webkit-scrollbar {
+/* #wrap::-webkit-scrollbar {         //이거 지워야 됩니다
   display: none;
-}
+} */
 
 #scroll_container::-webkit-scrollbar {
   display: none;
@@ -160,7 +159,6 @@ table {
 header img {
   width: 320px;
   border-radius: 10px;
-  margin-top: 60px;
   margin-left: 15px;
   transition: transform 1s ease-in-out;
   cursor: pointer;
@@ -242,6 +240,8 @@ header img {
   padding-top: 20px;
   font-size: 14px;
   font-weight: bold;
+  display: grid;
+  grid-template-column: 1fr 1fr;
   cursor: pointer;
   z-index: 14;
 }
@@ -249,7 +249,6 @@ header img {
 
 #address_modal {
   width: 335px;
-  height: 400px;
   background: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 100%;
@@ -257,11 +256,20 @@ header img {
   border-radius: 15px;
   display: none;
 }
+#modal_scroll {
+  height: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: auto;
+}
 
+#modal_scroll::-webkit-scrollbar {
+  display: none;
+}
 #modal_up {
   padding-top: 20px;
   margin-top: 10px;
-  height: 200px;
+  height: auto;
   background: rgba(255, 255, 255, 0.9);
   text-align: center;
   border-radius: 15px 15px 0 0;
@@ -280,16 +288,26 @@ header img {
 #modal_up img {
   width: 30px;
 }
-.change {
+#modal_up hr {
+  margin-left: 20px;
+}
+/* .address_reg {
+  // change =>  address_req로 변경
   font-weight: bold;
   cursor: pointer;
+} */
+.addresses {
+  width: 200px;
+  margin-top: 10px;
+  cursor: pointer;
+  display: inline;
 }
 
 .now_address {
   width: 300px;
   margin: 10px auto;
 }
-.change_button {
+.address_reg {
   width: 50px;
   height: 20px;
   margin: 30px auto;
@@ -300,4 +318,36 @@ header img {
   z-index: 10;
   box-shadow: 0 0 4px #71555c;
 }
-//
+
+//등록된 주소 옆 삭제 버튼
+.delete_addr {
+  width: 40px;
+  height: 5px;
+  border-radius: 50px;
+  float: right;
+}
+
+#basket {
+  display: inline;
+  width: 30px;
+  height: 30px;
+  background: url('/images/장바구니.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 15;
+  margin-top: 30px;
+  margin-left: 280px;
+  cursor: pointer;
+}
+#count_circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  background: red;
+  margin-left: 18px;
+  cursor: pointer;
+  padding: 0 6px 2px 6px;
+  font-size: 14px;
+  text-align: center;
+  color: white;
+}

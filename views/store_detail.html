@@ -57,5 +57,11 @@
       window.location.reload();
     });
   });
+
+  $('.menu_box').each((idx, menu) => {
+    $(menu).click(() => {
+      location.href = '/selectedMenus';
+    });
+  });
 </script>
 {%endblock%}

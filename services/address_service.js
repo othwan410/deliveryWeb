@@ -10,9 +10,14 @@ class AddressService {
       user_id
     );
     const addresses = await this.addressRepository.findUserAddress(user_id);
+    const data = {
+      currentAddr: currentAddr,
+      addresses: addresses.map((address) => {
+        return address.dataValues;
+      }),
+    };
 
-    console.log(addresses);
-    return { currentAddr, addresses };
+    return data;
   };
 
   findUserAddress = async (user_id) => {
@@ -30,11 +35,10 @@ class AddressService {
   updateIsCurren = async (user_id, address_id) => {
     try {
       const t = await sequelize.transaction({
-        isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED, // 트랜잭션 격리 수준을 설정합니다.
+        isolationLevel: Transaction.ISOLATION_LEVELS.READ_UNCOMMITTED, // 트랜잭션 격리 수준을 설정합니다.
       });
       await this.addressRepository.updateIsCurrentNull(user_id, t);
       await this.addressRepository.updateIsCurrentTrue(address_id, t);
-
       await t.commit();
       return true;
     } catch (error) {
@@ -42,10 +46,6 @@ class AddressService {
       await t.rollback();
       return false;
     }
-  };
-
-  updateAddress = async (address, address_id) => {
-    return await this.addressRepository.updateAddress(address, address_id);
   };
 
   deleteAddress = async (address_id) => {
