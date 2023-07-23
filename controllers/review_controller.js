@@ -8,7 +8,13 @@ class ReviewController {
     const userId = res.locals.user_id;
     const { storeId, orderId } = req.params;
     const { review, rating } = req.body;
-    const imgUrl = req.file.filename;
+    let imgUrl;
+
+    if (!req.file) {
+      imgUrl = null;
+    } else {
+      imgUrl = req.file.filename;
+    }
 
     await this.reviewService
       .createReview(orderId, storeId, userId, review, rating, imgUrl)
@@ -44,7 +50,14 @@ class ReviewController {
   updateReview = async (req, res) => {
     const userId = res.locals.user_id;
     const { storeId, orderId } = req.params;
-    const { review, rating, imgUrl } = req.body;
+    const { review, rating } = req.body;
+    let imgUrl;
+
+    if (!req.file) {
+      imgUrl = null;
+    } else {
+      imgUrl = req.file.filename;
+    }
 
     await this.reviewService
       .updateReview(userId, storeId, orderId, review, rating, imgUrl)
@@ -82,7 +95,8 @@ class ReviewController {
     await this.reviewService
       .findMyReviews(userId)
       .then((reviews) => {
-        return res.status(200).json({ reviews });
+        // return res.status(200).json({ reviews });
+        res.render('my_reviews', { reviews });
       })
       .catch((error) => {
         return res

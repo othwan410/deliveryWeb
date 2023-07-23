@@ -24,6 +24,7 @@ router.get('/stores/:storeId/review', reviewController.findReviews);
 router.put(
   '/stores/:storeId/review/:orderId',
   authorizated,
+  upload.single('img_url'),
   reviewController.updateReview
 );
 

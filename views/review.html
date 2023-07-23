@@ -1,12 +1,7 @@
 {% extends 'layout.html' %} {% block content %}
 <div id="review-box">
   <div id="review-content">
-    <form
-      action="/review/"
-      method="POST"
-      enctype="multipart/form-data"
-      accept-charset="UTF-8"
-    >
+    <form>
       <select id="rating" name="rating">
         <option value="0">별점</option>
         <option value="1">⭐</option>
@@ -38,8 +33,6 @@
 
     const rating = $('#rating').val();
     const review = $('#review').val();
-    // const img_url = $('#img-url').files;
-
     const img_url = document.querySelector('#img-url').files[0];
 
     // console.log(document.querySelector('#img-url'));
@@ -61,7 +54,7 @@
         console.log(response);
         alert(response.response.data.errorMessage);
 
-        window.history.back();
+        // window.history.back();
       });
   });
 </script>
