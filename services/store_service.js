@@ -78,6 +78,7 @@ class StoreService {
           desc: menu.desc,
           price: menu.price,
           img_url: menu.img_url,
+          menu_id: menu.menu_id,
         })),
         dibs: readDetailStoreData.Dibs.map((dibs) => {
           return dibs.user_id;

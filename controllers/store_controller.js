@@ -101,6 +101,7 @@ class StoresController {
       }
       const isDibs =
         store.store.dibs.indexOf(res.locals.user_id) !== -1 ? true : false;
+
       return res.render('store_detail', { store, isDibs });
     } catch (error) {
       console.error(error);

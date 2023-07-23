@@ -79,7 +79,7 @@ class StoreRepository {
       include: [
         {
           model: Menu,
-          attributes: ['name', 'price', 'img_url', 'desc'],
+          attributes: ['name', 'price', 'img_url', 'desc', 'menu_id'],
         },
         {
           model: Dibs,
