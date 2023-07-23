@@ -14,6 +14,7 @@
     <rr><label for="point">{{store.store.point}}</label></rr>
     <v><a href="/getStoreId"><button>메뉴 등록하기</button></a>
        <a href="/adminOrders/{{store.store.store_id}}"><button>주문내역 조회하기</button></a></v>
+       <button id="logout">logout</button>
     <!-- <div class="white-space"></div> -->
   </div>
 </div>
@@ -28,17 +29,27 @@
   })
    
   
-
-   
     $('.menuDeleteBtn').each((idx,store)=>{
       $(store).click(()=>{
         const menu_id = $('#storedes').attr('class');
        axios.delete(`/stores/{{store.store.store_id}}/menu/${menu_id}`).then(()=>{
         location.reload();
-       })
-         
+       })    
        
       })
     })
+
+$(document).on('click', '#logout', async function () {
+await axios
+.post('/auth/logout')
+.then((response) => {
+alert(response.data.message);
+
+window.location.href = '/main';
+})
+.catch((response) => {
+alert(response.response.data.errorMessage);
+});
+});
 </script>
 {%endblock%}

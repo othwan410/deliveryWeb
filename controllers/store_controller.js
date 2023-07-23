@@ -6,7 +6,14 @@ class StoresController {
   //가게 등록
   createStore = async (req, res, next) => {
     try {
-      const { name, call, category_id, address, content, img_url } = req.body;
+      const { name, call, category_id, address, content } = req.body;
+      let img_url;
+
+      if (!req.file) {
+        img_url = null;
+      } else {
+        img_url = req.file.filename;
+      }
       if (!name) {
         return res.status(400).json({ data: '가게 이름을 적어주세요.' });
       }
@@ -138,7 +145,15 @@ class StoresController {
   updateStore = async (req, res, next) => {
     try {
       const { store_id } = req.params;
-      const { name, call, category_id, address, content, img_url } = req.body;
+      const { name, call, category_id, address, content } = req.body;
+      let img_url;
+
+      if (!req.file) {
+        img_url = null;
+      } else {
+        img_url = req.file.filename;
+      }
+      console.log('이미지',img_url)
       const [updateStoreData] = await this.storeService.updateStore(
         store_id,
         name,
@@ -183,7 +198,15 @@ class StoresController {
   createMenu = async (req, res, next) => {
     try {
       const { store_id } = req.params;
-      const { name, price, img_url, desc } = req.body;
+      const { name, price, desc } = req.body;
+
+      let img_url;
+
+      if (!req.file) {
+        img_url = null;
+      } else {
+        img_url = req.file.filename;
+      }
       const createMenuData = await this.storeService.createMenu(
         store_id,
         name,
@@ -213,7 +236,15 @@ class StoresController {
   updateMenu = async (req, res, next) => {
     try {
       const { menu_id } = req.params;
-      const { name, price, img_url } = req.body;
+      const { name, price } = req.body;
+
+      let img_url;
+
+      if (!req.file) {
+        img_url = null;
+      } else {
+        img_url = req.file.filename;
+      }
       const [updateMenuData] = await this.storeService.updateMenu(
         menu_id,
         name,

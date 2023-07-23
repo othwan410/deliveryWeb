@@ -24,10 +24,8 @@
       <r id="createdesc"><label>가게설명</label>
         <input type="text" name="content" class="storeContent" id="storeinput" placeholder="content" /></r>
       <r id="createdesc"><label>가게사진</label>
-        <input type="text" class="storeImg" name="img_url" id="storeinput" placeholder="이미지넣을 부분" /></r>
-      <r id="createdesc"><button  class="storeCreateBtn">등록하기</button></r>
-
-      <a href="/getStoreIdToPost"><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
+        <input type="file" class="storeImg" name="img_url" id="img-url" /></r>
+      <r id="createdesc"><button  class="storeCreateBtn">수정하기</button></r>
     
   </div>
 </div>
@@ -48,19 +46,18 @@
     const storeAddress = document.querySelector('.storeAddress').value;
    
     const storeContent = document.querySelector('.storeContent').value;
-    
-    const storeImg = document.querySelector('.storeImg').value;
-    
-    const data = {
-      name: storeName,
-      call: storeCall,
-      category_id: categoryId,
-      address: storeAddress,
-      content: storeContent,
-      img_url: storeImg,
-    } 
    
-    await axios.put('/stores/{{store_id}}', data)
+    const storeImg = document.querySelector('#img-url').files[0];
+    
+    const formdata = new FormData();
+    formdata.append('name',storeName);
+    formdata.append('call',storeCall);
+    formdata.append('category_id',categoryId);
+    formdata.append('address',storeAddress);
+    formdata.append('content',storeContent);
+    formdata.append('img_url',storeImg);
+
+    await axios.put('/stores/{{store_id}}', formdata)
     .then((res) => {alert('수정완료')})
   } 
   )
