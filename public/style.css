@@ -152,10 +152,6 @@ table {
   display: none;
 } */
 
-#scroll_container::-webkit-scrollbar {
-  display: none;
-}
-
 header img {
   width: 320px;
   border-radius: 10px;
