@@ -25,4 +25,5 @@ values ("주니어와퍼", 8500,  1, "가게 이미지경로", "큰 새우가 �
 insert menus (name, price, store_id, img_url, `desc`)
 values ("스태커와퍼", 9500,  1, "가게 이미지경로", "큰 새우가 가득!");
 
+
 insert into addresses (address, user_id) values ("주소", 1);

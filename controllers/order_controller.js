@@ -127,7 +127,10 @@ class OrderController {
 
       const store_id = parseInt(req.query.store_id);
       const user_id = res.locals.user_id;
-      const { address_id, price, request, menu } = req.body;
+      const { address_id, price, request } = req.body;
+
+      console.log(price);
+      console.log(request);
 
       if (!address_id) {
         return res.status(412).json({
@@ -143,27 +146,12 @@ class OrderController {
         });
       }
 
-      if (!request) {
-        return res.status(412).json({
-          success: false,
-          errorMessage: '요청사항의 형식이 일치하지 않습니다.',
-        });
-      }
-
-      if (!menu) {
-        return res.status(412).json({
-          success: false,
-          errorMessage: '메뉴의 형식이 일치하지 않습니다.',
-        });
-      }
-
       const createOrder = await this.orderService.createOrder(
         user_id,
         address_id,
         store_id,
         price,
-        request,
-        menu
+        request
       );
 
       return res.status(201).json(createOrder);

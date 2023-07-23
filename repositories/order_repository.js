@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { Order, Order_menu, User, sequelize } = require('../models');
+const { Order, Order_menu, User, Cart, sequelize } = require('../models');
 const { Transaction } = require('sequelize');
 
 class orderRepository {
@@ -12,7 +12,7 @@ class orderRepository {
         'createdAt',
         [
           sequelize.literal(
-            '(SELECT name AS name FROM stores WHERE stores.store_id = Order.store_id)'
+            '(SELECT name AS name FROM stores WHERE stores.store_id = store_id)'
           ),
           'name',
         ],
@@ -157,7 +157,7 @@ class orderRepository {
     return await Order.update({ status }, { where: { order_id } });
   };
 
-  createOrder = async (user_id, address_id, store_id, price, request, menu) => {
+  createOrder = async (user_id, address_id, store_id, price, request) => {
     const t = await sequelize.transaction({
       isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED, // 트랜잭션 격리 수준을 설정합니다.
     });
@@ -173,12 +173,20 @@ class orderRepository {
         { transaction: t }
       );
 
-      for (let i = 0; i < menu.menu_id.length; i++) {
+      const cart = await sequelize.query(
+        `SELECT menu_id, ea FROM carts
+        WHERE user_id = ${user_id}`,
+        {
+          type: sequelize.QueryTypes.SELECT,
+        }
+      );
+
+      for (let i = 0; i < cart.length; i++) {
         await Order_menu.create(
           {
             order_id: order.order_id,
-            menu_id: menu.menu_id[i],
-            ea: menu.ea[i],
+            menu_id: cart[i].menu_id,
+            ea: cart[i].ea,
           },
           { transaction: t }
         );
@@ -197,6 +205,11 @@ class orderRepository {
           transaction: t,
         }
       );
+
+      await Cart.destroy({
+        where: { user_id },
+        transaction: t,
+      });
 
       await t.commit();
       return true;

@@ -13,7 +13,7 @@ class AddressController {
 
       const data = await this.addressService.findCurrentAddress(user_id);
 
-      if (!data.currentAddr || addresses.length === 0) {
+      if (!data.currentAddr || data.addresses.length === 0) {
         const currentAddr = '주소 설정';
         const addresses = null;
         return res.render('main', { currentAddr, addresses });
@@ -24,6 +24,7 @@ class AddressController {
         addresses: data.addresses,
       });
     } catch (error) {
+      console.log(error);
       res.status(400).json({ error: error });
     }
   };

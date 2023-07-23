@@ -25,14 +25,13 @@ class OrderService {
     );
   };
 
-  createOrder = async (user_id, address_id, store_id, price, request, menu) => {
+  createOrder = async (user_id, address_id, store_id, price, request) => {
     return await this.orderRepository.createOrder(
       user_id,
       address_id,
       store_id,
       price,
-      request,
-      menu
+      request
     );
   };
 
