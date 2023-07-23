@@ -7,7 +7,7 @@
   <r id="menudesc"><label for="price">메뉴가격</label>
   <input type="text" id="storeinput" class="menuPrice" placeholder="price" /></r>
   <r id="menudesc"><label for="img_url">메뉴사진</label>
-  <input type="text" id="storeinput" class="menuImg" placeholder="이미지넣을 부분" /></r>
+  <input type="file" id="img-url" name="img_url" class="menuImg" /></r>
       <button class="menuUpdateBtn">수정하기</button>
   <!-- <div class="white-space"></div> -->
 </div>
@@ -20,16 +20,15 @@
     const menuName = $('.menuName').val();
     const menuDesc = $('.menuDesc').val();
     const menuPrice = $('.menuPrice').val();
-    const menuImg = $('.menuImg').val();
+    const menuImg = document.querySelector('#img-url').files[0];
 
-    const data = {
-      name:menuName,
-      desc:menuDesc,
-      price:menuPrice,
-      img_url: menuImg
-    }
+    const formdata = new FormData();
+    formdata.append('name',menuName);
+    formdata.append('desc',menuDesc);
+    formdata.append('price',menuPrice);
+    formdata.append('img_url',menuImg);
 
-    await axios.put('/stores/{{store.store_id}}/menu/{{store.menu_id}}', data)
+    await axios.put('/stores/{{store.store_id}}/menu/{{store.menu_id}}', formdata)
     .then((res) => {alert('수정완료')})
   })
 </script>
