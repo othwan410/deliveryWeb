@@ -79,7 +79,7 @@ class StoreRepository {
       include: [
         {
           model: Menu,
-          attributes: ['name', 'price', 'img_url', 'desc'],
+          attributes: ['name', 'price', 'img_url', 'desc', 'menu_id'],
         },
         {
           model: Dibs,
@@ -131,10 +131,20 @@ class StoreRepository {
       name,
       price,
       img_url,
-      desc
+      desc,
     });
 
     return createMenuData;
+  };
+
+  //메뉴 상세 조회
+  selectedMenu = async (menu_id) => {
+    const selectedMenu = await Menu.findOne({
+      attributes: [`menu_id`, `store_id`, `name`, `desc`, `price`, `img_url`],
+      where: { menu_id },
+    });
+
+    return selectedMenu;
   };
 
   //메뉴 수정
@@ -163,10 +173,7 @@ class StoreRepository {
   //가게 이름을 전체 조회
   findAllStoreName = async () => {
     const allStoreName = await Store.findAll({
-      attributes: [
-        'store_id',
-        'name',
-      ],
+      attributes: ['store_id', 'name'],
       order: [['createdAt', 'DESC']],
       raw: true,
     });
@@ -177,10 +184,7 @@ class StoreRepository {
   //메뉴 이름을 전체 조회
   findAllMenuName = async () => {
     const allMenuName = await Menu.findAll({
-      attributes: [
-        'menu_id',
-        'name',
-      ],
+      attributes: ['menu_id', 'name'],
       order: [['createdAt', 'DESC']],
       raw: true,
     });
@@ -191,10 +195,8 @@ class StoreRepository {
   //user_id 의 status
   findOneStatus = async (user_id) => {
     const userStatus = await User.findOne({
-      attributes: [
-        'status'
-      ],
-      where: {user_id}
+      attributes: ['status'],
+      where: { user_id },
     });
 
     return userStatus;

@@ -2,11 +2,11 @@ const jwt = require('jsonwebtoken');
 
 exports.authorizated = async (req, res, next) => {
   const { authorization } = req.cookies;
-  const [authType, authToken] = (authorization ?? '').split(' ');
 
   if (!authorization) {
     return res.status(403).json({ errorMessage: '권한이 존재하지 않습니다.' });
   }
+  const [authType, authToken] = (authorization ?? '').split(' ');
 
   if (authType !== 'Bearer' || !authToken) {
     return res.status(403).json({ errorMessage: '로그인이 필요한 기능입니다' });

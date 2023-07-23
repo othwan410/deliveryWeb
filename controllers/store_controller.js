@@ -6,7 +6,6 @@ class StoresController {
   //가게 등록
   createStore = async (req, res, next) => {
     try {
-
       const { name, call, category_id, address, content, img_url } = req.body;
       if (!name) {
         return res.status(400).json({ data: '가게 이름을 적어주세요.' });
@@ -37,7 +36,7 @@ class StoresController {
         content,
         img_url
       );
-
+      console.log(createStoreData);
       return res.status(201).json({ data: createStoreData });
     } catch (error) {
       console.log(error);
@@ -102,6 +101,7 @@ class StoresController {
       }
       const isDibs =
         store.store.dibs.indexOf(res.locals.user_id) !== -1 ? true : false;
+
       return res.render('store_detail', { store, isDibs });
     } catch (error) {
       console.error(error);
@@ -247,6 +247,17 @@ class StoresController {
       return res
         .status(400)
         .json({ errorMessage: '메뉴 조회에 실패했습니다.' });
+    }
+  };
+
+  //메뉴 상세 조회
+  findMenuDetail = async (req, res, next) => {
+    try {
+      const menu_id = parseInt(req.query.menu_id);
+      const menu = await this.storeService.selectedMenu(menu_id);
+      res.render('select_menu', { menu: menu.dataValues });
+    } catch (error) {
+      console.error(error);
     }
   };
 }

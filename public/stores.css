@@ -24,11 +24,7 @@
   width: 333px;
   height: 30px;
   margin: 60px auto 0 auto;
-}
-#top_menu {
-  width: 333px;
-  height: 30px;
-  margin: 60px auto 0 auto;
+  z-index: 14;
 }
 
 #top_menu ul {
@@ -53,23 +49,9 @@ hr {
   margin-right: 15px;
 }
 
-#nav2 {
-  position: fixed;
-  width: 325px;
-  margin-top: 297px;
-  margin-left: 7px;
-  border-top: 1px solid rgba(0, 0, 0, 0.4);
-  border-bottom: 20px solid black;
-  border-radius: 7px;
-  top: 40.5%;
-  padding: 5px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  background: white;
-}
-
 #store_category {
-  margin-top: 100px;
+  height: auto;
+  margin-top: 25px;
   margin-bottom: 20px;
 }
 
@@ -99,6 +81,40 @@ a {
   top: 5%;
 }
 .white-space {
+  margin-top: 100px;
+  margin-top: 400px;
   width: 325px;
-  height: 100px;
+  height: 50px;
+}
+#scroll_container2::-webkit-scrollbar {
+  display: none;
+}
+
+#scroll_container2 {
+  width: 350px;
+  height: 450px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  scrollbar-width: none;
+  overflow-y: hidden;
+  border-radius: 25px;
+  -ms-overflow-style: none;
+}
+
+#nav2 {
+  width: 320px;
+  height: 20px;
+  margin-left: 5px;
+  margin-top: 540px;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 20px solid black;
+  background: white;
+  border-radius: 7px 7px 20px 20px;
+  padding: 8px;
+  display: grid;
+  z-index: 14;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  background: white;
 }

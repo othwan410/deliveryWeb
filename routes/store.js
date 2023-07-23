@@ -12,9 +12,7 @@ router.post('/stores', authorizated, storesController.createStore);
 router.put('/stores/:store_id', authorizated, storesController.updateStore);
 router.delete('/stores/:store_id', authorizated, storesController.deleteStore);
 router.get('/stores', storesController.readStore);
-
 router.get('/stores/detail', isLoggedIn, storesController.readDetailStore);
-
 router.get('/keyword', storesController.readStoreByKeyword);
 
 router.post(
@@ -36,5 +34,8 @@ router.delete(
 //가게이름, 메뉴이름
 router.get('/searchS', storesController.findAllStoreName);
 router.get('/searchM', storesController.findAllMenuName);
+
+//메뉴 상세화면
+router.get('/stores/menusDetail', storesController.findMenuDetail);
 
 module.exports = router;

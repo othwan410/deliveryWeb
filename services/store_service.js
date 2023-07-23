@@ -4,21 +4,29 @@ class StoreService {
   storeRepository = new StoreRepository();
 
   //가게 등록
-  createStore = async (user_id, name, call, category_id, address, content, img_url) => {
+  createStore = async (
+    user_id,
+    name,
+    call,
+    category_id,
+    address,
+    content,
+    img_url
+  ) => {
     const userStatus = await this.storeRepository.findOneStatus(user_id);
     if (userStatus.status === 'admin') {
-    const createStoreData = await this.storeRepository.createStore(
-      user_id,
-      name,
-      call,
-      category_id,
-      address,
-      content,
-      img_url
-    );
-    
-    return createStoreData;
-    };
+      const createStoreData = await this.storeRepository.createStore(
+        user_id,
+        name,
+        call,
+        category_id,
+        address,
+        content,
+        img_url
+      );
+
+      return createStoreData;
+    }
   };
   //카테고리별 가게조회
   readStore = async (category_id) => {
@@ -64,11 +72,13 @@ class StoreService {
         call: readDetailStoreData.call,
         content: readDetailStoreData.content,
         rating: readDetailStoreData.rating,
+
         menu: readDetailStoreData.Menus.map((menu) => ({
           name: menu.name,
           desc: menu.desc,
           price: menu.price,
           img_url: menu.img_url,
+          menu_id: menu.menu_id,
         })),
         dibs: readDetailStoreData.Dibs.map((dibs) => {
           return dibs.user_id;
@@ -111,6 +121,13 @@ class StoreService {
     );
 
     return createMenuData;
+  };
+
+  //메뉴 상세조회
+  selectedMenu = async (menu_id) => {
+    const selectedMenu = await this.storeRepository.selectedMenu(menu_id);
+
+    return selectedMenu;
   };
 
   //메뉴 수정

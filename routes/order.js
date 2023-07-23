@@ -31,4 +31,7 @@ router.post('/orders', authorizated, orderController.createOrder);
 //주문취소일 경우 유저가 확인 시 삭제
 router.delete('/orders/:order_id', authorizated, orderController.deleteOrder);
 
+//가게에서 메뉴 선택시 이동페이지
+router.get('/');
+
 module.exports = router;

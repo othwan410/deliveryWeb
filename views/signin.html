@@ -16,7 +16,7 @@
     const password = $('#password').val();
     await axios({
       method: 'POST',
-      url: 'http://localhost:3000/auth/login',
+      url: '/auth/login',
       data: {
         account,
         password,

@@ -1,9 +1,7 @@
+const { User, Address } = require('../models/');
+
 exports.renderJoin = (req, res) => {
   res.render('join', { title: '회원 가입' });
-};
-
-exports.renderMain = (req, res) => {
-  res.render('main', { title: '메인페이지' });
 };
 
 exports.renderCategoryStore = (req, res) => {
@@ -32,4 +30,8 @@ exports.renderSignIn = (req, res) => {
 
 exports.renderProfile = (req, res) => {
   res.render('profile', { title: '프로필' });
+};
+
+exports.renderSelectedMenu = (req, res) => {
+  res.render('select_menu');
 };

@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
         targetKey: 'store_id',
         forignKey: 'store_id',
       });
+      this.hasMany(models.Cart, {
+        sourceKey: 'menu_id',
+        forignKey: 'menu_id',
+      });
     }
   }
   Menu.init(
