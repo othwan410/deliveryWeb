@@ -3,12 +3,14 @@
 <div id="dibs-list">
   {% for review in reviews %}
   <div class="dibs-box">
+    {% if review.img_url !== 'null' %}
     <img
       src="/{{review.img_url}}"
       alt="음식점 이미지"
       width="100px"
       height="70px"
     /><br />
+    {% endif %}
     <div class="rating">
       <img src="/images/Untitled-2.png" /><span>{{review.rating}}</span>
     </div>

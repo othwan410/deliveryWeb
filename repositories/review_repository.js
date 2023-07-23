@@ -42,17 +42,32 @@ class ReviewRepository {
 
   //리뷰 작성
   createReview = async (query, t) => {
-    await sequelize.query(query, {
-      type: sequelize.QueryTypes.INSERT,
-      transaction: t,
-    });
+    try {
+      await sequelize.query(query, {
+        type: sequelize.QueryTypes.INSERT,
+        transaction: t,
+      });
+
+      await t.commit();
+
+      return;
+    } catch (error) {
+      await t.rollback();
+
+      throw error;
+    }
   };
 
   ratingSet = async (query2, t) => {
-    await sequelize.query(query2, {
-      type: sequelize.QueryTypes.UPDATE,
-      transaction: t,
-    });
+    try {
+      await sequelize.query(query2, {
+        type: sequelize.QueryTypes.UPDATE,
+      });
+
+      return;
+    } catch (error) {
+      throw error;
+    }
   };
 
   //가게별 리뷰 조회
