@@ -25,6 +25,9 @@
             <p style="float: right;">{{order.order.price}}원&nbsp&nbsp&nbsp</p>
             <p>결제금액: </p>
             <hr style="border: solid 1px rgb(202, 25, 84);">
+            <p style="margin-top: 40px; font-size:larger; font-weight: bold; margin-bottom: 10px;">요청사항</p>
+            <p>{{order.order.request}}</p>
+            <hr style="border: solid 1px rgb(202, 25, 84);">
             <p style=" margin-top: 40px; font-size:larger; font-weight: bold; margin-bottom: 10px;">주문 상태</p>
             {% if order.order.status === '0' %}
             <button id="orderdelete" class="orderBtn">삭제</button>
@@ -44,12 +47,12 @@
     </div>
 </div>
 <div>
-    <nav id="nav2">
+    <!-- <nav id="nav3">
         <a href="/main"><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></a>
         <a><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" /></a>
         <a><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" /></a>
         <a><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
-    </nav>
+    </nav> -->
 </div>
 
 {% endblock %} {% block script %}

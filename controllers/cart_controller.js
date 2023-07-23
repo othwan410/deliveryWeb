@@ -60,7 +60,7 @@ class CartController {
       console.log(error);
       return res.status(400).json({
         success: false,
-        errorMessage: '주문 목록 조회에 실패하였습니다.',
+        errorMessage: '장바구니 추가에 실패하였습니다.',
       });
     }
   };
