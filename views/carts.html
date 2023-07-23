@@ -1,8 +1,10 @@
 {%extends 'layout.html'%} {% block content %}
-<div id="choice_wrap">
-  <div id="menu_detail_image"></div>
-  <div id="menu_wrap">
-    <p id="menu_detail_title">{{menu.name}}</p>
+<h1>장바구니</h1>
+
+<div id="choice_box">
+  {% for menu in carts}
+  <div class="{{menu.cart_id}}" id="menu_wrap">
+    <p id="menu_detail_title">{{menu.menu}}</p>
     <p id="menu_detail_desc">{{menu.desc}}</p>
     <p id="menu_detail_price">{{menu.price}}</p>
     <p id="won">원</p>
@@ -10,17 +12,18 @@
     <div id="menu_detail_ea">
       <p>수량</p>
       <button id="sub">-</button>
-      <p id="ea_number">1</p>
+      <p id="ea_number">{{menu.ea}}</p>
       <button id="add">+</button>
     </div>
   </div>
-
+  {% endfor %}
   <div id="ea_info">
     <p>총 주문금액</p>
-    <span id="total_price">{{menu.price}}원</span>
+    <span id="total_price">{{total.price}}원</span>
   </div>
-  <div id="botton_bottom"><button id="input_basket">담기</button></div>
+  <div id="botton_bottom"><button id="input_basket">주문하기</button></div>
 </div>
+
 <nav id="nav6">
   <a href="/"><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></a>
   <a href="/myDibs"
@@ -35,39 +38,41 @@
 </nav>
 {% block script %}
 <script>
-  let number = $('#ea_number').text();
-  let ea = parseInt(number);
-  let price = $('#menu_detail_price').text();
-  let totalPrice = parseInt(price);
-
   $('#sub').click((e) => {
     e.preventDefault();
-    if (ea < 1) {
-      alert('수량은 0보다 커야합니다.');
+    const number = $('#ea_number').text();
+    const ea = parseInt(number);
+    const price = $('#menu_detail_price').text();
+    const totalPrice = parseInt(price);
+    if (ea <= 0) {
+      // alert('수량은 0보다 커야합니다.');
+      $('#ea_number').text('0');
       return;
     }
-    ea--;
-    $('#ea_number').text(ea);
+    $('#ea_number').text(ea - 1);
     $('#total_price').text(totalPrice * ea + '원');
 
     return;
   });
-
-  $('#add').click((e) => {
-    e.preventDefault();
-    ea++;
-    $('#ea_number').text(ea);
+  $('#add').click(() => {
+    const number = $('#ea_number').text();
+    const price = $('#menu_detail_price').text();
+    const totalPrice = parseInt(price);
+    const ea = parseInt(number);
+    $('#ea_number').text(ea + 1);
     $('#total_price').text(totalPrice * ea + '원');
+    eaData = ea + 1;
     return;
   });
 
   $('#input_basket').click(() => {
+    const menu_id = '{{menu.menu_id}}';
+    const store_id = '{{menu.store_id}}';
+    const ea = $('#ea_number').text();
     axios
-      .post(
-        `/carts?menu_id={{menu.menu_id}}&store_id={{menu.store_id}}&ea=${ea}`
-      )
+      .post(`/carts?menu_id=${menu_id}&store_id=${store_id}&ea=${ea}`)
       .then(() => {
-        window.history.back();
+        location.reload();
       });
   });
 </script>

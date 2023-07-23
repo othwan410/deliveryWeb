@@ -8,8 +8,7 @@ class CartController {
       const user_id = res.locals.user_id;
       const carts = await this.cartService.findAllUserCart(user_id);
 
-      // res.render('cart', { carts });
-      res.status(201).json({ carts });
+      res.render('carts', { carts, total: carts.price });
     } catch (error) {
       console.log(error);
       return res.status(400).json({
