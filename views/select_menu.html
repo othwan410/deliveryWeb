@@ -23,53 +23,43 @@
 </div>
 <nav id="nav6">
   <a href="/"><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></a>
-  <a href="/myDibs"
-    ><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
-  /></a>
-  <a href="/userOrders"
-    ><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png"
-  /></a>
-  <a href="/user"
-    ><img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
-  /></a>
+  <a href="/myDibs"><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" /></a>
+  <a href="/userOrders"><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" /></a>
+  <a href="/user"><img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
 </nav>
 {% block script %}
 <script>
+  let number = $('#ea_number').text();
+  let ea = parseInt(number);
+  let price = $('#menu_detail_price').text();
+  let totalPrice = parseInt(price);
+
   $('#sub').click((e) => {
     e.preventDefault();
-    const number = $('#ea_number').text();
-    const ea = parseInt(number);
-    const price = $('#menu_detail_price').text();
-    const totalPrice = parseInt(price);
-    if (ea <= 0) {
-      // alert('수량은 0보다 커야합니다.');
-      $('#ea_number').text('0');
+    if (ea <= 1) {
+      alert('수량은 0보다 커야합니다.');
       return;
     }
-    $('#ea_number').text(ea - 1);
+    ea--;
+    $('#ea_number').text(ea);
     $('#total_price').text(totalPrice * ea + '원');
 
     return;
   });
-  $('#add').click(() => {
-    const number = $('#ea_number').text();
-    const price = $('#menu_detail_price').text();
-    const totalPrice = parseInt(price);
-    const ea = parseInt(number);
-    $('#ea_number').text(ea + 1);
+
+  $('#add').click((e) => {
+    e.preventDefault();
+    ea++;
+    $('#ea_number').text(ea);
     $('#total_price').text(totalPrice * ea + '원');
-    eaData = ea + 1;
     return;
   });
 
   $('#input_basket').click(() => {
-    const menu_id = '{{menu.menu_id}}';
-    const store_id = '{{menu.store_id}}';
-    const ea = $('#ea_number').text();
     axios
-      .post(`/carts?menu_id=${menu_id}&store_id=${store_id}&ea=${ea}`)
+      .post(`/carts?menu_id={{menu.menu_id}}&store_id={{menu.store_id}}&ea=${ea}`)
       .then(() => {
-        location.reload();
+        window.history.back();
       });
   });
 </script>
