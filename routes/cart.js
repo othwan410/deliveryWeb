@@ -8,6 +8,9 @@ const { authorizated } = require('../middleware/userState_middleware');
 //유저 장바구니
 router.get('/usercarts', authorizated, cartController.findAllUserCart);
 
+//유저 장바구니
+router.get('/orderCheck', authorizated, cartController.findAllUserCartOrder);
+
 //유저가 장바구니 추가
 router.post('/carts', authorizated, cartController.createCart);
 

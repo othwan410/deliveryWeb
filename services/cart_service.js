@@ -4,7 +4,10 @@ class CartService {
   cartRepository = new CartRepository();
 
   findAllUserCart = async (user_id) => {
-    return await this.cartRepository.findAllUserCart(user_id);
+    const cart = await this.cartRepository.findAllUserCart(user_id);
+    const price = await this.cartRepository.findCartPrice(user_id);
+
+    return { cart, price };
   };
 
   createCart = async (user_id, menu_id, store_id, ea) => {
