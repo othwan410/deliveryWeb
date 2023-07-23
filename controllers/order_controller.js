@@ -7,7 +7,6 @@ class OrderController {
     try {
       const user_id = res.locals.user_id;
       const orders = await this.orderService.findAllUserOrder(user_id);
-      console.log(orders);
       res.render('orderList', { orders });
     } catch (error) {
       console.log(error);
@@ -188,6 +187,7 @@ class OrderController {
       }
 
       const { order_id } = req.params;
+      console.log(order_id);
       const deleteOrder = await this.orderService.deleteOrder(order_id);
 
       if (!deleteOrder) {

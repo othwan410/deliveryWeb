@@ -59,7 +59,7 @@
     orderDeleteBtn.addEventListener('click', async (e) => {
         e.preventDefault();
 
-        await axios.delete('/orders/:{{order.order_id}}')
+        await axios.delete('/orders/{{order.order.order_id}}')
             .then((res) => { window.location.href = "/userOrders"; })
     })
 

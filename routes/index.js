@@ -8,6 +8,7 @@ const addressRouter = require('./address');
 const dibsRouter = require('./dibs');
 const reviewRouter = require('./review');
 const userRouter = require('./user');
+const cartRouter = require('./cart');
 
 const defaultRoutes = [
   {
@@ -41,6 +42,10 @@ const defaultRoutes = [
   {
     path: '/',
     route: userRouter,
+  },
+  {
+    path: '/',
+    route: cartRouter,
   },
 ];
 

@@ -33,3 +33,17 @@
     </a>
 </nav>
 {% endblock %}
+
+{% endblock %} {% block script %}
+<script>
+    const orderDeleteBtn = document.getElementById('orderdelete');
+
+    orderDeleteBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+
+        await axios.delete('/orders/{{order.order.order_id}}')
+            .then((res) => { window.location.href = "/userOrders"; })
+    })
+
+</script>
+{%endblock%}
