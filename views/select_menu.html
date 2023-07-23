@@ -23,9 +23,15 @@
 </div>
 <nav id="nav6">
   <a href="/"><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></a>
-  <a href="/myDibs"><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" /></a>
-  <a href="/userOrders"><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" /></a>
-  <a href="/user"><img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
+  <a href="/myDibs"
+    ><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
+  /></a>
+  <a href="/userOrders"
+    ><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png"
+  /></a>
+  <a href="/user"
+    ><img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
+  /></a>
 </nav>
 {% block script %}
 <script>
@@ -36,7 +42,7 @@
 
   $('#sub').click((e) => {
     e.preventDefault();
-    if (ea <= 1) {
+    if (ea < 1) {
       alert('수량은 0보다 커야합니다.');
       return;
     }
@@ -57,7 +63,9 @@
 
   $('#input_basket').click(() => {
     axios
-      .post(`/carts?menu_id={{menu.menu_id}}&store_id={{menu.store_id}}&ea=${ea}`)
+      .post(
+        `/carts?menu_id={{menu.menu_id}}&store_id={{menu.store_id}}&ea=${ea}`
+      )
       .then(() => {
         window.history.back();
       });
