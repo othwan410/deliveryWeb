@@ -1,22 +1,14 @@
 {% extends 'layout.html' %} {% block content %}
-<div id="address">인동23길 4</div>
+<div id="address">{{currentAddr}}</div>
 <header>
   <img class="banner1" src="/images/banner.png" alt="광고 배너" />
   <img class="banner2" src="/images/banner.png" alt="광고 배너" />
   <img class="banner3" src="/images/banner.png" alt="광고 배너" />
 </header>
 <form id="searchFrom" action="/keyword" method="get">
-  <input
-    class="search"
-    type="text"
-    placeholder="키워드로 검색하세요! ex)버거"
-    name="keyword"
-  />
-  <span
-    class="material-symbols-sharp lens"
-    style="margin-top: 5px; margin-right: 1px"
-    onclick="document.forms[0].submit()"
-  >
+  <input class="search" type="text" placeholder="키워드로 검색하세요! ex)버거" name="keyword" />
+  <span class="material-symbols-sharp lens" style="margin-top: 5px; margin-right: 1px"
+    onclick="document.forms[0].submit()">
   </span>
 </form>
 <div id="offline">
@@ -40,20 +32,19 @@
   <a href="/stores?category_id=12"><img src="/images/중국집.png" /></a>
 </div>
 <nav id="nav">
-  <img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" />
-  <a href="/myDibs"
-    ><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
-  /></a>
-  <img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" />
-  <a href="/user"
-    ><img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
-  /></a>
+  <a href="/orderCheck"><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></a>
+  <a href="/myDibs"><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" /></a>
+  <a href="/userOrders"><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" /></a>
+  <a href="/user"><img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
 </nav>
 <div id="address_modal">
   <div id="modal_up">
     <h2>[ 주소 설정 ]</h2>
     <div><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></div>
-    <div class="now_address">인동23길 4</div>
+    <div class="now_address">{{current.currentAddr}}</div>
+    {% for addr in address.addresses %}
+    <div>{{addr}}</div>
+    {% endfor %}
     <div class="change_button">
       <a>변경</a>
       <div></div>
@@ -111,7 +102,7 @@
     $('#profile').on('click', async () => {
       await axios({
         method: 'GET',
-        url: 'http://localhost:3000/auth/isLogin',
+        url: 'http://localhost:3001/auth/isLogin',
       })
         .then(async (response) => {
           const isLoggedIn = response.data.isLoggedIn;

@@ -12,9 +12,7 @@ router.post('/stores', authorizated, storesController.createStore);
 router.put('/stores/:store_id', authorizated, storesController.updateStore);
 router.delete('/stores/:store_id', authorizated, storesController.deleteStore);
 router.get('/stores', storesController.readStore);
-
 router.get('/stores/detail', isLoggedIn, storesController.readDetailStore);
-
 router.get('/keyword', storesController.readStoreByKeyword);
 
 router.get('/getStoreId', authorizated, storesController.readStoreId)

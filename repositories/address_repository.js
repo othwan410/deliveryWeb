@@ -10,6 +10,7 @@ class AddressRepository {
     });
   };
 
+  //마지막으로 사용한 주소
   findUserAddressOne = async (user_id) => {
     return await Address.findOne({
       attributes: ['address_id', 'address'],
@@ -26,14 +27,14 @@ class AddressRepository {
 
   updateIsCurrentNull = async (user_id, t) => {
     return await Address.update(
-      { isCurrent: 0 },
+      { isCurrent: false },
       { where: { user_id }, transaction: t }
     );
   };
 
   updateIsCurrentTrue = async (address_id, t) => {
     return await Address.update(
-      { isCurrent: 1 },
+      { isCurrent: true },
       { where: { address_id }, transaction: t }
     );
   };

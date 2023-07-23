@@ -13,8 +13,8 @@ class OrderService {
 
   findOneOrder = async (order_id) => {
     const order = await this.orderRepository.findOneOrder(order_id);
-    const menu = await this.orderRepository.findOneOrderMenu(order_id);
-    return { order, menu };
+    const menus = await this.orderRepository.findOneOrderMenu(order_id);
+    return { order, menus };
   };
 
   updateOrderStatus = async (order_id, status, user_id) => {

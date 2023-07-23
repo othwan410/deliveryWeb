@@ -12,7 +12,7 @@ class orderRepository {
         'createdAt',
         [
           sequelize.literal(
-            '(SELECT name AS name FROM stores WHERE stores.store_id = store_id)'
+            '(SELECT name AS name FROM stores WHERE stores.store_id = Order.store_id)'
           ),
           'name',
         ],
@@ -49,7 +49,12 @@ class orderRepository {
         'order_id',
         'price',
         'request',
-        'address',
+        [
+          sequelize.literal(
+            '(SELECT address AS address FROM addresses WHERE addresses.address_id = Order.address_id)'
+          ),
+          'address',
+        ],
         [
           sequelize.literal(
             '(SELECT name AS name FROM stores WHERE stores.store_id = Order.store_id)'
@@ -65,11 +70,11 @@ class orderRepository {
   };
 
   findOneOrderMenu = async (order_id) => {
-    return await Order_menu.findOne({
+    return await Order_menu.findAll({
       attributes: [
         [
           sequelize.literal(
-            '(SELECT name AS name FROM Menu WHERE Menu.menu_id = Order_menu.menu_id)'
+            '(SELECT name AS name FROM menus WHERE menus.menu_id = Order_menu.menu_id)'
           ),
           'name',
         ],

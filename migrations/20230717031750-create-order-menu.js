@@ -23,6 +23,10 @@ module.exports = {
         onDelete: 'CASCADE', // 만약 Menus 모델의 menu_id 삭제되면
         primaryKey: true,
       },
+      ea: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

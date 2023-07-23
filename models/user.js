@@ -28,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: 'user_id',
         forignKey: 'user_id',
       });
+      this.hasMany(models.Cart, {
+        sourceKey: 'user_id',
+        forignKey: 'user_id',
+      });
     }
   }
   User.init(

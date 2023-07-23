@@ -4,7 +4,15 @@ class StoreService {
   storeRepository = new StoreRepository();
 
   //가게 등록
-  createStore = async (user_id, name, call, category_id, address, content, img_url) => {
+  createStore = async (
+    user_id,
+    name,
+    call,
+    category_id,
+    address,
+    content,
+    img_url
+  ) => {
     const userStatus = await this.storeRepository.findOneStatus(user_id);
     if (userStatus.status === 'admin' && !userStatus.store_id) {
     const createStoreData = await this.storeRepository.createStore(
@@ -74,6 +82,7 @@ class StoreService {
         call: readDetailStoreData.call,
         content: readDetailStoreData.content,
         rating: readDetailStoreData.rating,
+
         menu: readDetailStoreData.Menus.map((menu) => ({
           name: menu.name,
           desc: menu.desc,

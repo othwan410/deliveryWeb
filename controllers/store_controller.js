@@ -6,7 +6,6 @@ class StoresController {
   //가게 등록
   createStore = async (req, res, next) => {
     try {
-
       const { name, call, category_id, address, content, img_url } = req.body;
       if (!name) {
         return res.status(400).json({ data: '가게 이름을 적어주세요.' });
@@ -37,7 +36,7 @@ class StoresController {
         content,
         img_url
       );
-
+      console.log(createStoreData);
       return res.status(201).json({ data: createStoreData });
     } catch (error) {
       console.log(error);

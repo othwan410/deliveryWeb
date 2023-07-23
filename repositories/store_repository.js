@@ -131,7 +131,7 @@ class StoreRepository {
       name,
       price,
       img_url,
-      desc
+      desc,
     });
 
     return createMenuData;

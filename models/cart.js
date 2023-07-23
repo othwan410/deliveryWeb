@@ -1,50 +1,73 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Order_menu extends Model {
+  class Cart extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.belongsTo(models.Order, {
-        targetKey: 'order_id',
-        foreignKey: 'order_id',
+      this.belongsTo(models.User, {
+        targetKey: 'user_id',
+        foreignKey: 'user_id',
       });
       this.belongsTo(models.Menu, {
         targetKey: 'menu_id',
         foreignKey: 'menu_id',
       });
+
+      this.belongsTo(models.Store, {
+        targetKey: 'store_id',
+        foreignKey: 'store_id',
+      });
     }
   }
-  Order_menu.init(
+  Cart.init(
     {
-      order_id: {
+      cart_id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
+      user_id: {
         allowNull: false,
         type: DataTypes.INTEGER,
-        primaryKey: true,
+      },
+      store_id: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
       },
       menu_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true,
       },
       ea: {
         type: DataTypes.INTEGER,
         allowNull: false,
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
     },
     {
       sequelize,
       timesTampes: true,
       underscored: false,
-      modelName: 'Order_menu',
-      tableName: 'order_menus',
+      modelName: 'Cart',
+      tableName: 'carts',
       paranoid: false,
       charset: 'utf8mb4',
       collate: 'utf8mb4_general_ci',
     }
   );
-  return Order_menu;
+  return Cart;
 };
