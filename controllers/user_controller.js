@@ -10,7 +10,6 @@ class UserController {
     await this.userService
       .findUser(userId)
       .then((user) => {
-        console.log(user[0]);
         // return res.status(200).json({ user });
         res.render('profile', { user: user[0] });
       })
@@ -66,12 +65,14 @@ class UserController {
     const userId = res.locals.user_id;
     const { password } = req.body;
 
+    console.log(password);
+
     await this.userService
       .deleteUser(userId, password)
       .then(() => {
         res.clearCookie('authorization');
 
-        return res.status(200).json({ message: '유저 정보가 삭제되었습니다.' });
+        return res.status(200).json({ message: '탈퇴가 완료되었습니다.' });
       })
       .catch((error) => {
         return res

@@ -14,11 +14,8 @@ exports.loginController = async (req, res, next) => {
         if (loginError) {
           return res.status(400).json({ errorMessage: loginError });
         }
-        const token = jwt.sign(
-          { user_id: user.user_id },
-          process.env.COOKIE_SECRET
-        );
-        console.log(token);
+        const token = jwt.sign({ user: user }, process.env.COOKIE_SECRET);
+
         res.cookie('authorization', `Bearer ${token}`);
         return res.status(200).json({ message: '로그인 되었습니다.' });
       });
@@ -57,6 +54,7 @@ exports.kakaoCallback = (req, res) => {
 
 exports.isLogin = (req, res) => {
   const isLoggedIn = res.locals.isLoggedIn;
-  console.log(isLoggedIn);
-  return res.status(200).json({ isLoggedIn });
+  const status = res.locals.status;
+
+  return res.status(200).json({ isLoggedIn, status });
 };

@@ -12,7 +12,7 @@ class orderRepository {
         'createdAt',
         [
           sequelize.literal(
-            '(SELECT name AS name FROM stores WHERE stores.store_id = store_id)'
+            '(SELECT name AS name FROM stores WHERE stores.store_id = Order.store_id)'
           ),
           'name',
         ],
@@ -47,6 +47,7 @@ class orderRepository {
     return await Order.findOne({
       attributes: [
         'order_id',
+        'store_id',
         'price',
         'request',
         [

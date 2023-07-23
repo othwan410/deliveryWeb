@@ -9,6 +9,7 @@ const {
   renderSignIn,
   renderProfile,
   renderSelectedMenu,
+  renderReview,
 } = require('../controllers/page_controller');
 const addressController = new AddressController();
 
@@ -26,6 +27,7 @@ router.get('/orderComplete', renderOrderComplete);
 router.get('/store_create', renderRegistor);
 router.get('/join', renderJoin);
 router.get('/signin', renderSignIn);
+router.get('/review', renderReview);
 // router.get('/profile', renderProfile);
 
 //메뉴 선택시 넘어가는 화면
