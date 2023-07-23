@@ -132,7 +132,7 @@
   $(document).on('click', '#profile', async function () {
     await axios({
       method: 'GET',
-      url: 'http://localhost:3000/auth/isLogin',
+      url: '/auth/isLogin',
     })
       .then((response) => {
         const isLoggedIn = response.data.isLoggedIn;

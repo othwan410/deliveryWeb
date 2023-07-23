@@ -35,3 +35,7 @@ exports.renderProfile = (req, res) => {
 exports.renderSelectedMenu = (req, res) => {
   res.render('select_menu');
 };
+
+exports.renderReview = (req, res) => {
+  res.render('review', { title: '리뷰' });
+};
