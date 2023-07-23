@@ -45,14 +45,20 @@ class ReviewService {
       const query = `insert into reviews (order_id, store_id, user_id, review, rating, img_url)
                     values (${orderId}, ${storeId}, ${userId}, '${review}', ${rating}, '${imgUrl}')`;
 
+      const query2 = `UPDATE stores set rating = (SELECT AVG(rating) FROM reviews WHERE store_id = ${storeId}) WHERE store_id = ${storeId}`;
+
       const t = await sequelize.transaction({
         isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED,
       });
 
       await this.reviewRepository.createReview(query, t);
 
+      await this.reviewRepository.ratingSet(query2, t);
+
+      await t.commit();
       return;
     } catch (error) {
+      await t.rollback();
       console.error(error);
 
       throw !error.status
