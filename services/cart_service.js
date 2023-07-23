@@ -12,7 +12,8 @@ class CartService {
 
   createCart = async (user_id, menu_id, store_id, ea) => {
     const [store] = await this.cartRepository.findOneCart(user_id);
-    if (store.store_id && store.store_id !== parseInt(store_id)) return false;
+
+    if (store && store.store_id !== parseInt(store_id)) return false;
 
     const [menu] = await this.cartRepository.findCartMenu(user_id, menu_id);
 

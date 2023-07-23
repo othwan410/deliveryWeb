@@ -23,19 +23,25 @@ class UserController {
 
   //오더 페이지에 들어갈 유저 잔액 및 주소
   findUserForOrder = async (req, res) => {
-    const user_id = res.locals.user_id;
+    try {
+      if (!req.query) {
+        return res.status(412).json({
+          success: false,
+          errorMessage: '데이터 형식이 올바르지 않습니다.',
+        });
+      }
 
-    await this.userService
-      .findUserForOrder(user_id)
-      .then((user) => {
-        console.log(...user);
-        return res.render('order', ...user);
-      })
-      .catch((error) => {
-        return res
-          .status(error.status)
-          .json({ errorMessage: error.errorMessage });
-      });
+      const { price } = req.query;
+      const user_id = res.locals.user_id;
+
+      const [user] = await this.userService.findUserForOrder(user_id);
+      console.log({ user, price });
+      return res.render('order', { user, price });
+    } catch (error) {
+      return res
+        .status(error.status)
+        .json({ errorMessage: error.errorMessage });
+    }
   };
 
   //유저 정보 수정
