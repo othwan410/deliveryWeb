@@ -56,16 +56,19 @@
     <h2>[ 주소 설정 ]</h2>
     <div><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></div>
     <div class="now_address">{{current.currentAddr}}</div>
-    {% for addr in address.addresses %}
-    <div>{{addr}}</div>
-    {% endfor %}
     <div class="change_button">
       <a>변경</a>
       <div></div>
     </div>
+    {% if addresses ===null %}
+    <div>주소를 입력하세요</div>
+    {%endif%} {% for addr in address.addresses %}
+    <div>{{addr}}</div>
+    {% endfor %}
   </div>
   {% endblock %} {% block script %}
   <script>
+    console.log({});
     axios
       .get('/addressOne')
       .then(function (response) {
@@ -77,7 +80,7 @@
       .then(function () {
         // 항상 실행
       });
-
+    console.log('{{address}}');
     const imgs = $('header > img');
     let currentIndex = 0;
 

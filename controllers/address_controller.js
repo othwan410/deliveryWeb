@@ -12,7 +12,6 @@ class AddressController {
       }
 
       const data = await this.addressService.findCurrentAddress(user_id);
-
       if (!data.currentAddr || addresses.length === 0) {
         const currentAddr = '주소 설정';
         const addresses = null;

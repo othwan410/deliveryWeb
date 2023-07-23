@@ -10,6 +10,8 @@ class AddressService {
       user_id
     );
     const addresses = await this.addressRepository.findUserAddress(user_id);
+
+    console.log(addresses);
     return { currentAddr, addresses };
   };
 
