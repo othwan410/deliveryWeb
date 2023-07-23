@@ -54,9 +54,7 @@ exports.kakaoCallback = (req, res) => {
 
 exports.isLogin = (req, res) => {
   const isLoggedIn = res.locals.isLoggedIn;
-  const s = req.s;
+  const status = res.locals.status;
 
-  console.log(s);
-
-  return res.status(200).json({ s });
+  return res.status(200).json({ isLoggedIn, status });
 };

@@ -13,9 +13,9 @@ exports.authorizated = async (req, res, next) => {
   }
 
   try {
-    const { user_id } = jwt.verify(authToken, process.env.COOKIE_SECRET);
+    const { user } = jwt.verify(authToken, process.env.COOKIE_SECRET);
 
-    res.locals.user_id = user_id;
+    res.locals.user_id = user.user_id;
     next();
   } catch (error) {
     console.log(error);
@@ -40,10 +40,9 @@ exports.isLoggedIn = async (req, res, next) => {
     next();
     return;
   }
-  const s = user.status;
 
   res.locals.isLoggedIn = true;
   res.locals.user_id = user.user_id;
-  req.s = s;
+  res.locals.status = user.status;
   next();
 };

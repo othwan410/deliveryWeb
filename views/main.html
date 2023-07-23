@@ -45,10 +45,9 @@
     ><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
   /></a>
   <img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" />
-  <!-- <a href="/user"
-    > -->
-  <img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png" />
-  <!-- </a> -->
+  <a href="/user"
+    ><img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
+  /></a>
 </nav>
 <div id="address_modal">
   <div id="modal_up">
@@ -109,23 +108,22 @@
       location.href = '/';
     });
 
-    $('#profile').on('click', async () => {
+    $(document).on('click', '#profile', async function () {
       await axios({
         method: 'GET',
         url: 'http://localhost:3000/auth/isLogin',
       })
-        .then(async (response) => {
-          console.log(response);
+        .then((response) => {
           const isLoggedIn = response.data.isLoggedIn;
           const status = response.data.status;
 
-          // console.log(isLoggedIn);
-          alert(status);
-          // if (!isLoggedIn) {
-          //   window.location.href = '/signin';
-          // }
+          if (!isLoggedIn) {
+            window.location.href = '/signin';
+          }
 
-          // if ()
+          if (status === 'admin') {
+            window.location.href = '/store_create';
+          }
         })
         .catch((response) => {
           alert('통신 오류');

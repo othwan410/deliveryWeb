@@ -12,7 +12,7 @@
 </div>
 {% endblock %} {% block script %}
 <script>
-  $('#join-btn').on('click', async function (e) {
+  $(document).on('click', '#join-btn', async function (e) {
     e.preventDefault();
 
     const account = $('#account').val();
