@@ -16,21 +16,27 @@
   <div id="review-title">
     <p style="font-size: 30px; font-weight: bold">내가 쓴 리뷰</p>
   </div>
+  {% if reviews.length === 0 %}
+  <p id="none_dibs">리뷰가 없습니다.</p>
+  {% endif %}
   <div style="margin-top: 50px">
     {% for review in reviews %}
     <div class="review-box" id="{{review.store_id}}|{{review.order_id}}">
       {% if review.img_url !== 'null' %}
-      <img
-        src="/{{review.img_url}}"
-        alt="음식점 이미지"
-        width="100px"
-        height="70px"
-      />
+      <a href="/stores/detail?store_id={{review.store_id}}">
+        <img
+          src="/{{review.img_url}}"
+          alt="음식점 이미지"
+          width="100px"
+          height="70px"
+      /></a>
       {% endif %}
-      <div class="rating">
-        <img src="/images/Untitled-2.png" /><span>{{review.rating}}</span>
-      </div>
-      <p>{{review.review}}</p>
+      <a href="/stores/detail?store_id={{review.store_id}}">
+        <div class="rating">
+          <img src="/images/Untitled-2.png" /><span>{{review.rating}}</span>
+        </div>
+        <p>{{review.review}}</p>
+      </a>
       <br />
       <button class="review-mdf-btn">수정</button>
       <button class="review-delete-btn">삭제</button>
