@@ -178,7 +178,7 @@ class StoresController {
   //가게 삭제
   deleteStore = async (req, res, next) => {
     try {
-      const { store_id } =  parseInt(req.params.store_id);
+      const store_id = parseInt(req.params.store_id);
    
       const deleteStoreData = await this.storeService.deleteStore(store_id);
               console.log(deleteStoreData);

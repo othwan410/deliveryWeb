@@ -11,13 +11,14 @@
           <option value="2">치킨</option>
           <option value="3">버거</option>
           <option value="4">한식</option>
-          <option value="5">족발</option>
-          <option value="6">고기</option>
-          <option value="7">분식</option>
-          <option value="8">샐러드</option>
-          <option value="9">일식</option>
-          <option value="10">죽</option>
-          <option value="11">중식</option>
+          <option value="5">일식/돈까스</option>
+          <option value="6">족발/보쌈</option>
+          <option value="7">고기/구이</option>
+          <option value="8">분식</option>
+          <option value="9">샐러드</option>
+          <option value="10">일식/돈까스</option>
+          <option value="11">도시락/죽</option>
+          <option value="12">중국집</option>
         </select></r>
       <r id="createdesc"><label>가게주소</label>
         <input type="text" name="address" class="storeAddress" id="storeinput" placeholder="address" /></r>
@@ -59,7 +60,7 @@
     
    
     await axios.post('/stores', formdata)
-    .then((res) => {alert('등록완료')})
+    .then((res) => {alert('등록완료'); window.location.href = '/getStoreIdToPost'})
   } 
   )
 
