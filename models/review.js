@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       order_id: {
         type: DataTypes.INTEGER,
+        primaryKey: true,
         allowNull: false,
       },
       review: {
@@ -51,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       timestamps: true,
       modelName: 'Review',
-      tableName: 'review',
+      tableName: 'reviews',
       paranoid: false,
       charset: 'utf8mb4',
       collate: 'utf8mb4_general_ci',

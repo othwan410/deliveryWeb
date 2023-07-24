@@ -177,7 +177,6 @@ class StoresController {
   deleteStore = async (req, res, next) => {
     try {
       const store_id = parseInt(req.params.store_id);
-
       const deleteStoreData = await this.storeService.deleteStore(store_id);
       console.log(deleteStoreData);
       if (!deleteStoreData) {

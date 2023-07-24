@@ -3,13 +3,6 @@
   margin-left: 20px;
 }
 
-/* button {
-  align-items: center;
-  background: #212529;
-  color: #fff;
-  border-radius: 10px;
-  cursor: pointer;
-} */
 
 #storeinput {
   width: 190px;
@@ -19,6 +12,7 @@
   border-top-width: 0;
   border-bottom-width: 1;
   outline: none;
+  border-color: rgb(202, 25, 84);
 }
 
 #menudesc {

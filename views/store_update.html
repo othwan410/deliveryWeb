@@ -58,7 +58,7 @@
     formdata.append('img_url',storeImg);
 
     await axios.put('/stores/{{store_id}}', formdata)
-    .then((res) => {alert('수정완료')})
+    .then((res) => {alert('수정완료'); window.location.href = '/getStoreIdToPost'})
   } 
   )
 </script>
