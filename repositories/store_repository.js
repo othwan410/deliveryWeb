@@ -192,8 +192,8 @@ class StoreRepository {
           'point',
         ],
       ],
-      where: {user_id},
-      raw: true
+      where: { user_id },
+      raw: true,
     });
 
     return userStatus;
@@ -201,12 +201,9 @@ class StoreRepository {
 
   findStoreMenuByUser = async (store_id) => {
     const userStatus = await Menu.findAll({
-      attributes: [
-        'menu_id',
-        'name',
-      ],
-      where: {store_id},
-      raw: true
+      attributes: ['menu_id', 'name'],
+      where: { store_id },
+      raw: true,
     });
 
     return userStatus;
@@ -224,8 +221,8 @@ class StoreRepository {
           'store_id',
         ],
       ],
-      where: {user_id},
-      raw: true
+      where: { user_id },
+      raw: true,
     });
 
     return userStatus;
@@ -233,12 +230,9 @@ class StoreRepository {
 
   findOneMenu = async (menu_id) => {
     const adminMenu = await Menu.findOne({
-      attributes: [
-        'menu_id',
-        'store_id',
-      ],
-      where: {menu_id},
-      raw: true
+      attributes: ['menu_id', 'store_id'],
+      where: { menu_id },
+      raw: true,
     });
 
     return adminMenu;
