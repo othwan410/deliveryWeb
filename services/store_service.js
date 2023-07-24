@@ -112,7 +112,15 @@ class StoreService {
   };
 
   //가게 수정
-  updateStore = async (store_id,name, call, category_id, address, content, img_url) => {
+  updateStore = async (
+    store_id,
+    name,
+    call,
+    category_id,
+    address,
+    content,
+    img_url
+  ) => {
     const updateStoreData = await this.storeRepository.updateStore(
       store_id,
       name,
