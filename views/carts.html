@@ -19,7 +19,7 @@
       <div id="menu_detail_ea">
         <p>수량</p>
         <button class="{{cart.cart_id}}" id="sub" onclick="sub('{{cart.cart_id}}')">-</button>
-        <p id="{{cart.cart_id}}">{{cart.ea}}</p>
+        <p id="{{cart.cart_id}}" style="margin-left: 5px;">{{cart.ea}}</p>
         <button class="{{cart.cart_id}}" id="add" onclick="add('{{cart.cart_id}}')">+</button>
       </div>
       <hr />
@@ -33,12 +33,6 @@
     <a href="/orderCheck" id="botton_bottom"><button id="order_complet">주문하기</button></a>
   </div>
 </div>
-<!-- <nav id="nav6">
-  <a href="/"><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png" /></a>
-  <a href="/myDibs"><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" /></a>
-  <a href="/userOrders"><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" /></a>
-  <a href="/user"><img id="profile" src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
-</nav> -->
 
 {%endblock%} {%block script%}
 <script>

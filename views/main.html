@@ -1,6 +1,6 @@
 {% extends 'layout.html' %} {% block content %}
 <div id="basket">
-  <a href="/usercarts" id="count_circle">8</a>
+  <a href="/usercarts" id="count_circle">!</a>
 </div>
 
 {% if currentAddr === null %}
@@ -149,7 +149,7 @@
           window.location.href = '/store_create';
         }
         if (status === 'admin' && storeId.store_id) {
-          window.location.href ='/getStoreIdToPost';
+          window.location.href = '/getStoreIdToPost';
         }
       })
       .catch((response) => {
