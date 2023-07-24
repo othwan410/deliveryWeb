@@ -1,5 +1,21 @@
 {% extends 'layout.html' %} {% block content %}
-<h3>리뷰</h3>
+<div id="top">
+  <a href="/main"
+    ><img
+      id="home"
+      src="/images/home_FILL0_wght400_GRAD0_opsz48.png"
+      style="width: 30px; height: 30px; float: right; margin-left: 250px"
+  /></a>
+  <img
+    src="/images/back.png"
+    style="width: 20px; height: 20px; margin-top: 5px"
+    onclick="window.history.back()"
+  />
+</div>
+<h3 id="store_reviews_h3">리뷰</h3>
+{% if reviews.length === 0 %}
+<p id="none_reviews">리뷰가 없습니다.</p>
+{% endif %}
 <div id="dibs-list">
   {% for review in reviews %}
   <div class="dibs-box">
@@ -18,14 +34,5 @@
     <p>{{review.review}}</p>
   </div>
   {% endfor %}
-
-  <nav id="nav2">
-    <a href="/main"
-      ><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png"
-    /></a>
-    <a><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png" /></a>
-    <a><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png" /></a>
-    <a><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png" /></a>
-  </nav>
 </div>
 {% endblock %}

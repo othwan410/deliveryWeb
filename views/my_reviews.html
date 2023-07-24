@@ -1,80 +1,75 @@
 {% extends 'layout.html' %} {% block content %}
-<div id="top">
-  <a href="/main"
-    ><img
-      id="home"
-      src="/images/home_FILL0_wght400_GRAD0_opsz48.png"
-      style="width: 30px; height: 30px; float: right; margin-left: 250px"
-  /></a>
-  <img
-    src="/images/back.png"
-    style="width: 20px; height: 20px; margin-top: 5px"
-    onclick="window.history.back()"
-  />
-</div>
-<h3 id="review-title">찜 목록</h3>
-
-<div id="review-list">
-  {% for review in reviews %}
-  <div class="review-box" id="{{review.store_id}}|{{review.order_id}}">
-    {% if review.img_url !== 'null' %}
-    <img
-      src="/{{review.img_url}}"
-      alt="음식점 이미지"
-      width="100px"
-      height="70px"
-    />
-    {% endif %}
-    <div class="rating">
-      <img src="/images/Untitled-2.png" /><span>{{review.rating}}</span>
-    </div>
-    <p>{{review.review}}</p>
-    <br />
-    <button class="review-mdf-btn">수정</button>
-    <button class="review-delete-btn">삭제</button>
-    <form class="mdf-form" style="display: none">
-      <select id="rating" name="rating">
-        <option value="0">별점</option>
-        <option value="1">⭐</option>
-        <option value="2">⭐⭐</option>
-        <option value="3">⭐⭐⭐</option>
-        <option value="4">⭐⭐⭐⭐</option>
-        <option value="5">⭐⭐⭐⭐⭐</option></select
-      ><br />
-      <textarea
-        name="review"
-        id="review"
-        cols="30"
-        rows="10"
-        placeholder="리뷰를 남겨주세요."
-      ></textarea>
-      <input type="file" id="img-url" name="img_url" /><br />
-      <button type="submit" id="btn">리뷰 등록</button>
-    </form>
-    <input
-      class="review-check"
-      type="text"
-      style="display: none"
-      placeholder="비밀번호"
-    />
-    <button class="review-check-btn" style="display: none">확인</button>
-  </div>
-  {% endfor %}
-
-  <nav id="nav4">
+<div id="scroll_container2">
+  <div id="top">
     <a href="/main"
-      ><img src="/images/home_FILL0_wght400_GRAD0_opsz48.png"
+      ><img
+        id="home"
+        src="/images/home_FILL0_wght400_GRAD0_opsz48.png"
+        style="width: 30px; height: 30px; float: right; margin-left: 250px"
     /></a>
-    <a href="/myDibs"
-      ><img src="/images/favorite_FILL0_wght400_GRAD0_opsz48.png"
-    /></a>
-    <a href="/userOrders"
-      ><img src="/images/text_snippet_FILL0_wght400_GRAD0_opsz48.png"
-    /></a>
-    <a href="/user"
-      ><img src="/images/person_FILL0_wght400_GRAD0_opsz48.png"
-    /></a>
-  </nav>
+    <img
+      src="/images/back.png"
+      style="width: 20px; height: 20px; margin-top: 5px"
+      onclick="window.history.back()"
+    />
+  </div>
+  <div id="review-title">
+    <p style="font-size: 30px; font-weight: bold">내가 쓴 리뷰</p>
+  </div>
+  {% if reviews.length === 0 %}
+  <p id="none_dibs">리뷰가 없습니다.</p>
+  {% endif %}
+  <div style="margin-top: 50px">
+    {% for review in reviews %}
+    <div class="review-box" id="{{review.store_id}}|{{review.order_id}}">
+      {% if review.img_url !== 'null' %}
+      <a href="/stores/detail?store_id={{review.store_id}}">
+        <img
+          src="/{{review.img_url}}"
+          alt="음식점 이미지"
+          width="100px"
+          height="70px"
+      /></a>
+      {% endif %}
+      <a href="/stores/detail?store_id={{review.store_id}}">
+        <div class="rating">
+          <img src="/images/Untitled-2.png" /><span>{{review.rating}}</span>
+        </div>
+        <p>{{review.review}}</p>
+      </a>
+      <br />
+      <button class="review-mdf-btn">수정</button>
+      <button class="review-delete-btn">삭제</button>
+      <form class="mdf-form" style="display: none">
+        <select id="rating" name="rating">
+          <option value="0">별점</option>
+          <option value="1">⭐</option>
+          <option value="2">⭐⭐</option>
+          <option value="3">⭐⭐⭐</option>
+          <option value="4">⭐⭐⭐⭐</option>
+          <option value="5">⭐⭐⭐⭐⭐</option></select
+        ><br />
+        <textarea
+          name="review"
+          id="review"
+          cols="30"
+          rows="10"
+          placeholder="리뷰를 남겨주세요."
+        ></textarea>
+        <input type="file" id="img-url" name="img_url" /><br />
+        <button type="submit" id="btn">리뷰 등록</button>
+      </form>
+      <input
+        class="review-check"
+        type="text"
+        style="display: none"
+        placeholder="비밀번호"
+      />
+      <button class="review-check-btn" style="display: none">확인</button>
+    </div>
+    <hr width="320px" />
+    {% endfor %}
+  </div>
 </div>
 {% endblock %} {% block script %}
 <script>
